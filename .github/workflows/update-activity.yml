@@ -1,4 +1,4 @@
-﻿name: Update GitHub Activity & 7-Day Easter Egg
+name: Update GitHub Activity & 7-Day Easter Egg
 
 on:
   schedule:
@@ -40,5 +40,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add assets/github-activity.svg
+          git add assets/github-activity*.svg
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore(activity): update 7-day easter egg matrix [skip ci]" && git push)

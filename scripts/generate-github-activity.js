@@ -131,20 +131,9 @@ const SEVEN_DAY_EASTER_EGGS = {
   }
 };
 
-async function buildActivitySvg(forcedDay = null) {
-  let data;
-  try {
-    const res = await fetch('https://github-contributions-api.jogruber.de/v4/LetMeCodex');
-    data = await res.json();
-  } catch (e) {
-    console.warn('Using cached data fallback...');
-  }
-
+function buildSvgContent(data, activeDayIndex = 1) {
   const now = new Date();
-  const utcTime = now.getTime();
-  const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
-  const activeDayIndex = forcedDay !== null ? Number(forcedDay) : istTime.getUTCDay();
-  const egg = SEVEN_DAY_EASTER_EGGS[activeDayIndex] || SEVEN_DAY_EASTER_EGGS[6];
+  const egg = SEVEN_DAY_EASTER_EGGS[activeDayIndex] || SEVEN_DAY_EASTER_EGGS[1];
 
   const totalContribs = (data && data.total && (data.total['2026'] || data.total['lastYear'])) || 1313;
   const contribsList = (data && data.contributions) || [];
@@ -372,17 +361,50 @@ async function buildActivitySvg(forcedDay = null) {
     return match.replace(/&/g, 'and');
   });
 
-  const outPath = path.join(__dirname, '../assets/github-activity.svg');
-  fs.writeFileSync(outPath, cleanedSvg, 'utf8');
-  console.log(`[+] Generated pixel-perfect activity SVG for ${egg.name} (${egg.shortName}) -> ${outPath}`);
+  return cleanedSvg;
 }
 
-const args = process.argv.slice(2);
-let targetDay = null;
-const dayArg = args.find(a => a.startsWith('--day='));
-if (dayArg) {
-  const val = dayArg.split('=')[1];
-  targetDay = parseInt(val, 10);
+async function main() {
+  let data;
+  try {
+    const res = await fetch('https://github-contributions-api.jogruber.de/v4/LetMeCodex');
+    data = await res.json();
+  } catch (e) {
+    console.warn('Using cached data fallback...');
+  }
+
+  const now = new Date();
+  const utcTime = now.getTime();
+  const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
+  const todayDay = istTime.getUTCDay();
+
+  const args = process.argv.slice(2);
+  let targetDay = null;
+  const dayArg = args.find(a => a.startsWith('--day='));
+  if (dayArg) {
+    targetDay = parseInt(dayArg.split('=')[1], 10);
+  }
+
+  const activeDay = targetDay !== null ? targetDay : todayDay;
+  const mainSvg = buildSvgContent(data, activeDay);
+  fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
+  console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
+
+  const dayFiles = [
+    { day: 0, file: 'github-activity-sun.svg' },
+    { day: 1, file: 'github-activity-mon.svg' },
+    { day: 2, file: 'github-activity-tue.svg' },
+    { day: 3, file: 'github-activity-wed.svg' },
+    { day: 4, file: 'github-activity-thu.svg' },
+    { day: 5, file: 'github-activity-fri.svg' },
+    { day: 6, file: 'github-activity-sat.svg' },
+  ];
+
+  for (const item of dayFiles) {
+    const svg = buildSvgContent(data, item.day);
+    fs.writeFileSync(path.join(__dirname, `../assets/${item.file}`), svg, 'utf8');
+    console.log(`[+] Generated ${item.file} (Day ${item.day})`);
+  }
 }
 
-buildActivitySvg(targetDay);
+main();
