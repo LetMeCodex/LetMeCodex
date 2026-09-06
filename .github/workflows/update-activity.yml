@@ -6,12 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       day:
-        description: 'Easter egg day override (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, auto=Today)'
+        description: 'Easter egg day override (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, cycle=7-Day Showcase, auto=Today)'
         required: false
         default: 'auto'
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
@@ -30,7 +27,9 @@ jobs:
 
       - name: Generate Activity SVG
         run: |
-          if [ "${{ github.event.inputs.day }}" != "" ] && [ "${{ github.event.inputs.day }}" != "auto" ]; then
+          if [ "${{ github.event.inputs.day }}" = "cycle" ]; then
+            node scripts/generate-github-activity.js --cycle
+          elif [ "${{ github.event.inputs.day }}" != "" ] && [ "${{ github.event.inputs.day }}" != "auto" ]; then
             node scripts/generate-github-activity.js --day=${{ github.event.inputs.day }}
           else
             node scripts/generate-github-activity.js

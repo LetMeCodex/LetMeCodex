@@ -364,6 +364,293 @@ function buildSvgContent(data, activeDayIndex = 1) {
   return cleanedSvg;
 }
 
+function buildCyclingShowcaseSvg(data) {
+  const now = new Date();
+  const totalContribs = (data && data.total && (data.total['2026'] || data.total['lastYear'])) || 1313;
+  const contribsList = (data && data.contributions) || [];
+  const contribMap = {};
+  contribsList.forEach(c => { contribMap[c.date] = c; });
+
+  const currentDayOfWeek = now.getUTCDay();
+  const totalDays = 52 * 7 + currentDayOfWeek;
+  const startDate = new Date(now);
+  startDate.setUTCDate(now.getUTCDate() - totalDays);
+  const endDate = new Date(now);
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthHeaders = [];
+  let lastMonth = -1;
+  for (let w = 0; w < 53; w++) {
+    const weekDate = new Date(startDate);
+    weekDate.setUTCDate(startDate.getUTCDate() + (w * 7));
+    const m = weekDate.getUTCMonth();
+    if (m !== lastMonth && w < 51) {
+      monthHeaders.push({ label: months[m], x: 44 + (w * 14.8) });
+      lastMonth = m;
+    }
+  }
+
+  let layersSvg = '';
+  for (let d = 0; d < 7; d++) {
+    const egg = SEVEN_DAY_EASTER_EGGS[d];
+    let cursor = new Date(startDate);
+    let cellsSvg = '';
+
+    for (let w = 0; w < 53; w++) {
+      const colX = 44 + (w * 14.8);
+      for (let r = 0; r < 7; r++) {
+        const cellDate = new Date(cursor);
+        const dateKey = cellDate.toISOString().substring(0, 10);
+        cursor.setUTCDate(cursor.getUTCDate() + 1);
+
+        if (cellDate > endDate) continue;
+
+        const item = contribMap[dateKey] || { count: 0, level: 0 };
+        const count = item.count || 0;
+        let level = item.level;
+        if (level === undefined) {
+          if (count >= 30) level = 4;
+          else if (count >= 20) level = 3;
+          else if (count >= 10) level = 2;
+          else if (count >= 1) level = 1;
+          else level = 0;
+        }
+
+        const color = egg.palette[level] || egg.palette[0];
+        const cellY = 114 + (r * 14.5);
+        const strokeAttr = level === 0 ? 'stroke="#21262D" stroke-width="1"' : '';
+
+        const isSelectedCell = (dateKey === '2026-02-12');
+        const selectionBox = isSelectedCell
+          ? `<rect x="${colX - 2}" y="${cellY - 2}" width="15" height="15" rx="3" fill="none" class="selected-box"/>`
+          : '';
+
+        const animClass = level > 0 ? `class="rw-${w % 8}"` : '';
+        cellsSvg += `\n      <rect x="${colX}" y="${cellY}" width="11" height="11" rx="2" fill="${color}" ${strokeAttr} ${animClass}/>${selectionBox}`;
+      }
+    }
+
+    const embersSvg = Array.from({ length: 18 }, (_, i) => {
+      const ex = 40 + Math.floor(Math.sin(i * 137.5) * 400 + 420);
+      const ey = 80 + (i * 9) % 150;
+      const dur = (2.2 + (i % 4) * 0.8).toFixed(1);
+      const del = ((i % 5) * 0.4).toFixed(1);
+      const sz = (i % 3 === 0 ? 2 : 1.5);
+      return `<circle cx="${ex}" cy="${ey}" r="${sz}" fill="${egg.palette[4]}" class="particle" style="animation-duration: ${dur}s; animation-delay: ${del}s;"/>`;
+    }).join('\n      ');
+
+    layersSvg += `
+    <g class="cycle-layer cycle-layer-${d}">
+      <g opacity="0.65">
+        ${embersSvg}
+      </g>
+      <g transform="translate(0, -75)">
+        ${cellsSvg}
+      </g>
+      ${egg.renderArt(888, 235)}
+      <g transform="translate(20, 218)">
+        <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="12" font-weight="500">12 Feb 2026: 0 contributions</text>
+        <text x="175" y="0" class="inter" fill="${egg.accent}" font-size="12" font-weight="600">• ${egg.symbol} ${egg.shortName}: ${egg.name}</text>
+        <text x="440" y="0" class="inter" fill="#7D8590" font-size="11">(${egg.tag})</text>
+        <g transform="translate(735, -9)" class="inter" font-size="11" fill="#7D8590">
+          <text x="-32" y="9">Less</text>
+          <rect x="0" y="0" width="10" height="10" rx="2" fill="${egg.palette[0]}" stroke="#21262D"/>
+          <rect x="13" y="0" width="10" height="10" rx="2" fill="${egg.palette[1]}"/>
+          <rect x="26" y="0" width="10" height="10" rx="2" fill="${egg.palette[2]}"/>
+          <rect x="39" y="0" width="10" height="10" rx="2" fill="${egg.palette[3]}"/>
+          <rect x="52" y="0" width="10" height="10" rx="2" fill="${egg.palette[4]}"/>
+          <text x="68" y="9">More</text>
+        </g>
+      </g>
+    </g>`;
+  }
+
+  const dayPillsSvg = [0, 1, 2, 3, 4, 5, 6].map((d, i) => {
+    const e = SEVEN_DAY_EASTER_EGGS[d];
+    const px = i * 36;
+    return `<rect x="${px}" y="0" width="34" height="22" rx="4" class="cpill-bg cpill-bg-${d}" fill="#161B22"/>
+      <text x="${px + 17}" y="15" text-anchor="middle" class="mono cpill-txt cpill-txt-${d}" font-size="11">${e.shortName}</text>`;
+  }).join('\n      ');
+
+  let cycleCss = `
+    .cycle-layer { opacity: 0; visibility: hidden; }
+  `;
+  const slices = [
+    { start: 0, end: 14.28, accent: '#F59E0B' },
+    { start: 14.29, end: 28.57, accent: '#10B981' },
+    { start: 28.58, end: 42.85, accent: '#38BDF8' },
+    { start: 42.86, end: 57.14, accent: '#F43F5E' },
+    { start: 57.15, end: 71.42, accent: '#14B8A6' },
+    { start: 71.43, end: 85.71, accent: '#84CC16' },
+    { start: 85.72, end: 100, accent: '#FA7A18' },
+  ];
+
+  slices.forEach((s, idx) => {
+    const sStart = (s.start).toFixed(2);
+    const sMidEnd = (s.end - 0.7).toFixed(2);
+    const sEnd = (s.end).toFixed(2);
+
+    cycleCss += `
+    .cycle-layer-${idx} { animation: layerCycle${idx} 28s infinite; }
+    .cpill-bg-${idx} { animation: pillBgCycle${idx} 28s infinite; }
+    .cpill-txt-${idx} { animation: pillTxtCycle${idx} 28s infinite; }`;
+
+    if (idx === 0) {
+      cycleCss += `
+      @keyframes layerCycle${idx} {
+        0%, ${sMidEnd}% { opacity: 1; visibility: visible; }
+        ${sEnd}%, 99.2% { opacity: 0; visibility: hidden; }
+        100% { opacity: 1; visibility: visible; }
+      }
+      @keyframes pillBgCycle${idx} {
+        0%, ${sMidEnd}% { fill: #21262D; stroke: ${s.accent}; stroke-width: 1.2px; }
+        ${sEnd}%, 99.2% { fill: #161B22; stroke: transparent; }
+        100% { fill: #21262D; stroke: ${s.accent}; stroke-width: 1.2px; }
+      }
+      @keyframes pillTxtCycle${idx} {
+        0%, ${sMidEnd}% { fill: ${s.accent}; font-weight: 700; }
+        ${sEnd}%, 99.2% { fill: #7D8590; font-weight: 400; }
+        100% { fill: ${s.accent}; font-weight: 700; }
+      }`;
+    } else if (idx === 6) {
+      cycleCss += `
+      @keyframes layerCycle${idx} {
+        0%, ${(slices[idx-1].end).toFixed(2)}% { opacity: 0; visibility: hidden; }
+        ${(slices[idx-1].end + 0.1).toFixed(2)}%, 99.2% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle${idx} {
+        0%, ${(slices[idx-1].end).toFixed(2)}% { fill: #161B22; stroke: transparent; }
+        ${(slices[idx-1].end + 0.1).toFixed(2)}%, 99.2% { fill: #21262D; stroke: ${s.accent}; stroke-width: 1.2px; }
+        100% { fill: #161B22; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle${idx} {
+        0%, ${(slices[idx-1].end).toFixed(2)}% { fill: #7D8590; font-weight: 400; }
+        ${(slices[idx-1].end + 0.1).toFixed(2)}%, 99.2% { fill: ${s.accent}; font-weight: 700; }
+        100% { fill: #7D8590; font-weight: 400; }
+      }`;
+    } else {
+      cycleCss += `
+      @keyframes layerCycle${idx} {
+        0%, ${(s.start - 0.1).toFixed(2)}% { opacity: 0; visibility: hidden; }
+        ${sStart}%, ${sMidEnd}% { opacity: 1; visibility: visible; }
+        ${sEnd}%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle${idx} {
+        0%, ${(s.start - 0.1).toFixed(2)}% { fill: #161B22; stroke: transparent; }
+        ${sStart}%, ${sMidEnd}% { fill: #21262D; stroke: ${s.accent}; stroke-width: 1.2px; }
+        ${sEnd}%, 100% { fill: #161B22; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle${idx} {
+        0%, ${(s.start - 0.1).toFixed(2)}% { fill: #7D8590; font-weight: 400; }
+        ${sStart}%, ${sMidEnd}% { fill: ${s.accent}; font-weight: 700; }
+        ${sEnd}%, 100% { fill: #7D8590; font-weight: 400; }
+      }`;
+    }
+  });
+
+  const finalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 320" width="100%" height="100%">
+  <defs>
+    <style>
+      @keyframes emberFloat {
+        0%, 100% { transform: translateY(0); opacity: 0.3; }
+        50% { transform: translateY(-8px) scale(1.3); opacity: 0.9; }
+      }
+      @keyframes rippleWave {
+        0%, 100% { opacity: 0.85; filter: brightness(1); }
+        35% { opacity: 1; filter: brightness(1.45); }
+        70% { opacity: 0.85; filter: brightness(1); }
+      }
+      @keyframes selectedPulse {
+        0%, 100% { stroke: #FFFFFF; stroke-width: 1.5; opacity: 0.7; }
+        50% { stroke: #FFFFFF; stroke-width: 2.2; opacity: 1; }
+      }
+      @keyframes replayWiggle {
+        0%, 88%, 100% { transform: scale(1); }
+        92% { transform: scale(1.2) rotate(8deg); }
+        96% { transform: scale(1.1) rotate(-4deg); }
+      }
+
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+      .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .particle { animation: emberFloat infinite ease-in-out; }
+      .selected-box { animation: selectedPulse 2s infinite ease-in-out; }
+      .replay-btn { animation: replayWiggle 5s infinite ease-in-out; transform-origin: center; }
+
+      .rw-0 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.0s; }
+      .rw-1 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.35s; }
+      .rw-2 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.7s; }
+      .rw-3 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.05s; }
+      .rw-4 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.4s; }
+      .rw-5 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.75s; }
+      .rw-6 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 2.1s; }
+      .rw-7 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 2.45s; }
+
+      ${cycleCss}
+    </style>
+  </defs>
+
+  <rect width="920" height="320" rx="8" fill="#0D1117"/>
+
+  <!-- Top Header Bar -->
+  <g transform="translate(16, 12)">
+    <text x="20" y="32" class="mono" fill="#7D8590" font-size="11" letter-spacing="1">GITHUB ACTIVITY</text>
+    <text x="20" y="55" class="inter" fill="#F0F6FC" font-size="20" font-weight="700">${totalContribs.toLocaleString()}</text>
+    <text x="80" y="55" class="inter" fill="#7D8590" font-size="13">contributions in the last 12 months</text>
+  </g>
+
+  <!-- Top Right Controls -->
+  <g transform="translate(480, 24)">
+    <g transform="translate(0, 0)">
+      <rect x="-4" y="-3" width="260" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+      ${dayPillsSvg}
+    </g>
+
+    <g transform="translate(268, 0)" class="replay-btn">
+      <rect x="0" y="-3" width="70" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+      <polygon points="14,6 14,16 22,11" fill="#10B981"/>
+      <text x="28" y="15" class="mono" fill="#7D8590" font-size="11">Replay</text>
+    </g>
+
+    <g transform="translate(348, 0)">
+      <rect x="0" y="-3" width="90" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+      <rect x="2" y="-1" width="42" height="24" rx="4" fill="#21262D" stroke="#30363D" stroke-width="1"/>
+      <text x="23" y="15" text-anchor="middle" class="mono" fill="#F0F6FC" font-size="11" font-weight="600">2026</text>
+      <text x="66" y="15" text-anchor="middle" class="mono" fill="#7D8590" font-size="11">2025</text>
+    </g>
+  </g>
+
+  <!-- MAIN MATRIX CONTAINER CARD -->
+  <g transform="translate(16, 75)">
+    <rect width="888" height="235" rx="6" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
+
+    <!-- Month Labels (Static) -->
+    <g class="inter" fill="#7D8590" font-size="11" font-weight="500">
+      ${monthHeaders.map(m => `<text x="${m.x}" y="24">${m.label}</text>`).join('\n      ')}
+    </g>
+
+    <!-- Weekday Labels (Static) -->
+    <g class="inter" fill="#7D8590" font-size="10" font-weight="500" text-anchor="end">
+      <text x="32" y="58">Mon</text>
+      <text x="32" y="87">Wed</text>
+      <text x="32" y="116">Fri</text>
+    </g>
+
+    <!-- 7 Continuous Morph Layers -->
+    ${layersSvg}
+
+    <!-- Bottom Separator Line -->
+    <line x1="16" y1="198" x2="872" y2="198" stroke="#21262D" stroke-width="1"/>
+  </g>
+</svg>`;
+
+  const cleanedSvg = finalSvg.replace(/<!--(.*?)-->/gs, (match) => {
+    return match.replace(/&/g, 'and');
+  });
+
+  return cleanedSvg;
+}
+
 async function main() {
   let data;
   try {
@@ -379,16 +666,23 @@ async function main() {
   const todayDay = istTime.getUTCDay();
 
   const args = process.argv.slice(2);
+  const isCycle = args.includes('--cycle');
   let targetDay = null;
   const dayArg = args.find(a => a.startsWith('--day='));
   if (dayArg) {
     targetDay = parseInt(dayArg.split('=')[1], 10);
   }
 
-  const activeDay = targetDay !== null ? targetDay : todayDay;
-  const mainSvg = buildSvgContent(data, activeDay);
-  fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
-  console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
+  if (isCycle) {
+    const cycleSvg = buildCyclingShowcaseSvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
+    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
+  } else {
+    const activeDay = targetDay !== null ? targetDay : todayDay;
+    const mainSvg = buildSvgContent(data, activeDay);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
+    console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
+  }
 
   const dayFiles = [
     { day: 0, file: 'github-activity-sun.svg' },
