@@ -718,6 +718,7 @@
                 <button type="button" onclick="setStreakTheme('zen')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#DB2777]/20 text-[#F472B6] border border-[#DB2777]/40 hover:bg-[#DB2777]/40 transition-colors">Zen</button>
                 <button type="button" onclick="setStreakTheme('legendary')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#D97706]/20 text-[#F59E0B] border border-[#D97706]/40 hover:bg-[#D97706]/40 transition-colors">Gold</button>
                 <button type="button" onclick="setStreakTheme('void')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#4C1D95]/20 text-[#818CF8] border border-[#4C1D95]/40 hover:bg-[#4C1D95]/40 transition-colors">Void</button>
+                <button type="button" id="streak-cycle-btn" onclick="toggleStreakAutoCycle()" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#21262D] text-[#8B949E] border border-[#30363D] hover:text-[#F0F6FC] transition-colors">🔄 Cycle</button>
               </div>
             </div>
 
@@ -4638,6 +4639,31 @@
         spawnFlameEmbersExplosion(width / 2, height / 2, 35);
       }
       playTactileClick();
+    }
+
+    let streakCycleInterval = null;
+    function toggleStreakAutoCycle() {
+      const btn = document.getElementById('streak-cycle-btn');
+      if (streakCycleInterval) {
+        clearInterval(streakCycleInterval);
+        streakCycleInterval = null;
+        if (btn) {
+          btn.classList.remove('text-[#3FB950]', 'border-[#3FB950]/50');
+          btn.textContent = '🔄 Cycle';
+        }
+      } else {
+        const themeKeys = ['github', 'inferno', 'arcane', 'cyber', 'zen', 'legendary', 'void'];
+        let idx = (themeKeys.indexOf(activeStreakTheme) + 1) % themeKeys.length;
+        setStreakTheme(themeKeys[idx]);
+        if (btn) {
+          btn.classList.add('text-[#3FB950]', 'border-[#3FB950]/50');
+          btn.textContent = '⏸ Cycling';
+        }
+        streakCycleInterval = setInterval(() => {
+          idx = (themeKeys.indexOf(activeStreakTheme) + 1) % themeKeys.length;
+          setStreakTheme(themeKeys[idx]);
+        }, 4000);
+      }
     }
 
     function simulateStreakDays(days) {

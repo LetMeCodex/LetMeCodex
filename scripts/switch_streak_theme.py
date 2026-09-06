@@ -40,18 +40,23 @@ def run_cmd(cmd, cwd=ROOT_DIR):
         print(f"[Error] {res.stderr.strip()}")
     return res
 
-def apply_streak(theme='github', streak=None, push=True):
+def apply_streak(theme='github', streak=None, cycle=False, push=True):
     print("\n" + "="*62)
-    print(f" 🔥 Updating GitStreak Flame...")
-    print(f" • Theme: {theme} ({THEME_NAMES.get(theme, theme)})")
-    if streak is not None:
-        print(f" • Forced Streak Test: {streak} Days")
-        cmd = f"node scripts/generate-streak-svg.js --theme={theme} --streak={streak}"
-        commit_msg = f"chore(streak): test GitStreak flame ({streak} days, {theme} mode)"
+    if cycle:
+        print(" [SHOWCASE] Activating ALL 7 THEMES AUTO-MORPH SHOWCASE...")
+        cmd = "node scripts/generate-streak-svg.js --cycle"
+        commit_msg = "feat(streak): activate 7-theme auto-morph showcase animation"
     else:
-        print(f" • Live Mode: Synced with real GitHub contribution data")
-        cmd = f"node scripts/generate-streak-svg.js --theme={theme}"
-        commit_msg = f"chore(streak): update GitStreak flame ({theme} theme)"
+        print(f" 🔥 Updating GitStreak Flame...")
+        print(f" • Theme: {theme} ({THEME_NAMES.get(theme, theme)})")
+        if streak is not None:
+            print(f" • Forced Streak Test: {streak} Days")
+            cmd = f"node scripts/generate-streak-svg.js --theme={theme} --streak={streak}"
+            commit_msg = f"chore(streak): test GitStreak flame ({streak} days, {theme} mode)"
+        else:
+            print(f" • Live Mode: Synced with real GitHub contribution data")
+            cmd = f"node scripts/generate-streak-svg.js --theme={theme}"
+            commit_msg = f"chore(streak): update GitStreak flame ({theme} theme)"
 
     print(f"[+] Running: {cmd}")
     res = run_cmd(cmd)
@@ -62,7 +67,7 @@ def apply_streak(theme='github', streak=None, push=True):
 
     if push:
         print("\n[+] Staging and committing changes...")
-        run_cmd("git add assets/git-streak.svg")
+        run_cmd("git add assets/git-streak*.svg")
         c_res = run_cmd(f'git commit -m "{commit_msg}"')
         print(c_res.stdout.strip() or "No new diff to commit.")
         print("[+] Pushing to GitHub remote (origin/main)...")
@@ -89,13 +94,14 @@ def interactive_menu():
         print("  3. 💜 Arcane Violet   7. 🌌 Cosmic Void")
         print("  4. 💙 Cyber Aurora")
         print("-" * 64)
-        print(" [STREAK SIMULATOR]")
-        print("  8. 🧪 Test Streak Progression (Dormant -> Mythic)")
-        print("  9. ⚡ Sync Live Real-Time Streak from GitHub API")
+        print(" [SPECIAL MODES]")
+        print("  8. 🔄 AUTO-CYCLE - Continuous 7-Theme Morph Showcase")
+        print("  9. 🧪 Test Streak Progression (Dormant -> Mythic)")
+        print(" 10. ⚡ Sync Live Real-Time Streak from GitHub API")
         print("  0. 🚪 Exit")
         print("="*64)
 
-        choice = input("Select an option [0-9]: ").strip()
+        choice = input("Select an option [0-10]: ").strip()
         if choice == '0':
             print("Exiting.")
             break
@@ -121,6 +127,9 @@ def interactive_menu():
             apply_streak('void')
             break
         elif choice == '8':
+            apply_streak(cycle=True)
+            break
+        elif choice == '9':
             print("\nSelect progression state to simulate:")
             for k, (s, label) in TIER_PREVIEWS.items():
                 print(f"  [{k}] {label}")
@@ -129,7 +138,7 @@ def interactive_menu():
                 days, _ = TIER_PREVIEWS[int(t_choice)]
                 apply_streak('inferno' if days > 20 else 'github', streak=days)
                 break
-        elif choice == '9':
+        elif choice == '10':
             apply_streak('github')
             break
         else:
@@ -138,6 +147,7 @@ def interactive_menu():
 def main():
     parser = argparse.ArgumentParser(description="GitStreak Flame Controller")
     parser.add_argument("--theme", choices=list(THEME_NAMES.keys()), default="github", help="Color theme")
+    parser.add_argument("--cycle", action="store_true", help="Continuous 7-theme auto-morph showcase")
     parser.add_argument("--streak", type=int, help="Simulate a specific streak count (0 to 100+)")
     parser.add_argument("--real", action="store_true", help="Sync with live GitHub contribution data")
     parser.add_argument("--no-push", action="store_true", help="Generate SVG without git push")
@@ -145,7 +155,10 @@ def main():
     args = parser.parse_args()
 
     if len(sys.argv) > 1:
-        apply_streak(theme=args.theme, streak=args.streak, push=not args.no_push)
+        if args.cycle:
+            apply_streak(cycle=True, push=not args.no_push)
+        else:
+            apply_streak(theme=args.theme, streak=args.streak, push=not args.no_push)
     else:
         interactive_menu()
 
