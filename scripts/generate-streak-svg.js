@@ -479,6 +479,12 @@ function generateCssRules() {
 
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .streak-num { fill: #F0F6FC; }
+      .streak-sub-txt { fill: #8B949E; }
+      @media (prefers-color-scheme: light) {
+        .streak-num { fill: #1F2328; }
+        .streak-sub-txt { fill: #57606A; }
+      }
   `;
 }
 
@@ -507,13 +513,13 @@ ${generateCssRules()}
 
   <!-- Left Center: Streak Count and Synchronized Tier & Theme Tag -->
   <g transform="translate(108, 0)">
-    <text x="0" y="78" class="inter" fill="#F0F6FC" font-size="46" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
     <text x="${currentStreak >= 10 ? 64 : 36}" y="58" class="inter streak-txt-color" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
     
     <!-- Synchronized 7-Day Tier & Easter Egg Subtitle -->
     ${[0, 1, 2, 3, 4, 5, 6].map(i => {
       const egg = SEVEN_DAY_EASTER_EGGS[i];
-      return `<text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-cycle-layer streak-cycle-${i}" fill="#8B949E" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>`;
+      return `<text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-cycle-layer streak-cycle-${i} streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>`;
     }).join('\n    ')}
   </g>
 </svg>`;
@@ -562,9 +568,9 @@ ${generateCssRules()}
   </g>
 
   <g transform="translate(108, 0)">
-    <text x="0" y="78" class="inter" fill="#F0F6FC" font-size="46" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
     <text x="${currentStreak >= 10 ? 64 : 36}" y="58" class="inter" fill="${egg.accent}" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
-    <text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono" fill="#8B949E" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>
+    <text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>
   </g>
 </svg>`;
 }

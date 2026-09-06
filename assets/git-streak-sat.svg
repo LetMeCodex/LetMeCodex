@@ -322,6 +322,12 @@
 
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .streak-num { fill: #F0F6FC; }
+      .streak-sub-txt { fill: #8B949E; }
+      @media (prefers-color-scheme: light) {
+        .streak-num { fill: #1F2328; }
+        .streak-sub-txt { fill: #57606A; }
+      }
   
     ]]></style>
   </defs>
@@ -432,8 +438,8 @@
   </g>
 
   <g transform="translate(108, 0)">
-    <text x="0" y="78" class="inter" fill="#F0F6FC" font-size="46" font-weight="800" letter-spacing="-1.5">10</text>
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">10</text>
     <text x="64" y="58" class="inter" fill="#FA7A18" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
-    <text x="64" y="79" class="mono" fill="#8B949E" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • HALLOWEEN SPOOK</text>
+    <text x="64" y="79" class="mono streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • HALLOWEEN SPOOK</text>
   </g>
 </svg>

@@ -161,22 +161,37 @@ def generate_animated_avatar(input_path, output_path, mode='all', duration=260, 
 
     circle_frames = []
     for idx, f in enumerate(frames):
-        bg = Image.new('RGBA', (w, h), (13, 17, 23, 255))
-        cropped = Image.composite(f.convert('RGBA'), bg, mask)
+        transparent_img = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        cropped = Image.composite(f.convert('RGBA'), transparent_img, mask)
         draw = ImageDraw.Draw(cropped)
-        accent = (20, 184, 166) if idx == 0 else (56, 189, 248)
+        accent = (20, 184, 166, 255) if idx == 0 else (56, 189, 248, 255)
         draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline=accent, width=3)
-        circle_frames.append(cropped.convert('RGB'))
+        circle_frames.append(cropped)
 
-    circle_frames[0].save(
+    gif_frames = []
+    for f in circle_frames:
+        alpha = f.split()[-1]
+        p_img = f.convert('RGB').convert('P', palette=Image.ADAPTIVE, colors=255)
+        mask_arr = np.array(alpha) < 128
+        p_arr = np.array(p_img)
+        p_arr[mask_arr] = 255
+        new_p = Image.fromarray(p_arr, mode='P')
+        pal = list(p_img.getpalette())[:765] + [0, 0, 0]
+        new_p.putpalette(pal)
+        new_p.info['transparency'] = 255
+        gif_frames.append(new_p)
+
+    gif_frames[0].save(
         circle_path,
         save_all=True,
-        append_images=circle_frames[1:],
+        append_images=gif_frames[1:],
         duration=duration,
         loop=0,
+        transparency=255,
+        disposal=2,
         optimize=True
     )
-    print(f"Successfully saved circular animated avatar to: {circle_path} ({os.path.getsize(circle_path)/1024.0:.1f} KB)")
+    print(f"Successfully saved transparent circular animated avatar to: {circle_path} ({os.path.getsize(circle_path)/1024.0:.1f} KB)")
 
 def main():
     parser = argparse.ArgumentParser(description="Generate an animated GitHub PFP")
