@@ -1,0 +1,44 @@
+﻿name: Update GitHub Activity & 7-Day Easter Egg
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      day:
+        description: 'Easter egg day override (0=Sun, 1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, auto=Today)'
+        required: false
+        default: 'auto'
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate Activity SVG
+        run: |
+          if [ "${{ github.event.inputs.day }}" != "" ] && [ "${{ github.event.inputs.day }}" != "auto" ]; then
+            node scripts/generate-github-activity.js --day=${{ github.event.inputs.day }}
+          else
+            node scripts/generate-github-activity.js
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add assets/github-activity.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(activity): update 7-day easter egg matrix [skip ci]" && git push)
