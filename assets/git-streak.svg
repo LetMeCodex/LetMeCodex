@@ -1,0 +1,295 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+  <defs>
+    <!-- Aura Radial Gradient -->
+    <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.38" />
+      <stop offset="60%" stop-color="#EA580C" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#EA580C" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Outer Flame Linear Gradient -->
+    <linearGradient id="outerFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="55%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+
+    <!-- Mid Flame Linear Gradient -->
+    <linearGradient id="midFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="65%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FEF08A" />
+    </linearGradient>
+
+    <!-- Inner Core Radiant Gradient -->
+    <linearGradient id="innerCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="70%" stop-color="#FEF08A" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <!-- Milestone Progress Gradient -->
+    <linearGradient id="milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="70%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+
+    <style>
+      @keyframes flameAuraBreath {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.12); opacity: 1; }
+      }
+      @keyframes flameOuterWiggle {
+        0%, 100% { transform: scaleY(1) skewX(0deg); }
+        25% { transform: scaleY(1.04) skewX(2deg); }
+        50% { transform: scaleY(0.97) skewX(-1.5deg); }
+        75% { transform: scaleY(1.03) skewX(1deg); }
+      }
+      @keyframes flameMidWiggle {
+        0%, 100% { transform: scaleY(1) skewX(0deg); }
+        30% { transform: scaleY(0.96) skewX(-2deg); }
+        70% { transform: scaleY(1.05) skewX(2deg); }
+      }
+      @keyframes flameCorePulse {
+        0%, 100% { transform: scale(1); opacity: 0.95; }
+        50% { transform: scale(1.08); opacity: 1; filter: brightness(1.25); }
+      }
+      @keyframes emberFloat {
+        0% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+        50% { transform: translate(-8px, -45px) scale(1.2); opacity: 0.7; }
+        100% { transform: translate(6px, -95px) scale(0.4); opacity: 0; }
+      }
+      @keyframes smokeDrift {
+        0% { transform: translateY(0) scaleX(1); opacity: 0.4; }
+        50% { transform: translateY(-30px) scaleX(1.3); opacity: 0.25; }
+        100% { transform: translateY(-65px) scaleX(1.6); opacity: 0; }
+      }
+      @keyframes orbitSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes orbitSpinRev {
+        0% { transform: rotate(360deg); }
+        100% { transform: rotate(0deg); }
+      }
+      @keyframes badgePulse {
+        0%, 100% { opacity: 0.85; }
+        50% { opacity: 1; }
+      }
+
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+      .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+
+      .flame-aura { transform-origin: 150px 148px; animation: flameAuraBreath 2.8s infinite ease-in-out; }
+      .flame-outer { transform-origin: 150px 185px; animation: flameOuterWiggle 2.2s infinite ease-in-out; }
+      .flame-mid { transform-origin: 150px 185px; animation: flameMidWiggle 1.7s infinite ease-in-out; }
+      .flame-core { transform-origin: 150px 172px; animation: flameCorePulse 1.3s infinite ease-in-out; }
+      
+      .flame-lick-left { transform-origin: 135px 150px; animation: flameMidWiggle 1.5s infinite ease-in-out; }
+      .flame-lick-right { transform-origin: 165px 150px; animation: flameOuterWiggle 1.9s infinite ease-in-out; }
+
+      .ember { animation: emberFloat infinite ease-out; }
+      .smoke-wisp { animation: smokeDrift 4s infinite linear; }
+      .smoke-wisp-2 { animation: smokeDrift 3.5s infinite linear; animation-delay: 1.5s; }
+
+      .energy-orbit { transform-origin: 150px 148px; animation: orbitSpin 16s infinite linear; }
+      .energy-orbit-rev { transform-origin: 150px 148px; animation: orbitSpinRev 12s infinite linear; }
+      .badge-glow { animation: badgePulse 2.5s infinite ease-in-out; }
+    </style>
+  </defs>
+
+  <!-- Container Box -->
+  <rect width="920" height="280" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1.2"/>
+
+  <!-- Subtle Accent Edge Line -->
+  <line x1="2" y1="2" x2="918" y2="2" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- LEFT: THE LIVING FLAME HERO                                    -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(0, 0)">
+    <!-- Particles Layer -->
+    <g>
+      <circle cx="160" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 1.4s; animation-delay: 0.00s;" />
+      <circle cx="138" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 1.7s; animation-delay: 0.25s;" />
+      <circle cx="152" cy="156" r="2" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.0s; animation-delay: 0.50s;" />
+      <circle cx="167" cy="144" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 2.3s; animation-delay: 0.75s;" />
+      <circle cx="117" cy="180" r="3" fill="#FBBF24" class="ember ember-4" style="animation-duration: 2.6s; animation-delay: 1.00s;" />
+      <circle cx="184" cy="168" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 1.4s; animation-delay: 1.25s;" />
+      <circle cx="147" cy="156" r="2" fill="#FEF08A" class="ember ember-0" style="animation-duration: 1.7s; animation-delay: 1.50s;" />
+      <circle cx="143" cy="144" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.0s; animation-delay: 0.00s;" />
+      <circle cx="171" cy="180" r="3" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.3s; animation-delay: 0.25s;" />
+      <circle cx="124" cy="168" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 2.6s; animation-delay: 0.50s;" />
+      <circle cx="164" cy="156" r="2" fill="#FBBF24" class="ember ember-4" style="animation-duration: 1.4s; animation-delay: 0.75s;" />
+      <circle cx="162" cy="144" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 1.7s; animation-delay: 1.00s;" />
+      <circle cx="141" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.0s; animation-delay: 1.25s;" />
+      <circle cx="166" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.3s; animation-delay: 1.50s;" />
+      <circle cx="137" cy="156" r="2" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.6s; animation-delay: 0.00s;" />
+      <circle cx="146" cy="144" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 1.4s; animation-delay: 0.25s;" />
+      <circle cx="176" cy="180" r="3" fill="#FBBF24" class="ember ember-4" style="animation-duration: 1.7s; animation-delay: 0.50s;" />
+      <circle cx="110" cy="168" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 2.0s; animation-delay: 0.75s;" />
+      <circle cx="157" cy="156" r="2" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.3s; animation-delay: 1.00s;" />
+      <circle cx="149" cy="144" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.6s; animation-delay: 1.25s;" />
+      <circle cx="136" cy="180" r="3" fill="#FBBF24" class="ember ember-2" style="animation-duration: 1.4s; animation-delay: 1.50s;" />
+      <circle cx="178" cy="168" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 1.7s; animation-delay: 0.00s;" />
+      <circle cx="122" cy="156" r="2" fill="#FBBF24" class="ember ember-4" style="animation-duration: 2.0s; animation-delay: 0.25s;" />
+      <circle cx="159" cy="144" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 2.3s; animation-delay: 0.50s;" />
+      <circle cx="155" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.6s; animation-delay: 0.75s;" />
+      <circle cx="135" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 1.4s; animation-delay: 1.00s;" />
+    </g>
+
+    <!-- Flame Graphics Hierarchy -->
+    
+      <!-- Flame Radiant Aura -->
+      <circle cx="150" cy="148" r="94.25" fill="url(#auraGlow)" class="flame-aura"/>
+
+      
+
+      
+
+      <!-- Outer Flame Body (Licking tongues) -->
+      <g transform="translate(150, 155) scale(1.28) translate(-150, -155)">
+        <!-- Layer 1: Outer Tongue (Broad Body) -->
+        <path d="M 150 78 
+                 C 178 108, 195 138, 185 174 
+                 C 176 205, 124 205, 115 174 
+                 C 105 138, 122 108, 150 78 Z"
+              fill="url(#outerFlameGrad)"
+              class="flame-outer" />
+
+        <!-- Layer 2: Secondary Tongue Flick (Left/Right Motion) -->
+        <path d="M 152 88 
+                 C 172 115, 186 142, 176 170 
+                 C 168 194, 130 194, 124 170 
+                 C 116 140, 132 115, 152 88 Z"
+              fill="url(#midFlameGrad)"
+              class="flame-mid" />
+
+        
+
+        <!-- Layer 3: Inner Core (Incandescent Heart) -->
+        <path d="M 150 115 
+                 C 162 135, 170 152, 164 172 
+                 C 158 188, 142 188, 136 172 
+                 C 130 152, 138 135, 150 115 Z"
+              fill="url(#innerCoreGrad)"
+              class="flame-core" />
+      </g>
+    
+
+    <!-- Flame Base Pedestal Grid -->
+    <ellipse cx="150" cy="196" rx="42" ry="7" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+    <ellipse cx="150" cy="196" rx="28" ry="4" fill="#EA580C" opacity="0.35"/>
+  </g>
+
+  <!-- Vertical Divider 1 -->
+  <line x1="300" y1="24" x2="300" y2="256" stroke="#21262D" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- CENTER: DUOLINGO-INSPIRED GAMIFIED STREAK HERO                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(325, 34)">
+    <!-- Header Tag Badge -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="168" height="24" rx="12" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+      <circle cx="12" cy="12" r="4" fill="#F97316" class="badge-glow"/>
+      <text x="24" y="16" class="mono" fill="#F0F6FC" font-size="10" font-weight="700" letter-spacing="1">GITSTREAK ENGINE</text>
+    </g>
+
+    <!-- Large Streak Counter -->
+    <g transform="translate(0, 72)">
+      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="68" font-weight="900" letter-spacing="-2">14</text>
+      <text x="98" y="-26" class="inter" fill="#F97316" font-size="20" font-weight="800">DAYS</text>
+      <text x="98" y="-5" class="mono" fill="#7D8590" font-size="12" font-weight="600" letter-spacing="1">STREAK</text>
+    </g>
+
+    <!-- Tier and Status Pill -->
+    <g transform="translate(0, 108)">
+      <rect x="0" y="0" width="180" height="26" rx="13" fill="#EA580C26" stroke="#F97316" stroke-width="1.2"/>
+      <text x="90" y="17" text-anchor="middle" class="mono" fill="#FEF08A" font-size="11" font-weight="700" letter-spacing="0.5">🔥 BLAZE TIER</text>
+    </g>
+
+    <!-- Fuel Status Callout -->
+    <g transform="translate(0, 160)">
+      
+      <text x="0" y="0" class="inter" fill="#3FB950" font-size="13" font-weight="600">⚡ 9 contributions fueled today</text>
+      <text x="0" y="20" class="inter" fill="#7D8590" font-size="11">• Flame burning bright for LetMeCodex</text>
+      
+    </g>
+  </g>
+
+  <!-- Vertical Divider 2 -->
+  <line x1="605" y1="24" x2="605" y2="256" stroke="#21262D" stroke-width="1"/>
+
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- RIGHT: TELEMETRY CRUCIBLE and HEATMAP CONNECTOR                 -->
+  <!-- ══════════════════════════════════════════════════════════════ -->
+  <g transform="translate(630, 34)">
+    <!-- Milestone Progress Card -->
+    <g transform="translate(0, 0)">
+      <text x="0" y="12" class="mono" fill="#7D8590" font-size="11" font-weight="600" letter-spacing="1">NEXT MILESTONE</text>
+      <text x="240" y="12" text-anchor="end" class="mono" fill="#F97316" font-size="12" font-weight="700">30 Days (16 to go)</text>
+
+      <!-- Progress Track -->
+      <g transform="translate(0, 24)">
+        <rect x="0" y="0" width="240" height="8" rx="4" fill="#161B22" stroke="#21262D" stroke-width="1"/>
+        <rect x="0" y="0" width="8" height="8" rx="4" fill="url(#milestoneGrad)"/>
+      </g>
+    </g>
+
+    <!-- Stats Table Grid -->
+    <g transform="translate(0, 68)" class="inter" font-size="12">
+      <!-- Longest Streak -->
+      <g transform="translate(0, 0)">
+        <text x="0" y="0" fill="#7D8590">Longest Streak</text>
+        <text x="240" y="0" text-anchor="end" fill="#F0F6FC" font-weight="700">10 Days</text>
+        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
+      </g>
+
+      <!-- Total Contributions -->
+      <g transform="translate(0, 32)">
+        <text x="0" y="0" fill="#7D8590">Total Contributions</text>
+        <text x="240" y="0" text-anchor="end" fill="#F0F6FC" font-weight="700">1,351</text>
+        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
+      </g>
+
+      <!-- Intensity Factor -->
+      <g transform="translate(0, 64)">
+        <text x="0" y="0" fill="#7D8590">Heat Intensity</text>
+        <text x="240" y="0" text-anchor="end" class="mono" fill="#FBBF24" font-weight="700">63%</text>
+        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
+      </g>
+    </g>
+
+    <!-- Miniature Heatmap Energy Strip (Feeding toward flame) -->
+    <g transform="translate(0, 160)">
+      <text x="0" y="12" class="mono" fill="#7D8590" font-size="10" font-weight="600" letter-spacing="1">ENERGY CONNECTOR</text>
+      <text x="240" y="12" text-anchor="end" class="mono" fill="#F97316" font-size="10">20-DAY FUEL</text>
+
+      <!-- 20 Recent Days Bars -->
+      <g transform="translate(-640, -42)">
+        <rect x="640" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="651.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="663" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="674.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="686" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="697.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="709" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="720.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="732" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="743.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="755" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="766.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="778" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="789.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="801" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="812.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="824" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="835.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="847" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      <rect x="858.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+      </g>
+    </g>
+  </g>
+</svg>
