@@ -1,4 +1,4 @@
-﻿name: Daily Matrix & Easter Egg Protocol
+name: Daily Matrix & Easter Egg Protocol
 
 on:
   schedule:
@@ -31,5 +31,5 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action Bot"
-          git add assets/daily-matrix-status.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(matrix): daily shift protocol update [skip ci]" && git push)
+          git add assets/daily-easter-egg.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(telemetry): daily 7-day easter egg shift [skip ci]" && git push)

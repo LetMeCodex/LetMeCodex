@@ -1,179 +1,186 @@
 ﻿const fs = require('fs');
 const path = require('path');
 
-const DAYS = [
-  {
-    day: 'Sunday',
-    themeName: 'MATRIX REBOOT // SEED PROTOCOL',
-    color: '#00ff66',
-    secondary: '#052e16',
-    accent: '#86efac',
-    quote: '"The Matrix is everywhere. It is all around us."',
-    easterEgg: '🐰 Secret: Follow the white rabbit down the terminal rabbit hole.',
-    badge: 'STAGE 0: AWAKENING',
-    speed: '4s',
+const SEVEN_DAY_EASTER_EGGS = {
+  0: {
+    day: 0,
+    shortName: 'Sun',
+    name: 'Solar Supernova',
+    tag: 'COSMIC STELLAR FLARE',
+    footerText: 'Solar Supernova Active • Cosmic Radiance',
+    accent: '#F59E0B',
+    palette: ['#161B22', '#78350F', '#D97706', '#F59E0B', '#FDE047'],
+    symbol: '☀️',
+    quote: '"Stellar fusion core ignited. High-energy radiation sweep active."',
+    sketchDetail: 'Rough.js Hand-Drawn Solar Corona & Stellar Flare Overlay'
   },
-  {
-    day: 'Monday',
-    themeName: 'OVERCLOCK OVERDRIVE // NEON PROTOCOL',
-    color: '#a855f7',
-    secondary: '#3b0764',
-    accent: '#d8b4fe',
-    quote: '"I can only show you the door. You have to walk through it."',
-    easterEgg: '🕹️ Konami Code Active: [UP, UP, DOWN, DOWN, LEFT, RIGHT, B, A]',
-    badge: 'STAGE 1: OVERCLOCKED',
-    speed: '2.5s',
+  1: {
+    day: 1,
+    shortName: 'Mon',
+    name: 'Cyberpunk Phosphor',
+    tag: 'DIGITAL PHOSPHOR STREAM',
+    footerText: 'Cyberpunk Matrix Active • Digital Phosphor Cascade',
+    accent: '#10B981',
+    palette: ['#0D1117', '#064E3B', '#059669', '#10B981', '#34D399'],
+    symbol: '⚡',
+    quote: '"Continuous stream of green phosphor commits. Zero dropped frames."',
+    sketchDetail: 'Rough.js Circuit Traces & Terminal Bracket Geometries'
   },
-  {
-    day: 'Tuesday',
-    themeName: 'QUANTUM SHADER // NEXUS GRID',
-    color: '#06b6d4',
-    secondary: '#083344',
-    accent: '#67e8f9',
-    quote: '"Déjà vu is usually a glitch in the Matrix. It happens when they change something."',
-    easterEgg: '⚡ Shader Uniform: uTime = 1337.0; gl_FragColor = vec4(CYAN, 1.0);',
-    badge: 'STAGE 2: QUANTUM FLUX',
-    speed: '3s',
+  2: {
+    day: 2,
+    shortName: 'Tue',
+    name: 'Quantum Aurora',
+    tag: 'ETHEREAL BOREALIS',
+    footerText: 'Quantum Aurora Borealis • Magnetic Flux Undulation',
+    accent: '#38BDF8',
+    palette: ['#0E121E', '#312E81', '#6366F1', '#06B6D4', '#38BDF8'],
+    symbol: '🌌',
+    quote: '"Magnetic dipole perturbation. Multi-harmonic ionosphere excitation."',
+    sketchDetail: 'Three.js Orthographic Wave Particles + Dual Sine Arcs'
   },
-  {
-    day: 'Wednesday',
-    themeName: 'HOLOGRAPHIC CHOREOGRAPHY // THEATRE MATRIX',
-    color: '#f59e0b',
-    secondary: '#451a03',
-    accent: '#fde68a',
-    quote: '"You take the blue pill, the story ends. You take the red pill, you stay in Wonderland."',
-    easterEgg: '💊 Red Pill Swallowed: Neural bypass active.',
-    badge: 'STAGE 3: CHOREOGRAPHED',
-    speed: '3.5s',
+  3: {
+    day: 3,
+    shortName: 'Wed',
+    name: 'Retro Synthwave',
+    tag: '1984 OUTRUN HORIZON',
+    footerText: 'Retro 1984 Synthwave • Neon Horizon Active',
+    accent: '#F43F5E',
+    palette: ['#120F1D', '#701A75', '#C026D3', '#F43F5E', '#FB7185'],
+    symbol: '🌆',
+    quote: '"Neon wireframe grid extending toward infinite retro outrun horizon."',
+    sketchDetail: 'Rough.js Hachure Halftone Sun & Horizon Grid Lines'
   },
-  {
-    day: 'Thursday',
-    themeName: 'AUDIO KINETIC // SYNTH WAVEFORM',
-    color: '#ec4899',
-    secondary: '#500724',
-    accent: '#fbcfe8',
-    quote: '"Hear that, Mr. Anderson? That is the sound of inevitability."',
-    easterEgg: '🎵 Tone.js Sub-Bass Oscillation: 432 Hz Solfeggio Matrix.',
-    badge: 'STAGE 4: HARMONIC',
-    speed: '1.8s',
+  4: {
+    day: 4,
+    shortName: 'Thu',
+    name: 'Zen Hydro-Wave',
+    tag: 'LIQUID CAUSTIC RIPPLES',
+    footerText: 'Zen Hydro-Caustics Active • Fluid ripple physics',
+    accent: '#14B8A6',
+    palette: ['#0D1518', '#134E4A', '#0D9488', '#14B8A6', '#5EEAD4'],
+    symbol: '🌊',
+    quote: '"Surface tension equilibrium. Sub-surface refraction caustics."',
+    sketchDetail: 'Procedural Concentric Caustics & Fluid Wave Propagation'
   },
-  {
-    day: 'Friday',
-    themeName: 'ZERO-DAY RECON // PRODUCTION OVERRIDE',
-    color: '#ef4444',
-    secondary: '#450a0a',
-    accent: '#fca5a5',
-    quote: '"There is a difference between knowing the path and walking the path."',
-    easterEgg: '🚀 Root Access Granted: chmod +x reality.sh && ./reality.sh',
-    badge: 'STAGE 5: ZERO-DAY PUSH',
-    speed: '1.5s',
+  5: {
+    day: 5,
+    shortName: 'Fri',
+    name: "Conway's Living Colony",
+    tag: 'LIVING CELLULAR AUTOMATA',
+    footerText: 'Living Cellular Automata • Generational Colony Active',
+    accent: '#84CC16',
+    palette: ['#0F1612', '#365314', '#65A30D', '#84CC16', '#BEF264'],
+    symbol: '🧬',
+    quote: '"Any live cell with two or three live neighbors survives into next generation."',
+    sketchDetail: 'Organic Cellular Spores & Glider Gun Automata Overlay'
   },
-  {
-    day: 'Saturday',
-    themeName: 'GOD-TIER ARCHITECT // NEO CONSTRUCT',
-    color: '#10b981',
-    secondary: '#064e3b',
-    accent: '#6ee7b7',
-    quote: '"Do not try and bend the spoon, that\'s impossible. Instead, only try to realize the truth: There is no spoon."',
-    easterEgg: '🥄 Spoon.exe NOT FOUND: Reality is client-side rendered.',
-    badge: 'STAGE 6: CONSTRUCT ARCHITECT',
-    speed: '5s',
+  6: {
+    day: 6,
+    shortName: 'Sat',
+    name: 'Halloween Spook',
+    tag: "JACK-O'-LANTERN GHOST FLARE",
+    footerText: 'Design Spells Halloween Easter Egg • Warm Ember Glow',
+    accent: '#FA7A18',
+    palette: ['#161B22', '#631C03', '#BD561D', '#FA7A18', '#FDDF68'],
+    symbol: '🎃',
+    quote: '"Floating ghost silhouettes, carved pumpkin eyes, and rising embers."',
+    sketchDetail: 'Rough.js Jack-o-Lantern & Ghost Silhouette (Design Spells #321)'
   }
-];
+};
 
 const now = new Date();
-const dayIndex = now.getDay();
-const dayData = DAYS[dayIndex];
+// Convert to Indian Standard Time (IST)
+const utcTime = now.getTime();
+const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
+const dayOfWeek = istTime.getUTCDay(); // 0 = Sun, 1 = Mon ...
+const egg = SEVEN_DAY_EASTER_EGGS[dayOfWeek];
+const istDateString = istTime.toISOString().split('T')[0];
 
-const dateString = now.toISOString().split('T')[0];
-
-const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 260" width="100%" height="100%">
+const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160" width="100%" height="100%">
   <defs>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#05080f"/>
-      <stop offset="60%" stop-color="${dayData.secondary}"/>
-      <stop offset="100%" stop-color="#020408"/>
-    </linearGradient>
-
-    <filter id="neonPulse" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-
     <style>
       @keyframes radarSweep { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-      @keyframes barPulse { 0%, 100% { height: 8px; } 50% { height: 42px; } }
-      @keyframes glitchText { 0%, 95%, 100% { transform: none; } 96% { transform: skewX(-6deg); } 98% { transform: skewX(6deg); } }
-      @keyframes blinkBeacon { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
-
-      .radar-arm { transform-origin: 80px 130px; animation: radarSweep ${dayData.speed} infinite linear; }
-      .bar-anim { animation: barPulse 1.2s infinite ease-in-out alternate; }
-      .text-glitch { animation: glitchText 6s infinite ease; }
-      .beacon { animation: blinkBeacon 1.5s infinite ease-in-out; }
-      .matrix-font { font-family: 'Consolas', 'Courier New', monospace; }
+      @keyframes beaconBlink { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+      .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .radar-arm { transform-origin: 50px 80px; animation: radarSweep 3.5s infinite linear; }
+      .beacon { animation: beaconBlink 1.4s infinite ease-in-out; }
     </style>
   </defs>
 
-  <!-- Base Card -->
-  <rect width="850" height="260" rx="16" fill="url(#cardGrad)" stroke="${dayData.color}" stroke-opacity="0.5" stroke-width="1.5"/>
+  <!-- Card Base -->
+  <rect width="850" height="160" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
 
-  <!-- Radar HUD Circle -->
-  <g transform="translate(10, 0)">
-    <circle cx="80" cy="130" r="50" fill="none" stroke="${dayData.color}" stroke-opacity="0.25" stroke-dasharray="3 3"/>
-    <circle cx="80" cy="130" r="32" fill="none" stroke="${dayData.color}" stroke-opacity="0.35"/>
-    <circle cx="80" cy="130" r="14" fill="none" stroke="${dayData.color}" stroke-opacity="0.5"/>
-    <circle cx="80" cy="130" r="3" fill="${dayData.color}" filter="url(#neonPulse)"/>
-    <!-- Radar Arm -->
-    <line x1="80" y1="130" x2="130" y2="130" stroke="${dayData.color}" stroke-width="2" class="radar-arm"/>
+  <!-- Subheader -->
+  <rect x="0" y="0" width="850" height="34" rx="8" fill="#161B22"/>
+  <rect x="0" y="26" width="850" height="8" fill="#161B22"/>
+  <line x1="0" y1="34" x2="850" y2="34" stroke="#30363D" stroke-width="1"/>
+
+  <g transform="translate(16, 21)">
+    <text x="0" y="0" class="mono" fill="#7D8590" font-size="11">02. GITHUB ACTIVITY</text>
+    <text x="120" y="0" class="mono" fill="#30363D">•</text>
+    <text x="132" y="0" class="mono" fill="${egg.accent}" font-size="11" font-weight="700">${egg.tag}</text>
   </g>
 
-  <!-- Header & Live Tag -->
-  <g transform="translate(160, 45)">
-    <rect width="180" height="24" rx="6" fill="${dayData.color}" fill-opacity="0.15" stroke="${dayData.color}" stroke-width="1"/>
-    <circle cx="12" cy="12" r="4" fill="${dayData.color}" class="beacon"/>
-    <text x="24" y="16" class="matrix-font" fill="${dayData.accent}" font-size="10" font-weight="bold">${dayData.badge}</text>
-    
-    <text x="520" y="16" text-anchor="end" class="matrix-font" fill="#64748b" font-size="11">DATE: ${dateString} // ${dayData.day.toUpperCase()}</text>
+  <!-- 7-Day Quick Pills on Top Right -->
+  <g transform="translate(480, 8)">
+    ${[0, 1, 2, 3, 4, 5, 6].map((d, i) => {
+      const e = SEVEN_DAY_EASTER_EGGS[d];
+      const isToday = d === dayOfWeek;
+      const x = i * 50;
+      const bg = isToday ? '#21262D' : '#0D1117';
+      const color = isToday ? egg.accent : '#7D8590';
+      const border = isToday ? egg.accent : '#30363D';
+      const weight = isToday ? '700' : '400';
+      return `<rect x="${x}" y="0" width="46" height="18" rx="4" fill="${bg}" stroke="${border}" stroke-width="1"/>
+      <text x="${x + 23}" y="12" text-anchor="middle" class="mono" fill="${color}" font-size="10" font-weight="${weight}">${e.shortName}</text>`;
+    }).join('\n    ')}
   </g>
 
-  <!-- Title Mode -->
-  <g transform="translate(160, 100)">
-    <text x="0" y="0" class="matrix-font text-glitch" fill="#ffffff" font-size="22" font-weight="900" letter-spacing="1">
-      ${dayData.themeName}
+  <!-- Left Radar & Planetary Sensor -->
+  <g transform="translate(20, 10)">
+    <circle cx="50" cy="80" r="38" fill="none" stroke="${egg.accent}" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+    <circle cx="50" cy="80" r="24" fill="none" stroke="${egg.accent}" stroke-opacity="0.3"/>
+    <circle cx="50" cy="80" r="10" fill="none" stroke="${egg.accent}" stroke-opacity="0.45"/>
+    <circle cx="50" cy="80" r="2.5" fill="${egg.accent}"/>
+    <line x1="50" y1="80" x2="88" y2="80" stroke="${egg.accent}" stroke-width="1.75" class="radar-arm"/>
+  </g>
+
+  <!-- Center Telemetry Info -->
+  <g transform="translate(130, 58)">
+    <g transform="translate(0, 0)">
+      <rect width="180" height="20" rx="4" fill="${egg.accent}" fill-opacity="0.12" stroke="${egg.accent}" stroke-opacity="0.3" stroke-width="1"/>
+      <circle cx="10" cy="10" r="3" fill="${egg.accent}" class="beacon"/>
+      <text x="20" y="14" class="mono" fill="${egg.accent}" font-size="10" font-weight="700">TODAY's EASTER EGG</text>
+      <text x="200" y="14" class="mono" fill="#7D8590" font-size="10">IST DATE: ${istDateString}</text>
+    </g>
+
+    <text x="0" y="44" class="mono" fill="#F0F6FC" font-size="20" font-weight="800">
+      ${egg.symbol} ${egg.name}
     </text>
-    <text x="0" y="24" class="matrix-font" fill="${dayData.accent}" font-size="12" font-style="italic">
-      ${dayData.quote}
+
+    <text x="0" y="64" class="inter" fill="#7D8590" font-size="12" font-style="italic">
+      ${egg.quote}
     </text>
+
+    <!-- Palette Swatches for Today -->
+    <g transform="translate(0, 76)">
+      <text x="0" y="10" class="mono" fill="#7D8590" font-size="10">Active Intensity Palette:</text>
+      ${egg.palette.map((c, i) => `
+        <rect x="${145 + i * 16}" y="1" width="12" height="12" rx="2" fill="${c}" stroke="#21262D" stroke-width="1"/>
+      `).join('')}
+      <text x="238" y="10" class="mono" fill="#7D8590" font-size="10">• ${egg.sketchDetail}</text>
+    </g>
   </g>
 
-  <!-- Easter Egg Box -->
-  <g transform="translate(160, 155)">
-    <rect width="520" height="42" rx="8" fill="#010308" stroke="${dayData.color}" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="16" y="26" class="matrix-font" fill="${dayData.color}" font-size="12" font-weight="bold">
-      ${dayData.easterEgg}
-    </text>
+  <!-- Right Side Live Flag -->
+  <g transform="translate(710, 80)">
+    <rect x="0" y="0" width="118" height="34" rx="4" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+    <text x="12" y="14" class="mono" fill="#3FB950" font-size="10" font-weight="700">● 7-DAY ENGINE</text>
+    <text x="12" y="27" class="mono" fill="#7D8590" font-size="9">Auto-Shift: 00:00 UTC</text>
   </g>
-
-  <!-- Interactive Equalizer Bars -->
-  <g transform="translate(710, 197)" fill="${dayData.color}">
-    <rect x="0" y="-8" width="5" height="15" rx="2" class="bar-anim" style="animation-delay: 0.1s"/>
-    <rect x="10" y="-14" width="5" height="25" rx="2" class="bar-anim" style="animation-delay: 0.4s"/>
-    <rect x="20" y="-22" width="5" height="35" rx="2" class="bar-anim" style="animation-delay: 0.2s"/>
-    <rect x="30" y="-30" width="5" height="45" rx="2" class="bar-anim" style="animation-delay: 0.6s"/>
-    <rect x="40" y="-18" width="5" height="28" rx="2" class="bar-anim" style="animation-delay: 0.3s"/>
-    <rect x="50" y="-10" width="5" height="18" rx="2" class="bar-anim" style="animation-delay: 0.5s"/>
-    <rect x="60" y="-4" width="5" height="12" rx="2" class="bar-anim" style="animation-delay: 0.7s"/>
-  </g>
-
-  <!-- Bottom Metric Line -->
-  <text x="160" y="232" class="matrix-font" fill="#475569" font-size="10">
-    ⚡ PROTOCOL ROTATION: AUTOMATED VIA GITHUB ACTIONS CRON · NEXT SHIFT IN 24H
-  </text>
 </svg>`;
 
-const outputPath = path.join(__dirname, '../assets/daily-matrix-status.svg');
+const outputPath = path.join(__dirname, '../assets/daily-easter-egg.svg');
 fs.writeFileSync(outputPath, svgContent, 'utf8');
-console.log(`[+] Successfully generated daily matrix status for ${dayData.day} -> ${outputPath}`);
+console.log(`[+] Generated daily easter egg card for ${egg.name} -> ${outputPath}`);

@@ -1,18 +1,37 @@
-<!-- ◈ MATRIX PROTOCOL PROFILE SYSTEM ◈ -->
+﻿<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- AUTONOMOUS PULSE — LIVE GITHUB AUTOMATION INSTRUMENT            -->
+<!-- Engineered for LetMeCodex                                      -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+
 <div align="center">
 
-  <!-- 1. ANIMATED MATRIX RAIN BANNER -->
-  <img src="./assets/matrix-rain.svg" width="100%" alt="Matrix Rain Banner" />
+  <!-- 1. HERO HEADER & REPOSITORY ACTION BAR -->
+  <img src="./assets/autonomous-pulse-header.svg" width="100%" alt="Autonomous Pulse Header" />
 
   <br/><br/>
 
-  <!-- 2. DAILY AUTOMATED STATUS & EASTER EGG (Updates Every 24H via GitHub Action) -->
-  <img src="./assets/daily-matrix-status.svg" width="100%" alt="Daily Matrix Protocol" />
+  <!-- 2. CONTRIBUTION GRID PULSE WAVE (60 FPS PIXEL MATRIX) -->
+  <img src="./assets/pulse-grid-wave.svg" width="100%" alt="Contribution Grid Pulse Wave" />
 
   <br/><br/>
 
-  <!-- 3. TONE.JS AUDIO SPECTRUM VISUALIZER -->
-  <img src="./assets/audio-spectrum.svg" width="100%" alt="Audio Spectrum Engine" />
+  <!-- 3. GITHUB-STYLE 6 STATS TILES -->
+  <img src="./assets/pulse-stats-grid.svg" width="100%" alt="Telemetry Stats Grid" />
+
+  <br/><br/>
+
+  <!-- 4. COMMIT STREAK & MILESTONE ACCELERATOR (JUICE ENGINE) -->
+  <img src="./assets/streak-crucible.svg" width="100%" alt="Commit Streak Crucible" />
+
+  <br/><br/>
+
+  <!-- 5. 7-DAY HANDCRAFTED EASTER EGG & MATRIX SHIFTER (AUTOMATED CRON) -->
+  <img src="./assets/daily-easter-egg.svg" width="100%" alt="7-Day Easter Egg Protocol" />
+
+  <br/><br/>
+
+  <!-- 6. EXECUTION PIPELINE STAGES -->
+  <img src="./assets/pipeline-stages.svg" width="100%" alt="Execution Pipeline Stages" />
 
 </div>
 
@@ -20,51 +39,7 @@
 
 ---
 
-### 🕹️ ◈ DAILY MATRIX TERMINAL & HIDDEN EASTER EGGS ◈
-
-<details>
-<summary><b>▶ [CLICK TO DECRYPT] ACCESS NEURAL CONSTRUCT & EASTER EGGS</b></summary>
-<br/>
-
-```bash
-[SYSTEM] INITIATING NEURAL HANDSHAKE...
-[OK] BYPASSING MAINFRAME ENCRYPTION
-[OK] LOADING MATRIX CORE KERNEL v4.19.0
-[OK] GPU COMPUTE RIG: 60 FPS RAPIER DESTRUCTION RIG ONLINE
-```
-
-```text
-       ___          ___          ___     
-      /\__\        /\  \        /\  \    
-     /:/  /       /::\  \      /::\  \   
-    /:/__/       /:/\:\  \    /:/\:\  \  
-   /::\  \ ___  /::\~\:\  \  /:/  \:\  \ 
-  /:/\:\  /\__\/:/\:\ \:\__\/:/__/ \:\__\
-  \/__\:\/:/  /\:\~\:\ \/__/\:\  \ /:/  /
-       \::/  /  \:\ \:\__\   \:\  /:/  / 
-       /:/  /    \:\ \/__/    \:\/:/  /  
-      /:/  /      \:\__\       \::/  /   
-      \/__/        \/__/        \/__/    
-```
-
-#### 💊 The Choice
-* 🔴 **Red Pill**: You stay in Wonderland, and I show you how deep the WebGL rabbit hole goes.
-* 🔵 **Blue Pill**: The story ends, you wake up in your bed and believe whatever CSS framework you want.
-
-```bash
-$ cat ~/.bash_profile
-export STACK="Three.js + R3F + Rapier + Theatre.js + Motion + Tone.js + Zustand + XState"
-export REALITY="Client-Side Rendered"
-export SPOON="undefined"
-
-$ echo "Wake up, Neo... 🐰 Follow the white rabbit."
-```
-
-</details>
-
----
-
-### 🐍 ◈ LIVE CONTRIBUTION GRAPH DESTROYER ◈
+### 🐍 ◈ AUTONOMOUS COMMIT SNAKE DESTROYER ◈
 
 <div align="center">
   <picture>
@@ -78,18 +53,48 @@ $ echo "Wake up, Neo... 🐰 Follow the white rabbit."
 
 ---
 
+### 🐱 ◈ ASCII COMPANION PET MASCOT // CODEX & CLAUDE ◈
+
+<details>
+<summary><b>▶ [CLICK TO WAKE COMPANION] CODEX BOT & CLAUDE REASONING CORE</b></summary>
+<br/>
+
+```text
+       /\_/\   
+      ( o.o )   [Codex Bot — Companion Mascot]
+      ( >^< )   ⌨️ git commit -m "L4 dark green achieved!"
+```
+
+```text
+       \ | /  
+      -- * --   [Claude Spark — Synthesis Engine]
+       / | \    ✨ Telemetry reasoning & algorithmic benchmarks
+```
+
+```bash
+[TELEMETRY] ZONE: IST (UTC+5:30) | FREQ: 1.24 Hz
+[ENGINE] POISSON-OGATA STOCHASTIC CADENCE ACTIVE (λ=4.2/day)
+[QUARTILE] LEVEL 4 THRESHOLD: L4 = ⌈0.75 × Max⌉ (≥ 58 COMMITS/DAY)
+[STREAK] CURRENT: 42 DAYS // MULTIPLIER: 4.20x BOOST
+```
+
+> **"Purrrrr! 🐾 124 commits target today, LetMeCodex! Our Poisson engine is active and reputation shield is protected!"**
+
+</details>
+
+---
+
 ### ⚡ ◈ MASTER CREATIVE ENGINEERING STACK ◈
 
 <div align="center">
 
-| Domain | Weaponry / Frameworks |
+| Domain | Architecture & Frameworks |
 | :--- | :--- |
-| **3D & Physics** | `Three.js` · `@react-three/fiber` · `@react-three/drei` · `@react-three/rapier` · `Theatre.js` · `OGL` |
-| **Motion & Scroll** | `Motion (motion/react)` · `@react-spring/web` · `Lenis Scroll` · `GSAP` |
-| **Generative Art** | `Rough.js` · `perfect-freehand` · `Paper.js` · `PixiJS 2D` |
-| **Audio Synthesis**| `Tone.js` (FFT Audio-Reactive Shaders & PolySynth) |
-| **State & Nodes**  | `Zustand` · `XState FSM` · `@xyflow/react (React Flow)` |
-| **Reliability**    | `Zod` · `@tanstack/react-query` · `MSW` · `Vitest` · `Biome` |
+| **3D & Canvas** | `Three.js` · `@react-three/fiber` · `@react-three/drei` · `@react-three/rapier` · `Rough.js` · `OGL` |
+| **Animation & Motion** | `GSAP 3` · `Anime.js` · `Motion (motion/react)` · `@react-spring/web` · `Lenis Scroll` |
+| **Sound & Juice** | `Tone.js` (Procedural Web Audio Harmonics & Shepard Tone Charging) |
+| **State & Automata** | `Zustand` · `XState FSM` · `Conway's Cellular Automata` |
+| **Reliability & MLSys** | `Zod Schema Guard` · `Vitest` · `Biome` · `GitHub Actions Cron` |
 
 </div>
 
@@ -98,5 +103,5 @@ $ echo "Wake up, Neo... 🐰 Follow the white rabbit."
 ---
 
 <div align="center">
-  <sub>⚡ Autonomous System Powered by Antigravity · Updated automatically via GitHub Actions Cron ⚡</sub>
+  <sub>Autonomous Pulse Instrument · Developed by <b>LetMeCodex</b> · IST Synchronized (UTC+5:30)</sub>
 </div>
