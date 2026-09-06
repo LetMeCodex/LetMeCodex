@@ -1,23 +1,30 @@
 <!-- 
   ======================================================================
-  HERO & INTRO SECTION (Your Bio, Social Badges, Tech Stack, & Projects)
+  ✨ HERO & INTRO SECTION (Your Bio, Socials, Tech Stack & Greetings)
   ======================================================================
-  Place your personal bio, intro banners, social badges, and greetings here.
+  Drop your personal hero banner, greetings, bio, tech stack, and social badges here.
 -->
+<div align="center">
+
+  <!-- Place your personal intro / bio / badges here -->
+
+</div>
+
+<br/>
 
 <!-- 
   ======================================================================
-  GITHUB CONTRIBUTION MATRIX & LIVING FLAME SYSTEM
+  🔥 GITSTREAK LIVING FLAME & GITHUB ACTIVITY MATRIX
   ======================================================================
 -->
 <div align="center">
-  <!-- Minimal GitStreak Flame HUD -->
+  <!-- Minimal Living Flame GitStreak (Borderless) -->
   <a href="#git-streak" id="git-streak">
     <img src="./assets/git-streak.svg" width="100%" alt="GitStreak — Living Flame" />
   </a>
 
-  <!-- Seamless 6px Docking Spacer -->
-  <div style="height: 6px; line-height: 6px;">&nbsp;</div>
+  <!-- Seamless 4px Docking Spacer -->
+  <div style="height: 4px; line-height: 4px;">&nbsp;</div>
 
   <!-- GitHub Activity & 7-Day Easter Egg Matrix -->
   <a href="#github-activity" id="github-activity">

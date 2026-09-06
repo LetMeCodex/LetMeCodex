@@ -70,7 +70,7 @@ function renderFlameGraphic(accent = GOLDEN_FIRE_THEME.accent, palette = GOLDEN_
   `;
 
   return `
-    <g class="flame-master" transform="scale(0.135)">
+    <g class="flame-master" transform="scale(0.23)">
       <!-- Pulsing Aura Heat Glow -->
       <circle cx="-11" cy="0" r="240" fill="url(#${idPrefix}auraGlow)" class="heat-aura-pulse" />
 
@@ -148,13 +148,13 @@ function renderFlameGraphic(accent = GOLDEN_FIRE_THEME.accent, palette = GOLDEN_
 
 function renderEmbers(accent = GOLDEN_FIRE_THEME.accent) {
   const embersData = [
-    { x: -16, y: 16, r: 1.5, dur: 1.4, del: 0, dx: -7 },
-    { x: -24, y: 12, r: 1.2, dur: 1.9, del: 0.3, dx: -12 },
-    { x: -7,  y: 18, r: 1.6, dur: 1.5, del: 0.8, dx: -3 },
-    { x: 8,   y: 15, r: 1.7, dur: 1.3, del: 0.1, dx: 6 },
-    { x: 20,  y: 11, r: 1.3, dur: 2.0, del: 0.6, dx: 10 },
-    { x: 0,   y: 20, r: 1.8, dur: 1.6, del: 1.1, dx: 3 },
-    { x: -12, y: 8,  r: 1.1, dur: 1.7, del: 1.4, dx: -5 },
+    { x: -26, y: 24, r: 2.2, dur: 1.4, del: 0, dx: -9 },
+    { x: -38, y: 18, r: 1.8, dur: 1.9, del: 0.3, dx: -16 },
+    { x: -11, y: 28, r: 2.4, dur: 1.5, del: 0.8, dx: -4 },
+    { x: 12,  y: 22, r: 2.5, dur: 1.3, del: 0.1, dx: 8 },
+    { x: 30,  y: 16, r: 1.9, dur: 2.0, del: 0.6, dx: 14 },
+    { x: 0,   y: 30, r: 2.6, dur: 1.6, del: 1.1, dx: 4 },
+    { x: -18, y: 12, r: 1.7, dur: 1.7, del: 1.4, dx: -7 },
   ];
   return embersData.map(e => 
     `<circle cx="${e.x}" cy="${e.y}" r="${e.r}" fill="${accent}" class="ember-particle" style="--dx: ${e.dx}px; animation-duration: ${e.dur}s; animation-delay: ${e.del}s;" />`
@@ -174,7 +174,7 @@ function buildCanonicalStreakSvg(stats) {
   const c3 = egg.palette[3];
   const c4 = egg.palette[4];
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 76" width="100%" height="100%">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 96" width="100%" height="100%">
   <defs>
     <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.45" />
@@ -289,8 +289,8 @@ function buildCanonicalStreakSvg(stats) {
       /* 13. Floating Embers Ascending */
       @keyframes emberAscent {
         0% { transform: translate(0, 0); opacity: 0.95; }
-        50% { transform: translate(var(--dx, -4px), -26px); opacity: 0.65; }
-        100% { transform: translate(calc(var(--dx, -4px) * 2), -56px); opacity: 0; }
+        50% { transform: translate(var(--dx, -6px), -36px); opacity: 0.65; }
+        100% { transform: translate(calc(var(--dx, -6px) * 2), -72px); opacity: 0; }
       }
 
       /* 14. High Sparks Ascending */
@@ -328,29 +328,17 @@ function buildCanonicalStreakSvg(stats) {
     ]]></style>
   </defs>
 
-  <!-- Clean Minimal Frame (76px Height) -->
-  <rect width="920" height="76" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
-
-  <!-- Left: The Living Turbulent Flame Animation (Exact 1017 Design) -->
-  <g transform="translate(48, 38)">
+  <!-- Left: The Large Living Turbulent Flame Animation -->
+  <g transform="translate(50, 48)">
     ${embers}
     ${flameG}
   </g>
 
-  <!-- Left Center: Streak Count & Tier Tag -->
-  <g transform="translate(88, 0)">
-    <text x="0" y="49" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
-    <text x="${currentStreak >= 10 ? 50 : 28}" y="36" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
-    <text x="${currentStreak >= 10 ? 50 : 28}" y="52" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
-  </g>
-
-  <!-- Minimal Divider -->
-  <line x1="265" y1="20" x2="265" y2="56" stroke="#21262D" stroke-width="1"/>
-
-  <!-- Longest Streak -->
-  <g transform="translate(295, 0)">
-    <text x="0" y="36" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
-    <text x="0" y="54" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
+  <!-- Left Center: Streak Count & Tier Tag (Borderless & Minimal) -->
+  <g transform="translate(106, 0)">
+    <text x="0" y="62" class="inter" fill="#F0F6FC" font-size="44" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
+    <text x="${currentStreak >= 10 ? 62 : 36}" y="44" class="inter" fill="${egg.accent}" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
+    <text x="${currentStreak >= 10 ? 62 : 36}" y="63" class="mono" fill="#8B949E" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER</text>
   </g>
 </svg>`;
 }
