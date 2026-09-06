@@ -1,287 +1,1173 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 240" width="100%" height="100%">
   <defs>
-    <!-- Aura Radial Gradient -->
-    <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#3FB950" stop-opacity="0.38" />
-      <stop offset="60%" stop-color="#238636" stop-opacity="0.14" />
-      <stop offset="100%" stop-color="#238636" stop-opacity="0" />
+    
+    <radialGradient id="c0_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3FB950" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#238636" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
     </radialGradient>
-
-    <!-- Outer Flame Linear Gradient -->
-    <linearGradient id="outerFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="c0_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="#238636" />
       <stop offset="55%" stop-color="#3FB950" />
       <stop offset="100%" stop-color="#56D364" />
     </linearGradient>
-
-    <!-- Mid Flame Linear Gradient -->
-    <linearGradient id="midFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="c0_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="#3FB950" />
       <stop offset="65%" stop-color="#56D364" />
       <stop offset="100%" stop-color="#E6EDF3" />
     </linearGradient>
-
-    <!-- Inner Core Radiant Gradient -->
-    <linearGradient id="innerCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="c0_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="#56D364" />
-      <stop offset="70%" stop-color="#E6EDF3" />
+      <stop offset="60%" stop-color="#E6EDF3" />
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
-
-    <!-- Milestone Progress Gradient -->
-    <linearGradient id="milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="c0_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#238636" />
-      <stop offset="70%" stop-color="#3FB950" />
+      <stop offset="50%" stop-color="#3FB950" />
       <stop offset="100%" stop-color="#56D364" />
     </linearGradient>
-
+    
+    <radialGradient id="c1_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#EA580C" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c1_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="55%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+    <linearGradient id="c1_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F97316" />
+      <stop offset="65%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#FEF08A" />
+    </linearGradient>
+    <linearGradient id="c1_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="60%" stop-color="#FEF08A" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c1_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="50%" stop-color="#F97316" />
+      <stop offset="100%" stop-color="#FBBF24" />
+    </linearGradient>
+    
+    <radialGradient id="c2_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#A855F7" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#7C3AED" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c2_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="55%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#E879F9" />
+    </linearGradient>
+    <linearGradient id="c2_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#A855F7" />
+      <stop offset="65%" stop-color="#E879F9" />
+      <stop offset="100%" stop-color="#F5D0FE" />
+    </linearGradient>
+    <linearGradient id="c2_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E879F9" />
+      <stop offset="60%" stop-color="#F5D0FE" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c2_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="50%" stop-color="#A855F7" />
+      <stop offset="100%" stop-color="#E879F9" />
+    </linearGradient>
+    
+    <radialGradient id="c3_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#0284C7" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c3_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="55%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#67E8F9" />
+    </linearGradient>
+    <linearGradient id="c3_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="65%" stop-color="#67E8F9" />
+      <stop offset="100%" stop-color="#E0F2FE" />
+    </linearGradient>
+    <linearGradient id="c3_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#67E8F9" />
+      <stop offset="60%" stop-color="#E0F2FE" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c3_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="50%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#67E8F9" />
+    </linearGradient>
+    
+    <radialGradient id="c4_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F472B6" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#DB2777" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c4_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#DB2777" />
+      <stop offset="55%" stop-color="#F472B6" />
+      <stop offset="100%" stop-color="#FBCFE8" />
+    </linearGradient>
+    <linearGradient id="c4_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F472B6" />
+      <stop offset="65%" stop-color="#FBCFE8" />
+      <stop offset="100%" stop-color="#FDF2F8" />
+    </linearGradient>
+    <linearGradient id="c4_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FBCFE8" />
+      <stop offset="60%" stop-color="#FDF2F8" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c4_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#DB2777" />
+      <stop offset="50%" stop-color="#F472B6" />
+      <stop offset="100%" stop-color="#FBCFE8" />
+    </linearGradient>
+    
+    <radialGradient id="c5_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#D97706" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c5_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="55%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FDE047" />
+    </linearGradient>
+    <linearGradient id="c5_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="65%" stop-color="#FDE047" />
+      <stop offset="100%" stop-color="#FEF9C3" />
+    </linearGradient>
+    <linearGradient id="c5_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="60%" stop-color="#FEF9C3" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c5_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D97706" />
+      <stop offset="50%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#FDE047" />
+    </linearGradient>
+    
+    <radialGradient id="c6_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#6366F1" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#4C1D95" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="c6_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#4C1D95" />
+      <stop offset="55%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    <linearGradient id="c6_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="65%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c6_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="60%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+    <linearGradient id="c6_milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4C1D95" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#38BDF8" />
+    </linearGradient>
+    
     <style>
-      @keyframes flameAuraBreath {
-        0%, 100% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.12); opacity: 1; }
+      @keyframes auraBreath {
+        0%, 100% { transform: scale(1); opacity: 0.75; }
+        50% { transform: scale(1.09); opacity: 1; }
       }
-      @keyframes flameOuterWiggle {
+      @keyframes flameOuter {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        25% { transform: scaleY(1.04) skewX(2deg); }
-        50% { transform: scaleY(0.97) skewX(-1.5deg); }
-        75% { transform: scaleY(1.03) skewX(1deg); }
+        25% { transform: scaleY(1.03) skewX(1.4deg); }
+        50% { transform: scaleY(0.97) skewX(-1.2deg); }
+        75% { transform: scaleY(1.02) skewX(0.8deg); }
       }
-      @keyframes flameMidWiggle {
+      @keyframes flameMid {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        30% { transform: scaleY(0.96) skewX(-2deg); }
-        70% { transform: scaleY(1.05) skewX(2deg); }
+        30% { transform: scaleY(0.96) skewX(-1.6deg); }
+        70% { transform: scaleY(1.04) skewX(1.6deg); }
       }
-      @keyframes flameCorePulse {
-        0%, 100% { transform: scale(1); opacity: 0.95; }
-        50% { transform: scale(1.08); opacity: 1; filter: brightness(1.25); }
+      @keyframes flameCore {
+        0%, 100% { transform: scale(1); opacity: 0.92; }
+        50% { transform: scale(1.06); opacity: 1; }
+      }
+      @keyframes flameFlick {
+        0%, 100% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(-3deg) scale(1.05); }
       }
       @keyframes emberFloat {
-        0% { transform: translate(0, 0) scale(1); opacity: 0.9; }
-        50% { transform: translate(-8px, -45px) scale(1.2); opacity: 0.7; }
-        100% { transform: translate(6px, -95px) scale(0.4); opacity: 0; }
-      }
-      @keyframes smokeDrift {
-        0% { transform: translateY(0) scaleX(1); opacity: 0.4; }
-        50% { transform: translateY(-30px) scaleX(1.3); opacity: 0.25; }
-        100% { transform: translateY(-65px) scaleX(1.6); opacity: 0; }
+        0% { transform: translate(0, 0); opacity: 0.85; }
+        50% { transform: translate(-6px, -36px); opacity: 0.6; }
+        100% { transform: translate(5px, -78px); opacity: 0; }
       }
       @keyframes orbitSpin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-      @keyframes orbitSpinRev {
-        0% { transform: rotate(360deg); }
-        100% { transform: rotate(0deg); }
-      }
-      @keyframes badgePulse {
-        0%, 100% { opacity: 0.85; }
-        50% { opacity: 1; }
+      @keyframes statusPulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.15); }
       }
 
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
-      .flame-aura { transform-origin: 150px 148px; animation: flameAuraBreath 2.8s infinite ease-in-out; }
-      .flame-outer { transform-origin: 150px 185px; animation: flameOuterWiggle 2.2s infinite ease-in-out; }
-      .flame-mid { transform-origin: 150px 185px; animation: flameMidWiggle 1.7s infinite ease-in-out; }
-      .flame-core { transform-origin: 150px 172px; animation: flameCorePulse 1.3s infinite ease-in-out; }
+      .flame-aura { transform-origin: 120px 135px; animation: auraBreath 3s infinite ease-in-out; }
+      .flame-outer { transform-origin: 120px 175px; animation: flameOuter 2.4s infinite ease-in-out; }
+      .flame-mid { transform-origin: 120px 175px; animation: flameMid 1.8s infinite ease-in-out; }
+      .flame-core { transform-origin: 120px 165px; animation: flameCore 1.4s infinite ease-in-out; }
+      .flame-lick-left { transform-origin: 106px 130px; animation: flameFlick 2s infinite ease-in-out; }
+      .ember { animation: emberFloat 2.2s infinite ease-out; }
+      .energy-orbit { transform-origin: 120px 135px; animation: orbitSpin 14s infinite linear; }
+      .status-pulse { transform-origin: 32px 24px; animation: statusPulse 2.5s infinite ease-in-out; }
+
       
-      .flame-lick-left { transform-origin: 135px 150px; animation: flameMidWiggle 1.5s infinite ease-in-out; }
-      .flame-lick-right { transform-origin: 165px 150px; animation: flameOuterWiggle 1.9s infinite ease-in-out; }
-
-      .ember { animation: emberFloat infinite ease-out; }
-      .smoke-wisp { animation: smokeDrift 4s infinite linear; }
-      .smoke-wisp-2 { animation: smokeDrift 3.5s infinite linear; animation-delay: 1.5s; }
-
-      .energy-orbit { transform-origin: 150px 148px; animation: orbitSpin 16s infinite linear; }
-      .energy-orbit-rev { transform-origin: 150px 148px; animation: orbitSpinRev 12s infinite linear; }
-      .badge-glow { animation: badgePulse 2.5s infinite ease-in-out; }
+    .cycle-layer { opacity: 0; visibility: hidden; }
+  
+    .cycle-layer-0 { animation: layerCycle0 28s infinite; }
+    .spill-bg-0 { animation: pillBgCycle0 28s infinite; }
+    .spill-txt-0 { animation: pillTxtCycle0 28s infinite; }
+      @keyframes layerCycle0 {
+        0%, 13.68% { opacity: 1; visibility: visible; }
+        14.28%, 99.2% { opacity: 0; visibility: hidden; }
+        100% { opacity: 1; visibility: visible; }
+      }
+      @keyframes pillBgCycle0 {
+        0%, 13.68% { fill: #21262D; stroke: #3FB950; stroke-width: 1px; }
+        14.28%, 99.2% { fill: transparent; stroke: transparent; }
+        100% { fill: #21262D; stroke: #3FB950; stroke-width: 1px; }
+      }
+      @keyframes pillTxtCycle0 {
+        0%, 13.68% { fill: #3FB950; font-weight: 700; }
+        14.28%, 99.2% { fill: #7D8590; font-weight: 500; }
+        100% { fill: #3FB950; font-weight: 700; }
+      }
+    .cycle-layer-1 { animation: layerCycle1 28s infinite; }
+    .spill-bg-1 { animation: pillBgCycle1 28s infinite; }
+    .spill-txt-1 { animation: pillTxtCycle1 28s infinite; }
+      @keyframes layerCycle1 {
+        0%, 14.19% { opacity: 0; visibility: hidden; }
+        14.29%, 27.97% { opacity: 1; visibility: visible; }
+        28.57%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle1 {
+        0%, 14.19% { fill: transparent; stroke: transparent; }
+        14.29%, 27.97% { fill: #21262D; stroke: #F97316; stroke-width: 1px; }
+        28.57%, 100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle1 {
+        0%, 14.19% { fill: #7D8590; font-weight: 500; }
+        14.29%, 27.97% { fill: #F97316; font-weight: 700; }
+        28.57%, 100% { fill: #7D8590; font-weight: 500; }
+      }
+    .cycle-layer-2 { animation: layerCycle2 28s infinite; }
+    .spill-bg-2 { animation: pillBgCycle2 28s infinite; }
+    .spill-txt-2 { animation: pillTxtCycle2 28s infinite; }
+      @keyframes layerCycle2 {
+        0%, 28.48% { opacity: 0; visibility: hidden; }
+        28.58%, 42.25% { opacity: 1; visibility: visible; }
+        42.85%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle2 {
+        0%, 28.48% { fill: transparent; stroke: transparent; }
+        28.58%, 42.25% { fill: #21262D; stroke: #A855F7; stroke-width: 1px; }
+        42.85%, 100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle2 {
+        0%, 28.48% { fill: #7D8590; font-weight: 500; }
+        28.58%, 42.25% { fill: #A855F7; font-weight: 700; }
+        42.85%, 100% { fill: #7D8590; font-weight: 500; }
+      }
+    .cycle-layer-3 { animation: layerCycle3 28s infinite; }
+    .spill-bg-3 { animation: pillBgCycle3 28s infinite; }
+    .spill-txt-3 { animation: pillTxtCycle3 28s infinite; }
+      @keyframes layerCycle3 {
+        0%, 42.76% { opacity: 0; visibility: hidden; }
+        42.86%, 56.54% { opacity: 1; visibility: visible; }
+        57.14%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle3 {
+        0%, 42.76% { fill: transparent; stroke: transparent; }
+        42.86%, 56.54% { fill: #21262D; stroke: #38BDF8; stroke-width: 1px; }
+        57.14%, 100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle3 {
+        0%, 42.76% { fill: #7D8590; font-weight: 500; }
+        42.86%, 56.54% { fill: #38BDF8; font-weight: 700; }
+        57.14%, 100% { fill: #7D8590; font-weight: 500; }
+      }
+    .cycle-layer-4 { animation: layerCycle4 28s infinite; }
+    .spill-bg-4 { animation: pillBgCycle4 28s infinite; }
+    .spill-txt-4 { animation: pillTxtCycle4 28s infinite; }
+      @keyframes layerCycle4 {
+        0%, 57.05% { opacity: 0; visibility: hidden; }
+        57.15%, 70.82% { opacity: 1; visibility: visible; }
+        71.42%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle4 {
+        0%, 57.05% { fill: transparent; stroke: transparent; }
+        57.15%, 70.82% { fill: #21262D; stroke: #F472B6; stroke-width: 1px; }
+        71.42%, 100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle4 {
+        0%, 57.05% { fill: #7D8590; font-weight: 500; }
+        57.15%, 70.82% { fill: #F472B6; font-weight: 700; }
+        71.42%, 100% { fill: #7D8590; font-weight: 500; }
+      }
+    .cycle-layer-5 { animation: layerCycle5 28s infinite; }
+    .spill-bg-5 { animation: pillBgCycle5 28s infinite; }
+    .spill-txt-5 { animation: pillTxtCycle5 28s infinite; }
+      @keyframes layerCycle5 {
+        0%, 71.33% { opacity: 0; visibility: hidden; }
+        71.43%, 85.11% { opacity: 1; visibility: visible; }
+        85.71%, 100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle5 {
+        0%, 71.33% { fill: transparent; stroke: transparent; }
+        71.43%, 85.11% { fill: #21262D; stroke: #F59E0B; stroke-width: 1px; }
+        85.71%, 100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle5 {
+        0%, 71.33% { fill: #7D8590; font-weight: 500; }
+        71.43%, 85.11% { fill: #F59E0B; font-weight: 700; }
+        85.71%, 100% { fill: #7D8590; font-weight: 500; }
+      }
+    .cycle-layer-6 { animation: layerCycle6 28s infinite; }
+    .spill-bg-6 { animation: pillBgCycle6 28s infinite; }
+    .spill-txt-6 { animation: pillTxtCycle6 28s infinite; }
+      @keyframes layerCycle6 {
+        0%, 85.71% { opacity: 0; visibility: hidden; }
+        85.81%, 99.2% { opacity: 1; visibility: visible; }
+        100% { opacity: 0; visibility: hidden; }
+      }
+      @keyframes pillBgCycle6 {
+        0%, 85.71% { fill: transparent; stroke: transparent; }
+        85.81%, 99.2% { fill: #21262D; stroke: #6366F1; stroke-width: 1px; }
+        100% { fill: transparent; stroke: transparent; }
+      }
+      @keyframes pillTxtCycle6 {
+        0%, 85.71% { fill: #7D8590; font-weight: 500; }
+        85.81%, 99.2% { fill: #6366F1; font-weight: 700; }
+        100% { fill: #7D8590; font-weight: 500; }
+      }
     </style>
   </defs>
 
-  <!-- Container Box -->
-  <rect width="920" height="280" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1.2"/>
+  <!-- Clean Minimalist Background -->
+  <rect width="920" height="240" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
 
-  <!-- Subtle Accent Edge Line -->
-  <line x1="2" y1="2" x2="918" y2="2" stroke="#3FB950" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
-
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- LEFT: THE LIVING FLAME HERO                                    -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
+  <!-- Static Persistent Base Content -->
   <g transform="translate(0, 0)">
-    <!-- Particles Layer -->
-    <g>
-      <circle cx="160" cy="180" r="3" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 1.4s; animation-delay: 0.00s;" />
-      <circle cx="138" cy="168" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 1.7s; animation-delay: 0.25s;" />
-      <circle cx="152" cy="156" r="2" fill="#56D364" class="ember ember-2" style="animation-duration: 2.0s; animation-delay: 0.50s;" />
-      <circle cx="167" cy="144" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 2.3s; animation-delay: 0.75s;" />
-      <circle cx="117" cy="180" r="3" fill="#56D364" class="ember ember-4" style="animation-duration: 2.6s; animation-delay: 1.00s;" />
-      <circle cx="184" cy="168" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 1.4s; animation-delay: 1.25s;" />
-      <circle cx="147" cy="156" r="2" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 1.7s; animation-delay: 1.50s;" />
-      <circle cx="143" cy="144" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 2.0s; animation-delay: 0.00s;" />
-      <circle cx="171" cy="180" r="3" fill="#56D364" class="ember ember-2" style="animation-duration: 2.3s; animation-delay: 0.25s;" />
-      <circle cx="124" cy="168" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 2.6s; animation-delay: 0.50s;" />
-      <circle cx="164" cy="156" r="2" fill="#56D364" class="ember ember-4" style="animation-duration: 1.4s; animation-delay: 0.75s;" />
-      <circle cx="162" cy="144" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 1.7s; animation-delay: 1.00s;" />
-      <circle cx="141" cy="180" r="3" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 2.0s; animation-delay: 1.25s;" />
-      <circle cx="166" cy="168" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 2.3s; animation-delay: 1.50s;" />
-      <circle cx="137" cy="156" r="2" fill="#56D364" class="ember ember-2" style="animation-duration: 2.6s; animation-delay: 0.00s;" />
-      <circle cx="146" cy="144" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 1.4s; animation-delay: 0.25s;" />
-      <circle cx="176" cy="180" r="3" fill="#56D364" class="ember ember-4" style="animation-duration: 1.7s; animation-delay: 0.50s;" />
-      <circle cx="110" cy="168" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 2.0s; animation-delay: 0.75s;" />
+    <!-- Header Title -->
+    <text x="44" y="28" class="mono" fill="#7D8590" font-size="11" font-weight="600" letter-spacing="1.5">GITSTREAK</text>
+    <text x="126" y="28" class="mono" fill="#484F58" font-size="11">/ CONTRIBUTION FLAME</text>
+
+    <!-- Header Pills Container -->
+    <g transform="translate(554, 13)">
+      <rect x="0" y="0" width="338" height="26" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
+      <rect x="2" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-0" fill="transparent"/>
+      <text x="24" y="16" text-anchor="middle" class="mono spill-txt spill-txt-0" fill="#7D8590" font-size="10">GitHub</text>
+      <rect x="50" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-1" fill="transparent"/>
+      <text x="72" y="16" text-anchor="middle" class="mono spill-txt spill-txt-1" fill="#7D8590" font-size="10">Inferno</text>
+      <rect x="98" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-2" fill="transparent"/>
+      <text x="120" y="16" text-anchor="middle" class="mono spill-txt spill-txt-2" fill="#7D8590" font-size="10">Arcane</text>
+      <rect x="146" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-3" fill="transparent"/>
+      <text x="168" y="16" text-anchor="middle" class="mono spill-txt spill-txt-3" fill="#7D8590" font-size="10">Cyber</text>
+      <rect x="194" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-4" fill="transparent"/>
+      <text x="216" y="16" text-anchor="middle" class="mono spill-txt spill-txt-4" fill="#7D8590" font-size="10">Zen</text>
+      <rect x="242" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-5" fill="transparent"/>
+      <text x="264" y="16" text-anchor="middle" class="mono spill-txt spill-txt-5" fill="#7D8590" font-size="10">Gold</text>
+      <rect x="290" y="2" width="44" height="22" rx="4" class="spill-bg spill-bg-6" fill="transparent"/>
+      <text x="312" y="16" text-anchor="middle" class="mono spill-txt spill-txt-6" fill="#7D8590" font-size="10">Void</text>
     </g>
 
-    <!-- Flame Graphics Hierarchy -->
-    
-      <!-- Flame Radiant Aura -->
-      <circle cx="150" cy="148" r="81.25" fill="url(#auraGlow)" class="flame-aura"/>
+    <!-- Streak Number & Tier Base -->
+    <text x="230" y="86" class="inter" fill="#F0F6FC" font-size="52" font-weight="800" letter-spacing="-1.5">10</text>
+    <text x="306" y="83" class="mono" fill="#8B949E" font-size="11" font-weight="600" letter-spacing="0.8">HOT TIER</text>
 
+    <!-- Today's Fuel Base Callout -->
+    <g transform="translate(640, 66)">
       
-
+      <text x="0" y="0" class="mono" fill="#3FB950" font-size="11" font-weight="600">⚡ 9 CONTRIBUTIONS TODAY</text>
+      <text x="0" y="16" class="mono" fill="#7D8590" font-size="10">Active flame burning for LetMeCodex</text>
       
+    </g>
 
-      <!-- Outer Flame Body (Licking tongues) -->
-      <g transform="translate(150, 155) scale(1.15) translate(-150, -155)">
-        <!-- Layer 1: Outer Tongue (Broad Body) -->
-        <path d="M 150 78 
-                 C 178 108, 195 138, 185 174 
-                 C 176 205, 124 205, 115 174 
-                 C 105 138, 122 108, 150 78 Z"
-              fill="url(#outerFlameGrad)"
-              class="flame-outer" />
+    <!-- Milestone Tracker Base -->
+    <g transform="translate(230, 118)">
+      <text x="0" y="0" class="mono" fill="#8B949E" font-size="11">Next Milestone: <tspan fill="#F0F6FC" font-weight="600">14 Days</tspan> <tspan fill="#7D8590">(4 days to go)</tspan></text>
+      <rect x="0" y="8" width="662" height="3" rx="1.5" fill="#21262D"/>
+    </g>
 
-        <!-- Layer 2: Secondary Tongue Flick (Left/Right Motion) -->
-        <path d="M 152 88 
-                 C 172 115, 186 142, 176 170 
-                 C 168 194, 130 194, 124 170 
-                 C 116 140, 132 115, 152 88 Z"
-              fill="url(#midFlameGrad)"
-              class="flame-mid" />
+    <!-- Telemetry Persistent Base -->
+    <g transform="translate(230, 168)" class="inter" font-size="12">
+      <text x="0" y="0" fill="#7D8590">Longest Streak: <tspan fill="#F0F6FC" font-weight="600">10 Days</tspan></text>
+      <text x="180" y="0" fill="#30363D">•</text>
+      <text x="198" y="0" fill="#7D8590">Total Contributions: <tspan fill="#F0F6FC" font-weight="600">1,351</tspan></text>
+      <text x="430" y="0" fill="#30363D">•</text>
+      <text x="448" y="0" fill="#7D8590">Heat Intensity:</text>
+    </g>
 
-        
-
-        <!-- Layer 3: Inner Core (Incandescent Heart) -->
-        <path d="M 150 115 
-                 C 162 135, 170 152, 164 172 
-                 C 158 188, 142 188, 136 172 
-                 C 130 152, 138 135, 150 115 Z"
-              fill="url(#innerCoreGrad)"
-              class="flame-core" />
-      </g>
-    
-
-    <!-- Flame Base Pedestal Grid -->
-    <ellipse cx="150" cy="196" rx="42" ry="7" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <ellipse cx="150" cy="196" rx="28" ry="4" fill="#238636" opacity="0.35"/>
+    <!-- Fuel Connector Label -->
+    <text x="230" y="207" class="mono" fill="#484F58" font-size="10" letter-spacing="1">20-DAY FUEL CONNECTOR</text>
   </g>
 
-  <!-- Vertical Divider 1 -->
-  <line x1="300" y1="24" x2="300" y2="256" stroke="#21262D" stroke-width="1"/>
-
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- CENTER: DUOLINGO-INSPIRED GAMIFIED STREAK HERO                 -->
+  <!-- 7 DYNAMIC CONTINUOUS AUTO-CYCLE THEME LAYERS                   -->
   <!-- ══════════════════════════════════════════════════════════════ -->
-  <g transform="translate(325, 34)">
-    <!-- Header Tag Badge -->
-    <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="168" height="24" rx="12" fill="#161B22" stroke="#30363D" stroke-width="1"/>
-      <circle cx="12" cy="12" r="4" fill="#3FB950" class="badge-glow"/>
-      <text x="24" y="16" class="mono" fill="#F0F6FC" font-size="10" font-weight="700" letter-spacing="1">GITSTREAK ENGINE</text>
-    </g>
-
-    <!-- Large Streak Counter -->
-    <g transform="translate(0, 72)">
-      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="68" font-weight="900" letter-spacing="-2">10</text>
-      <text x="98" y="-26" class="inter" fill="#3FB950" font-size="20" font-weight="800">DAYS</text>
-      <text x="98" y="-5" class="mono" fill="#7D8590" font-size="12" font-weight="600" letter-spacing="1">STREAK</text>
-    </g>
-
-    <!-- Tier and Status Pill -->
-    <g transform="translate(0, 108)">
-      <rect x="0" y="0" width="180" height="26" rx="13" fill="#23863626" stroke="#3FB950" stroke-width="1.2"/>
-      <text x="90" y="17" text-anchor="middle" class="mono" fill="#E6EDF3" font-size="11" font-weight="700" letter-spacing="0.5">🔥 HOT TIER</text>
-    </g>
-
-    <!-- Fuel Status Callout -->
-    <g transform="translate(0, 160)">
+  
+    <!-- Layer 0: GitHub Green -->
+    <g class="cycle-layer cycle-layer-0">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#3FB950" class="status-pulse"/>
       
-      <text x="0" y="0" class="inter" fill="#3FB950" font-size="13" font-weight="600">⚡ 9 contributions fueled today</text>
-      <text x="0" y="20" class="inter" fill="#7D8590" font-size="11">• Flame burning bright for LetMeCodex</text>
-      
-    </g>
-  </g>
-
-  <!-- Vertical Divider 2 -->
-  <line x1="605" y1="24" x2="605" y2="256" stroke="#21262D" stroke-width="1"/>
-
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <!-- RIGHT: TELEMETRY CRUCIBLE and HEATMAP CONNECTOR                 -->
-  <!-- ══════════════════════════════════════════════════════════════ -->
-  <g transform="translate(630, 34)">
-    <!-- Milestone Progress Card -->
-    <g transform="translate(0, 0)">
-      <text x="0" y="12" class="mono" fill="#7D8590" font-size="11" font-weight="600" letter-spacing="1">NEXT MILESTONE</text>
-      <text x="240" y="12" text-anchor="end" class="mono" fill="#3FB950" font-size="12" font-weight="700">14 Days (4 to go)</text>
-
-      <!-- Progress Track -->
-      <g transform="translate(0, 24)">
-        <rect x="0" y="0" width="240" height="8" rx="4" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-        <rect x="0" y="0" width="95" height="8" rx="4" fill="url(#milestoneGrad)"/>
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#E6EDF3" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#3FB950" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#56D364" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#E6EDF3" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#56D364" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#3FB950" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#E6EDF3" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#3FB950" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#56D364" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#E6EDF3" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#56D364" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#3FB950" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#E6EDF3" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#3FB950" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#56D364" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#E6EDF3" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
       </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c0_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c0_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c0_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#3FB950" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c0_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
     </g>
 
-    <!-- Stats Table Grid -->
-    <g transform="translate(0, 68)" class="inter" font-size="12">
-      <!-- Longest Streak -->
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#238636" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#3FB950" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#3FB950" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c0_milestoneGrad)"/>
+      <text x="678" y="168" fill="#3FB950" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
       <g transform="translate(0, 0)">
-        <text x="0" y="0" fill="#7D8590">Longest Streak</text>
-        <text x="240" y="0" text-anchor="end" fill="#F0F6FC" font-weight="700">10 Days</text>
-        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
-      </g>
-
-      <!-- Total Contributions -->
-      <g transform="translate(0, 32)">
-        <text x="0" y="0" fill="#7D8590">Total Contributions</text>
-        <text x="240" y="0" text-anchor="end" fill="#F0F6FC" font-weight="700">1,351</text>
-        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
-      </g>
-
-      <!-- Intensity Factor -->
-      <g transform="translate(0, 64)">
-        <text x="0" y="0" fill="#7D8590">Heat Intensity</text>
-        <text x="240" y="0" text-anchor="end" class="mono" fill="#56D364" font-weight="700">63%</text>
-        <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
-      </g>
-    </g>
-
-    <!-- Miniature Heatmap Energy Strip (Feeding toward flame) -->
-    <g transform="translate(0, 160)">
-      <text x="0" y="12" class="mono" fill="#7D8590" font-size="10" font-weight="600" letter-spacing="1">ENERGY CONNECTOR</text>
-      <text x="240" y="12" text-anchor="end" class="mono" fill="#3FB950" font-size="10">20-DAY FUEL</text>
-
-      <!-- 20 Recent Days Bars -->
-      <g transform="translate(-640, -42)">
-        <rect x="640" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="651.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="663" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="674.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="686" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="697.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="709" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="720.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="732" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="743.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="755" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="766.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="778" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="789.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="801" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="812.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="824" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="835.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="847" y="224" width="9" height="12" rx="2" fill="#161B22" />
-      <rect x="858.5" y="224" width="9" height="12" rx="2" fill="#161B22" />
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
       </g>
     </g>
-  </g>
+    
+    <!-- Layer 1: Inferno Flame -->
+    <g class="cycle-layer cycle-layer-1">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#F97316" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#FEF08A" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#F97316" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#FBBF24" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#FEF08A" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#FBBF24" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#F97316" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#FEF08A" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#F97316" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#FBBF24" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#FEF08A" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#FBBF24" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#F97316" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#FEF08A" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#F97316" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#FBBF24" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#FEF08A" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c1_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c1_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c1_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#F97316" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c1_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#EA580C" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#F97316" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#F97316" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c1_milestoneGrad)"/>
+      <text x="678" y="168" fill="#F97316" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
+    <!-- Layer 2: Arcane Violet -->
+    <g class="cycle-layer cycle-layer-2">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#A855F7" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#F5D0FE" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#A855F7" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#E879F9" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#F5D0FE" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#E879F9" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#A855F7" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#F5D0FE" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#A855F7" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#E879F9" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#F5D0FE" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#E879F9" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#A855F7" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#F5D0FE" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#A855F7" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#E879F9" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#F5D0FE" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c2_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c2_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c2_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#A855F7" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c2_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#7C3AED" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#A855F7" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#A855F7" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c2_milestoneGrad)"/>
+      <text x="678" y="168" fill="#A855F7" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
+    <!-- Layer 3: Cyber Aurora -->
+    <g class="cycle-layer cycle-layer-3">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#38BDF8" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#E0F2FE" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#38BDF8" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#67E8F9" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#E0F2FE" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#67E8F9" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#38BDF8" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#E0F2FE" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#38BDF8" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#67E8F9" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#E0F2FE" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#67E8F9" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#38BDF8" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#E0F2FE" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#38BDF8" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#67E8F9" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#E0F2FE" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c3_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c3_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c3_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#38BDF8" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c3_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#0284C7" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#38BDF8" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#38BDF8" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c3_milestoneGrad)"/>
+      <text x="678" y="168" fill="#38BDF8" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
+    <!-- Layer 4: Zen Blossom -->
+    <g class="cycle-layer cycle-layer-4">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#F472B6" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#FDF2F8" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#F472B6" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#FBCFE8" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#FDF2F8" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#FBCFE8" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#F472B6" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#FDF2F8" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#F472B6" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#FBCFE8" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#FDF2F8" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#FBCFE8" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#F472B6" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#FDF2F8" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#F472B6" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#FBCFE8" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#FDF2F8" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c4_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c4_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c4_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#F472B6" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c4_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#DB2777" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#F472B6" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#F472B6" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c4_milestoneGrad)"/>
+      <text x="678" y="168" fill="#F472B6" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
+    <!-- Layer 5: Legendary Gold -->
+    <g class="cycle-layer cycle-layer-5">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#F59E0B" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#FEF9C3" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#F59E0B" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#FDE047" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#FEF9C3" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#FDE047" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#F59E0B" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#FEF9C3" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#F59E0B" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#FDE047" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#FEF9C3" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#FDE047" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#F59E0B" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#FEF9C3" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#F59E0B" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#FDE047" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#FEF9C3" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c5_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c5_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c5_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#F59E0B" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c5_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#D97706" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#F59E0B" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#F59E0B" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c5_milestoneGrad)"/>
+      <text x="678" y="168" fill="#F59E0B" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
+    <!-- Layer 6: Cosmic Void -->
+    <g class="cycle-layer cycle-layer-6">
+      <!-- Header Status Pip -->
+      <circle cx="32" cy="24" r="3.5" fill="#6366F1" class="status-pulse"/>
+      
+      <!-- Flame Stage -->
+      <g>
+        <circle cx="128" cy="172" r="2.5" fill="#FFFFFF" class="ember" style="animation-duration: 1.6s; animation-delay: 0.00s;" />
+      <circle cx="110" cy="162" r="1.2" fill="#6366F1" class="ember" style="animation-duration: 1.9s; animation-delay: 0.22s;" />
+      <circle cx="122" cy="152" r="1.8" fill="#38BDF8" class="ember" style="animation-duration: 2.2s; animation-delay: 0.44s;" />
+      <circle cx="134" cy="142" r="1.2" fill="#FFFFFF" class="ember" style="animation-duration: 2.5s; animation-delay: 0.66s;" />
+      <circle cx="92" cy="172" r="2.5" fill="#38BDF8" class="ember" style="animation-duration: 2.8s; animation-delay: 0.88s;" />
+      <circle cx="148" cy="162" r="1.2" fill="#6366F1" class="ember" style="animation-duration: 1.6s; animation-delay: 1.10s;" />
+      <circle cx="118" cy="152" r="1.8" fill="#FFFFFF" class="ember" style="animation-duration: 1.9s; animation-delay: 1.32s;" />
+      <circle cx="114" cy="142" r="1.2" fill="#6366F1" class="ember" style="animation-duration: 2.2s; animation-delay: 0.00s;" />
+      <circle cx="137" cy="172" r="2.5" fill="#38BDF8" class="ember" style="animation-duration: 2.5s; animation-delay: 0.22s;" />
+      <circle cx="99" cy="162" r="1.2" fill="#FFFFFF" class="ember" style="animation-duration: 2.8s; animation-delay: 0.44s;" />
+      <circle cx="132" cy="152" r="1.8" fill="#38BDF8" class="ember" style="animation-duration: 1.6s; animation-delay: 0.66s;" />
+      <circle cx="130" cy="142" r="1.2" fill="#6366F1" class="ember" style="animation-duration: 1.9s; animation-delay: 0.88s;" />
+      <circle cx="113" cy="172" r="2.5" fill="#FFFFFF" class="ember" style="animation-duration: 2.2s; animation-delay: 1.10s;" />
+      <circle cx="133" cy="162" r="1.2" fill="#6366F1" class="ember" style="animation-duration: 2.5s; animation-delay: 1.32s;" />
+      <circle cx="110" cy="152" r="1.8" fill="#38BDF8" class="ember" style="animation-duration: 2.8s; animation-delay: 0.00s;" />
+      <circle cx="117" cy="142" r="1.2" fill="#FFFFFF" class="ember" style="animation-duration: 1.6s; animation-delay: 0.22s;" />
+      </g>
+      
+    <!-- Flame Soft Diffuse Aura Glow -->
+    <circle cx="120" cy="135" r="85" fill="url(#c6_auraGlow)" class="flame-aura"/>
+
+    
+
+    
+
+    <!-- Main Flame Anatomy with Organic Asymmetric Licking Curves -->
+    <g transform="translate(120, 140) scale(1.15) translate(-120, -140)">
+      <!-- Outer Flame Lick -->
+      <path d="M 120 52 
+               C 140 80, 166 106, 160 150 
+               C 154 182, 94 182, 86 148 
+               C 80 118, 102 88, 118 52 Z"
+            fill="url(#c6_outerGrad)"
+            class="flame-outer" />
+
+      <!-- Secondary Mid Lick (Asymmetric Sway) -->
+      <path d="M 124 66 
+               C 148 94, 158 124, 150 154 
+               C 142 176, 104 176, 96 152 
+               C 90 126, 106 98, 124 66 Z"
+            fill="url(#c6_midGrad)"
+            class="flame-mid" />
+
+      <!-- Side Flick Tongue -->
+      <path d="M 98 134 
+               C 84 110, 92 86, 106 78 
+               C 102 100, 110 122, 116 138 Z" 
+            fill="#6366F1" 
+            opacity="0.85" 
+            class="flame-lick-left" />
+
+      <!-- Incandescent Luminous Inner Core -->
+      <path d="M 120 96 
+               C 132 116, 142 136, 136 158 
+               C 130 174, 110 174, 104 158 
+               C 98 136, 108 116, 120 96 Z"
+            fill="url(#c6_coreGrad)"
+            class="flame-core" />
+
+      <!-- White Hot Ignition Point -->
+      <ellipse cx="120" cy="150" rx="5" ry="12" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+    </g>
+
+    <!-- Subtle Ground Ambient Shimmer (No Heavy Pedestal) -->
+    <ellipse cx="120" cy="184" rx="38" ry="5" fill="#161B22" opacity="0.6"/>
+    <ellipse cx="120" cy="184" rx="22" ry="2.5" fill="#4C1D95" opacity="0.35"/>
+  
+
+      <!-- Dynamic Text Colors -->
+      <text x="306" y="66" class="inter" fill="#6366F1" font-size="15" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+      <text x="892" y="118" text-anchor="end" class="mono" fill="#6366F1" font-size="11" font-weight="600">43%</text>
+      <rect x="230" y="126" width="285" height="3" rx="1.5" fill="url(#c6_milestoneGrad)"/>
+      <text x="678" y="168" fill="#6366F1" class="mono" font-weight="600">63%</text>
+
+      <!-- 20-Day Fuel -->
+      <g transform="translate(0, 0)">
+        <rect x="440" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="462.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="485" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="507.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="530" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="552.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="575" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="597.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="620" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="642.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="665" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="687.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="710" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="732.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="755" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="777.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="800" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="822.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="845" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      <rect x="867.5" y="202" width="16" height="8" rx="2" fill="#161B22" />
+      </g>
+    </g>
+    
 </svg>
