@@ -20,81 +20,101 @@ function renderFlameGraphic(accent, palette, tier, idPrefix = '') {
   if (isDormant) {
     return `
       <!-- Dormant Ember -->
-      <circle cx="120" cy="148" r="5" fill="#6E7681" opacity="0.6"/>
-      <circle cx="120" cy="148" r="2.5" fill="#8B949E" class="ember-pulse"/>
-      <path d="M 120 142 Q 115 130 122 118" fill="none" stroke="#484F58" stroke-width="1.2" stroke-dasharray="2 2" opacity="0.4"/>
+      <circle cx="0" cy="18" r="4" fill="#6E7681" opacity="0.6"/>
+      <circle cx="0" cy="18" r="2" fill="#8B949E" class="ember-pulse"/>
+      <path d="M 0 14 Q -4 4 2 -6" fill="none" stroke="#484F58" stroke-width="1.2" stroke-dasharray="2 2" opacity="0.4"/>
     `;
   }
 
-  const baseCol = palette[1] || palette[0];
-  const midCol = palette[3] || accent;
-  const tipCol = palette[4] || '#FFFFFF';
+  const c0 = palette[0];
+  const c1 = palette[1];
+  const c2 = palette[2];
+  const c3 = palette[3];
+  const c4 = palette[4];
 
   return `
-    <!-- Flame Soft Diffuse Aura Glow -->
-    <circle cx="120" cy="135" r="58" fill="url(#${idPrefix}auraGlow)" class="flame-aura"/>
+    <g class="flame-group" transform="scale(0.135)">
+      <!-- Aura Glow -->
+      <circle cx="-11" cy="0" r="230" fill="url(#${idPrefix}auraGlow)" class="flame-aura-anim" />
 
-    ${(isLegendary || isMythic) ? `
-    <!-- Legendary Orbital Energy Ring -->
-    <ellipse cx="120" cy="135" rx="64" ry="20" fill="none" stroke="${accent}" stroke-width="1.2" stroke-dasharray="4 6" class="energy-orbit" opacity="0.7"/>
-    ` : ''}
+      ${(isLegendary || isMythic) ? `
+      <!-- Legendary Orbital Energy Ring -->
+      <ellipse cx="-11" cy="10" rx="260" ry="75" fill="none" stroke="${accent}" stroke-width="8" stroke-dasharray="16 24" class="energy-orbit" opacity="0.75"/>
+      ` : ''}
 
-    ${isMythic ? `
-    <!-- Mythic Luminous Core Sparkle -->
-    <circle cx="120" cy="74" r="3" fill="#FFFFFF" class="mythic-sparkle"/>
-    ` : ''}
+      ${isMythic ? `
+      <!-- Mythic Luminous Star Core -->
+      <circle cx="-11" cy="-210" r="16" fill="#FFFFFF" class="mythic-sparkle"/>
+      ` : ''}
 
-    <!-- Main Living Flame Silhouette -->
-    <g transform="translate(120, 140) scale(0.95) translate(-120, -140)">
-      <!-- Outer Flame Tongue -->
-      <path d="M 120 52 
-               C 140 80, 166 106, 160 150 
-               C 154 182, 94 182, 86 148 
-               C 80 118, 102 88, 118 52 Z"
-            fill="url(#${idPrefix}outerGrad)"
-            class="flame-outer" />
+      <!-- Shadow & Silhouette Outline -->
+      <g class="flame-outer-anim" opacity="0.5">
+        <path fill="${c1}" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+        <path stroke="${accent}" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.35" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+      </g>
 
-      <!-- Secondary Mid Flick Tongue -->
-      <path d="M 124 66 
-               C 148 94, 158 124, 150 154 
-               C 142 176, 104 176, 96 152 
-               C 90 126, 106 98, 124 66 Z"
-            fill="url(#${idPrefix}midGrad)"
-            class="flame-mid" />
+      <!-- Main Outer Flame (Exact Lottie Tongues) -->
+      <g class="flame-outer-anim">
+        <path fill="url(#${idPrefix}outerGrad)" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M-36.898,-145.17 C-101.993,-71.701 -126.604,15.347 -11,192 C115.073,-14.97 -61.444,-36.548 -36.898,-145.17z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M-36.898,-145.17 C-29.625,-141.125 -8.262,-154.805 -11.627,-198.246 C2.443,-53.713 -69.323,-90.814 -36.898,-145.17z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M-107.023,-59.32 C-166.38,13.28 -113.38,144.70 -11,192 C81.5,-23.5 -116.16,47.34 -107.023,-59.32z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M-135.05,84.36 C-148.51,123.68 -85.94,192 -11,192 C17.15,68.55 -110.18,126.14 -135.05,84.36z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M-88.60,158.17 C-68.90,166.72 -65,192 -11,192 C-21.72,149.02 -65.19,155.08 -88.60,158.17z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M108.98,-59.68 C75.36,10.05 -46.55,2.52 -11,192 C122.73,140.84 144.78,40.84 108.98,-59.68z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M121.36,118.23 C75,114.89 -10.79,121.61 -11,192 C87.47,192 107.68,134.94 121.36,118.23z"/>
+        <path fill="url(#${idPrefix}outerGrad)" d="M30.97,176.34 C14.27,167.16 -10.95,175.79 -11.04,191.24 C15.45,191.24 24.57,172.66 30.97,176.34z"/>
+      </g>
 
-      <!-- Asymmetric Side Flick -->
-      <path d="M 98 134 
-               C 84 110, 92 86, 106 78 
-               C 102 100, 110 122, 116 138 Z" 
-            fill="${accent}" 
-            opacity="0.85" 
-            class="flame-lick-left" />
+      <!-- Middle Flame Layer (Exact Lottie Second Tongues) -->
+      <g class="flame-mid-anim">
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C95.52,-18.31 32.10,-80.47 -8.70,-156.68 C-20.73,-86.36 -137.36,-109.73 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C91.10,134.84 87.78,21.68 89.94,-18.17 C66.10,16.26 -35.5,-26.39 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C72.68,161 101.84,113.57 103.95,90.03 C80.63,96 0.10,82.63 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C59.28,192 51.13,153.18 76.98,142.36 C51.55,130.44 -9.80,147.38 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-8.17,-154.36 C-34.65,101.78 66.13,95 89.94,-18.17 C82.97,-8.24 71.32,-5.95 59.66,-8.89 C26.23,-14.98 49.89,-80.47 -8.17,-154.36z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C7.32,-10.82 -77.20,70.96 -109.08,-4.89 C-134.87,51.84 -72.07,131.74 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-11,192 C-11,76.50 -65.35,143.31 -101.39,111.51 C-97.47,164.05 -49.62,192 -11,192z"/>
+        <path fill="url(#${idPrefix}midGrad)" d="M-56.93,-80.83 C-66.55,-59.58 -58.92,-19.35 -69.43,0.08 C-76.84,13.80 -96.81,13.31 -108.98,-4.99 C-126.03,76.33 2.02,102.01 -56.93,-80.83z"/>
+      </g>
 
-      <!-- Incandescent Heart Core -->
-      <path d="M 120 96 
-               C 132 116, 142 136, 136 158 
-               C 130 174, 110 174, 104 158 
-               C 98 136, 108 116, 120 96 Z"
-            fill="url(#${idPrefix}coreGrad)"
-            class="flame-core" />
+      <!-- Third Highlight Layer -->
+      <g opacity="0.32" class="flame-mid-anim">
+        <path fill="${c4}" d="M-0.026,-98.88 C0.157,-47.05 -108,-67.78 -12,192.42 C44.68,101.84 31.31,-9.47 -0.026,-98.88z M57.63,23.73 C49.08,31.12 24.81,33.76 21.16,7.69 C17.16,-21.13 -31.30,63.64 -12,192.42 C28.84,120.26 84.57,116.94 57.63,23.73z M-80.12,54.82 C-84.81,113.66 -41.15,143.19 -12,192.42 C-9.15,136.64 -42.23,10.05 -47.53,30.36 C-49.09,64.02 -64.24,57.06 -80.12,54.82z"/>
+      </g>
 
-      <!-- Hot Center Point -->
-      <ellipse cx="120" cy="150" rx="4.5" ry="11" fill="#FFFFFF" opacity="0.95" class="core-hotspot" />
+      <!-- Core Hearth Layer (Exact Lottie Core Tongues) -->
+      <g class="flame-core-anim">
+        <path fill="url(#${idPrefix}coreGrad)" d="M-5.87,-22.27 C-12.09,25.84 -77.88,36.63 -12,192.42 C74.23,64.59 -12.02,43.79 -5.87,-22.27z"/>
+        <path fill="url(#${idPrefix}coreGrad)" d="M42.90,56.23 C28.57,82.21 -28.19,74.48 -12,192.42 C27.07,145.77 36.23,140.23 42.90,56.23z"/>
+        <path fill="url(#${idPrefix}coreGrad)" d="M70.01,103.60 C43.15,112.26 -16.5,82.5 -12,192.42 C32.23,165.57 57.68,133.5 70.01,103.60z"/>
+        <path fill="url(#${idPrefix}coreGrad)" d="M-61.02,87.46 C-65.47,104.16 -62.65,139.36 -12,192.42 C15.22,90.81 -43.62,102.51 -61.02,87.46z"/>
+        <path fill="url(#${idPrefix}coreGrad)" d="M-60.80,142.56 C-53.52,154.91 -54.20,178.63 -12,192.42 C-3.07,138.74 -41.61,137.68 -60.80,142.56z"/>
+      </g>
+
+      <!-- Incandescent Center Core Hotspot -->
+      <ellipse cx="-11" cy="142" rx="14" ry="24" fill="#FFFFFF" opacity="0.95" class="flame-core-anim" />
+
+      <!-- Top-Left Detached Lick / Spark (Layer 75 from Lottie) -->
+      <g class="spark-float-anim">
+        <path fill="${accent}" d="M-81.61,-212.15 C-78.53,-191.03 -118.03,-193.80 -97.59,-151.04 C-97.08,-151.74 -96.45,-152.17 -95.86,-152.01 C-68.61,-174.70 -66.37,-195.21 -81.61,-212.15z"/>
+        <path stroke="${c4}" stroke-width="6" fill="none" opacity="0.75" d="M-81.61,-212.15 C-78.53,-191.03 -118.03,-193.80 -97.59,-151.04 C-97.08,-151.74 -96.45,-152.17 -95.86,-152.01 C-68.61,-174.70 -66.37,-195.21 -81.61,-212.15z"/>
+      </g>
     </g>
   `;
 }
 
-function renderEmbers(accent, count = 8) {
-  return Array.from({ length: count }, (_, i) => {
-    const angle = (i * 137.5) * (Math.PI / 180);
-    const radius = 6 + (i % 4) * 4;
-    const startX = Math.round(120 + Math.cos(angle) * radius);
-    const startY = Math.round(168 - (i % 3) * 8);
-    const dur = (1.5 + (i % 4) * 0.3).toFixed(1);
-    const delay = ((i % 5) * 0.25).toFixed(2);
-    const size = (i % 3 === 0 ? 2 : 1.4);
-    return `<circle cx="${startX}" cy="${startY}" r="${size}" fill="${accent}" class="ember" style="animation-duration: ${dur}s; animation-delay: ${delay}s;" />`;
-  }).join('\n      ');
+function renderEmbers(accent, count = 5) {
+  const embersData = [
+    { x: -14, y: 16, r: 1.4, dur: 1.9, del: 0 },
+    { x: -22, y: 12, r: 1.1, dur: 2.3, del: 0.5 },
+    { x: -5,  y: 18, r: 1.3, dur: 2.1, del: 1.1 },
+    { x: 8,   y: 15, r: 1.5, dur: 1.8, del: 0.3 },
+    { x: 18,  y: 11, r: 1.2, dur: 2.4, del: 0.8 },
+  ];
+  return embersData.slice(0, count).map(e => 
+    `<circle cx="${e.x}" cy="${e.y}" r="${e.r}" fill="${accent}" class="ember" style="animation-duration: ${e.dur}s; animation-delay: ${e.del}s;" />`
+  ).join('\n      ');
 }
 
 function buildSingleDayStreakSvg(stats, dayIndex = 1) {
@@ -102,79 +122,76 @@ function buildSingleDayStreakSvg(stats, dayIndex = 1) {
   const { currentStreak, longestStreak, tier } = stats;
 
   const flameG = renderFlameGraphic(egg.accent, egg.palette, tier);
-  const embers = renderEmbers(egg.accent, 8);
+  const embers = renderEmbers(egg.accent, 5);
 
-  const baseCol = egg.palette[1] || egg.palette[0];
-  const midCol = egg.palette[3] || egg.accent;
-  const tipCol = egg.palette[4] || '#FFFFFF';
+  const c0 = egg.palette[0];
+  const c1 = egg.palette[1];
+  const c2 = egg.palette[2];
+  const c3 = egg.palette[3];
+  const c4 = egg.palette[4];
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 76" width="100%" height="100%">
   <defs>
     <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.28" />
-      <stop offset="60%" stop-color="${baseCol}" stop-opacity="0.08" />
+      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="${c1}" stop-opacity="0.1" />
       <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${baseCol}" />
-      <stop offset="55%" stop-color="${egg.accent}" />
-      <stop offset="100%" stop-color="${midCol}" />
+      <stop offset="0%" stop-color="${c1}" />
+      <stop offset="45%" stop-color="${c2}" />
+      <stop offset="100%" stop-color="${egg.accent}" />
     </linearGradient>
     <linearGradient id="midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${egg.accent}" />
-      <stop offset="65%" stop-color="${midCol}" />
-      <stop offset="100%" stop-color="${tipCol}" />
+      <stop offset="0%" stop-color="${c2}" />
+      <stop offset="55%" stop-color="${egg.accent}" />
+      <stop offset="100%" stop-color="${c4}" />
     </linearGradient>
     <linearGradient id="coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${midCol}" />
-      <stop offset="60%" stop-color="${tipCol}" />
+      <stop offset="0%" stop-color="${egg.accent}" />
+      <stop offset="60%" stop-color="${c4}" />
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
 
     <style>
       @keyframes auraBreath {
         0%, 100% { transform: scale(1); opacity: 0.75; }
-        50% { transform: scale(1.09); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 1; }
       }
-      @keyframes flameOuter {
+      @keyframes flameOuterSway {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        25% { transform: scaleY(1.03) skewX(1.4deg); }
-        50% { transform: scaleY(0.97) skewX(-1.2deg); }
-        75% { transform: scaleY(1.02) skewX(0.8deg); }
+        25% { transform: scaleY(1.04) skewX(1.8deg); }
+        50% { transform: scaleY(0.97) skewX(-1.5deg); }
+        75% { transform: scaleY(1.02) skewX(1.2deg); }
       }
-      @keyframes flameMid {
+      @keyframes flameMidSway {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        30% { transform: scaleY(0.96) skewX(-1.6deg); }
-        70% { transform: scaleY(1.04) skewX(1.6deg); }
+        30% { transform: scaleY(0.96) skewX(-2deg); }
+        70% { transform: scaleY(1.05) skewX(2.2deg); }
       }
-      @keyframes flameCore {
+      @keyframes flameCorePulse {
         0%, 100% { transform: scale(1); opacity: 0.92; }
-        50% { transform: scale(1.06); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 1; }
       }
-      @keyframes flameFlick {
-        0%, 100% { transform: rotate(0deg) scale(1); }
-        50% { transform: rotate(-3deg) scale(1.05); }
+      @keyframes sparkFloat {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; }
+        50% { transform: translate(-8px, -18px) rotate(-8deg) scale(0.9); opacity: 0.5; }
       }
-      @keyframes emberFloat {
-        0% { transform: translate(0, 0); opacity: 0.85; }
-        50% { transform: translate(-5px, -30px); opacity: 0.6; }
-        100% { transform: translate(4px, -65px); opacity: 0; }
-      }
-      @keyframes statusPulse {
-        0%, 100% { opacity: 0.8; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
+      @keyframes emberAscent {
+        0% { transform: translate(0, 0); opacity: 0.9; }
+        50% { transform: translate(-3px, -18px); opacity: 0.6; }
+        100% { transform: translate(3px, -36px); opacity: 0; }
       }
 
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
-      .flame-aura { transform-origin: 120px 135px; animation: auraBreath 3s infinite ease-in-out; }
-      .flame-outer { transform-origin: 120px 175px; animation: flameOuter 2.4s infinite ease-in-out; }
-      .flame-mid { transform-origin: 120px 175px; animation: flameMid 1.8s infinite ease-in-out; }
-      .flame-core { transform-origin: 120px 165px; animation: flameCore 1.4s infinite ease-in-out; }
-      .flame-lick-left { transform-origin: 106px 130px; animation: flameFlick 2s infinite ease-in-out; }
-      .ember { animation: emberFloat 2.2s infinite ease-out; }
-      .status-pulse { transform-origin: 14px 14px; animation: statusPulse 2.5s infinite ease-in-out; }
+      .flame-aura-anim { transform-origin: -11px 0px; animation: auraBreath 3s infinite ease-in-out; }
+      .flame-outer-anim { transform-origin: -11px 192px; animation: flameOuterSway 2.4s infinite ease-in-out; }
+      .flame-mid-anim { transform-origin: -11px 192px; animation: flameMidSway 1.8s infinite ease-in-out; }
+      .flame-core-anim { transform-origin: -11px 160px; animation: flameCorePulse 1.4s infinite ease-in-out; }
+      .spark-float-anim { transform-origin: -81px -212px; animation: sparkFloat 2s infinite ease-in-out; }
+      .ember { animation: emberAscent 2s infinite ease-out; }
     </style>
   </defs>
 
@@ -182,34 +199,25 @@ function buildSingleDayStreakSvg(stats, dayIndex = 1) {
   <rect width="920" height="76" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
 
   <!-- Left: The Living Flame Animation (Scaled to fit seamlessly in 76px) -->
-  <g transform="translate(45, 38) scale(0.55) translate(-120, -140)">
-    <g>
-      ${embers}
-    </g>
+  <g transform="translate(48, 38)">
+    ${embers}
     ${flameG}
   </g>
 
   <!-- Left Center: Streak Count & Tier Tag -->
-  <g transform="translate(85, 0)">
-    <text x="0" y="48" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
-    <text x="${currentStreak >= 10 ? 50 : 28}" y="35" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
-    <text x="${currentStreak >= 10 ? 50 : 28}" y="51" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
+  <g transform="translate(88, 0)">
+    <text x="0" y="49" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
+    <text x="${currentStreak >= 10 ? 50 : 28}" y="36" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
+    <text x="${currentStreak >= 10 ? 50 : 28}" y="52" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
   </g>
 
   <!-- Subtle Minimal Vertical Divider -->
-  <line x1="270" y1="18" x2="270" y2="58" stroke="#21262D" stroke-width="1"/>
+  <line x1="265" y1="20" x2="265" y2="56" stroke="#21262D" stroke-width="1"/>
 
   <!-- Right Center: Longest Streak Metric -->
-  <g transform="translate(298, 0)">
-    <text x="0" y="35" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
-    <text x="0" y="53" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
-  </g>
-
-  <!-- Right: Matrix Sync Indicator (Complimenting Matrix Active Day Theme) -->
-  <g transform="translate(650, 24)">
-    <rect x="0" y="0" width="242" height="28" rx="6" fill="#161B22" stroke="#30363D" stroke-width="1"/>
-    <circle cx="14" cy="14" r="3.5" fill="${egg.accent}" class="status-pulse"/>
-    <text x="26" y="18" class="mono" fill="#F0F6FC" font-size="11" font-weight="600">${egg.shortName}: ${egg.name}</text>
+  <g transform="translate(295, 0)">
+    <text x="0" y="36" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
+    <text x="0" y="54" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
   </g>
 </svg>`;
 }
@@ -270,56 +278,49 @@ function buildCyclingShowcaseStreakSvg(stats) {
   slices.forEach((s, idx) => {
     const egg = SEVEN_DAY_EASTER_EGGS[s.day];
     const prefix = `c${idx}_`;
-    const baseCol = egg.palette[1] || egg.palette[0];
-    const midCol = egg.palette[3] || egg.accent;
-    const tipCol = egg.palette[4] || '#FFFFFF';
+    const c0 = egg.palette[0];
+    const c1 = egg.palette[1];
+    const c2 = egg.palette[2];
+    const c3 = egg.palette[3];
+    const c4 = egg.palette[4];
 
     defsContent += `
     <radialGradient id="${prefix}auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.28" />
-      <stop offset="60%" stop-color="${baseCol}" stop-opacity="0.08" />
+      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="${c1}" stop-opacity="0.1" />
       <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="${prefix}outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${baseCol}" />
-      <stop offset="55%" stop-color="${egg.accent}" />
-      <stop offset="100%" stop-color="${midCol}" />
+      <stop offset="0%" stop-color="${c1}" />
+      <stop offset="45%" stop-color="${c2}" />
+      <stop offset="100%" stop-color="${egg.accent}" />
     </linearGradient>
     <linearGradient id="${prefix}midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${egg.accent}" />
-      <stop offset="65%" stop-color="${midCol}" />
-      <stop offset="100%" stop-color="${tipCol}" />
+      <stop offset="0%" stop-color="${c2}" />
+      <stop offset="55%" stop-color="${egg.accent}" />
+      <stop offset="100%" stop-color="${c4}" />
     </linearGradient>
     <linearGradient id="${prefix}coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="${midCol}" />
-      <stop offset="60%" stop-color="${tipCol}" />
+      <stop offset="0%" stop-color="${egg.accent}" />
+      <stop offset="60%" stop-color="${c4}" />
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
     `;
 
     const flameG = renderFlameGraphic(egg.accent, egg.palette, tier, prefix);
-    const embs = renderEmbers(egg.accent, 8);
+    const embs = renderEmbers(egg.accent, 5);
 
     layersContent += `
     <!-- Layer ${idx}: ${egg.shortName} (${egg.name}) In Lockstep with Matrix -->
     <g class="cycle-layer cycle-layer-${idx}">
       <!-- Flame Stage -->
-      <g transform="translate(45, 38) scale(0.55) translate(-120, -140)">
-        <g>
-          ${embs}
-        </g>
+      <g transform="translate(48, 38)">
+        ${embs}
         ${flameG}
       </g>
 
       <!-- Label in Active Theme Accent -->
-      <text x="${currentStreak >= 10 ? 135 : 113}" y="35" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
-
-      <!-- Synced Matrix Day Pill -->
-      <g transform="translate(650, 24)">
-        <rect x="0" y="0" width="242" height="28" rx="6" fill="#161B22" stroke="${egg.accent}" stroke-width="1.2"/>
-        <circle cx="14" cy="14" r="3.5" fill="${egg.accent}" class="status-pulse"/>
-        <text x="26" y="18" class="mono" fill="${egg.accent}" font-size="11" font-weight="700">${egg.shortName}: ${egg.name}</text>
-      </g>
+      <text x="${currentStreak >= 10 ? 138 : 116}" y="36" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
     </g>
     `;
   });
@@ -330,47 +331,42 @@ function buildCyclingShowcaseStreakSvg(stats) {
     <style>
       @keyframes auraBreath {
         0%, 100% { transform: scale(1); opacity: 0.75; }
-        50% { transform: scale(1.09); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 1; }
       }
-      @keyframes flameOuter {
+      @keyframes flameOuterSway {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        25% { transform: scaleY(1.03) skewX(1.4deg); }
-        50% { transform: scaleY(0.97) skewX(-1.2deg); }
-        75% { transform: scaleY(1.02) skewX(0.8deg); }
+        25% { transform: scaleY(1.04) skewX(1.8deg); }
+        50% { transform: scaleY(0.97) skewX(-1.5deg); }
+        75% { transform: scaleY(1.02) skewX(1.2deg); }
       }
-      @keyframes flameMid {
+      @keyframes flameMidSway {
         0%, 100% { transform: scaleY(1) skewX(0deg); }
-        30% { transform: scaleY(0.96) skewX(-1.6deg); }
-        70% { transform: scaleY(1.04) skewX(1.6deg); }
+        30% { transform: scaleY(0.96) skewX(-2deg); }
+        70% { transform: scaleY(1.05) skewX(2.2deg); }
       }
-      @keyframes flameCore {
+      @keyframes flameCorePulse {
         0%, 100% { transform: scale(1); opacity: 0.92; }
-        50% { transform: scale(1.06); opacity: 1; }
+        50% { transform: scale(1.08); opacity: 1; }
       }
-      @keyframes flameFlick {
-        0%, 100% { transform: rotate(0deg) scale(1); }
-        50% { transform: rotate(-3deg) scale(1.05); }
+      @keyframes sparkFloat {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.9; }
+        50% { transform: translate(-8px, -18px) rotate(-8deg) scale(0.9); opacity: 0.5; }
       }
-      @keyframes emberFloat {
-        0% { transform: translate(0, 0); opacity: 0.85; }
-        50% { transform: translate(-5px, -30px); opacity: 0.6; }
-        100% { transform: translate(4px, -65px); opacity: 0; }
-      }
-      @keyframes statusPulse {
-        0%, 100% { opacity: 0.8; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.2); }
+      @keyframes emberAscent {
+        0% { transform: translate(0, 0); opacity: 0.9; }
+        50% { transform: translate(-3px, -18px); opacity: 0.6; }
+        100% { transform: translate(3px, -36px); opacity: 0; }
       }
 
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
 
-      .flame-aura { transform-origin: 120px 135px; animation: auraBreath 3s infinite ease-in-out; }
-      .flame-outer { transform-origin: 120px 175px; animation: flameOuter 2.4s infinite ease-in-out; }
-      .flame-mid { transform-origin: 120px 175px; animation: flameMid 1.8s infinite ease-in-out; }
-      .flame-core { transform-origin: 120px 165px; animation: flameCore 1.4s infinite ease-in-out; }
-      .flame-lick-left { transform-origin: 106px 130px; animation: flameFlick 2s infinite ease-in-out; }
-      .ember { animation: emberFloat 2.2s infinite ease-out; }
-      .status-pulse { transform-origin: 14px 14px; animation: statusPulse 2.5s infinite ease-in-out; }
+      .flame-aura-anim { transform-origin: -11px 0px; animation: auraBreath 3s infinite ease-in-out; }
+      .flame-outer-anim { transform-origin: -11px 192px; animation: flameOuterSway 2.4s infinite ease-in-out; }
+      .flame-mid-anim { transform-origin: -11px 192px; animation: flameMidSway 1.8s infinite ease-in-out; }
+      .flame-core-anim { transform-origin: -11px 160px; animation: flameCorePulse 1.4s infinite ease-in-out; }
+      .spark-float-anim { transform-origin: -81px -212px; animation: sparkFloat 2s infinite ease-in-out; }
+      .ember { animation: emberAscent 2s infinite ease-out; }
 
       ${cycleCss}
     </style>
@@ -380,18 +376,18 @@ function buildCyclingShowcaseStreakSvg(stats) {
   <rect width="920" height="76" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
 
   <!-- Persistent Base Elements -->
-  <g transform="translate(85, 0)">
-    <text x="0" y="48" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
-    <text x="${currentStreak >= 10 ? 50 : 28}" y="51" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
+  <g transform="translate(88, 0)">
+    <text x="0" y="49" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
+    <text x="${currentStreak >= 10 ? 50 : 28}" y="52" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
   </g>
 
   <!-- Minimal Divider -->
-  <line x1="270" y1="18" x2="270" y2="58" stroke="#21262D" stroke-width="1"/>
+  <line x1="265" y1="20" x2="265" y2="56" stroke="#21262D" stroke-width="1"/>
 
   <!-- Longest Streak -->
-  <g transform="translate(298, 0)">
-    <text x="0" y="35" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
-    <text x="0" y="53" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
+  <g transform="translate(295, 0)">
+    <text x="0" y="36" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
+    <text x="0" y="54" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
   </g>
 
   <!-- 7 Synchronized Dynamic Layers (Matching Matrix Timeline Exactly) -->
@@ -429,44 +425,48 @@ async function main() {
 
   if (forcedStreak !== null) {
     stats.currentStreak = forcedStreak;
-    stats.tier = TIERS.find(t => forcedStreak >= t.min && forcedStreak <= t.max) || TIERS[0];
+    if (forcedStreak > stats.longestStreak) stats.longestStreak = forcedStreak;
+    // Re-evaluate tier
+    for (const t of TIERS) {
+      if (stats.currentStreak >= t.minStreak && stats.currentStreak <= t.maxStreak) {
+        stats.tier = t;
+        break;
+      }
+    }
   }
 
-  // 1. Generate individual day files
-  const dayFiles = [
-    { day: 0, file: 'git-streak-sun.svg' },
-    { day: 1, file: 'git-streak-mon.svg' },
-    { day: 2, file: 'git-streak-tue.svg' },
-    { day: 3, file: 'git-streak-wed.svg' },
-    { day: 4, file: 'git-streak-thu.svg' },
-    { day: 5, file: 'git-streak-fri.svg' },
-    { day: 6, file: 'git-streak-sat.svg' },
-  ];
+  console.log(`GitStreak: ${stats.currentStreak} days (${stats.tier.name} tier), Longest: ${stats.longestStreak} days`);
 
-  for (const item of dayFiles) {
-    const singleSvg = buildSingleDayStreakSvg(stats, item.day);
-    fs.writeFileSync(path.join(__dirname, `../assets/${item.file}`), singleSvg, 'utf8');
-  }
-  console.log('[+] Generated 7 single-day minimal streak SVGs (git-streak-sun..sat.svg)');
+  const assetsDir = path.join(__dirname, '..', 'assets');
+  if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
 
-  // 2. Generate main git-streak.svg
-  if (isCycle && targetDay === null) {
-    const cycleSvg = buildCyclingShowcaseStreakSvg(stats);
-    fs.writeFileSync(path.join(__dirname, '../assets/git-streak.svg'), cycleSvg, 'utf8');
-    console.log('[+] Generated synchronized 7-day auto-morph cycling showcase -> assets/git-streak.svg');
+  if (isCycle) {
+    console.log('Generating Synchronized Cycling GitStreak SVG (28s timeline lockstep with matrix)...');
+    const cyclingSvg = buildCyclingShowcaseStreakSvg(stats);
+    const mainPath = path.join(assetsDir, 'git-streak.svg');
+    fs.writeFileSync(mainPath, cyclingSvg);
+    console.log(`Saved cycling streak to ${mainPath}`);
+
+    // Also generate static theme SVGs for all 7 days
+    for (let d = 0; d < 7; d++) {
+      const egg = SEVEN_DAY_EASTER_EGGS[d];
+      const singleSvg = buildSingleDayStreakSvg(stats, d);
+      const filename = `git-streak-${egg.shortName.toLowerCase()}.svg`;
+      fs.writeFileSync(path.join(assetsDir, filename), singleSvg);
+    }
+    console.log('Generated static SVGs for all 7 easter egg themes.');
   } else {
-    const activeDay = targetDay !== null ? targetDay : todayDay;
-    const singleSvg = buildSingleDayStreakSvg(stats, activeDay);
-    fs.writeFileSync(path.join(__dirname, '../assets/git-streak.svg'), singleSvg, 'utf8');
-    console.log(`[+] Generated active theme minimal streak -> assets/git-streak.svg (Day ${activeDay})`);
+    const dayIndex = targetDay !== null ? targetDay : todayDay;
+    const egg = SEVEN_DAY_EASTER_EGGS[dayIndex];
+    console.log(`Generating GitStreak for Day ${dayIndex}: ${egg.shortName} (${egg.name})...`);
+    const singleSvg = buildSingleDayStreakSvg(stats, dayIndex);
+    const mainPath = path.join(assetsDir, 'git-streak.svg');
+    fs.writeFileSync(mainPath, singleSvg);
+    console.log(`Saved single-theme streak to ${mainPath}`);
   }
 }
 
-if (require.main === module) {
-  main();
-}
-
-module.exports = {
-  buildSingleDayStreakSvg,
-  buildCyclingShowcaseStreakSvg
-};
+main().catch(err => {
+  console.error('Error generating GitStreak SVG:', err);
+  process.exit(1);
+});
