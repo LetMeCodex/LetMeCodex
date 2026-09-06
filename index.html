@@ -699,12 +699,26 @@
 
             <div class="flex items-center justify-between text-xs font-mono text-[#7D8590] pb-2 border-b border-[#30363D]/60 relative z-10">
               <span class="flex items-center gap-1.5 text-[#E6EDF3]">
-                <span class="size-2 rounded-full bg-[#F59E0B] animate-pulse"></span>
-                <span class="font-bold">Crucible Flame Core</span>
+                <span class="size-2 rounded-full bg-[#3FB950] animate-pulse"></span>
+                <span class="font-bold">GitStreak — Contribution Flame</span>
               </span>
-              <span id="streak-tier-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#F59E0B]/15 text-[#F59E0B] border border-[#F59E0B]/30 tracking-wider">
-                TIER 4: SUPERNOVA
+              <span id="streak-tier-badge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#3FB950]/15 text-[#3FB950] border border-[#3FB950]/30 tracking-wider">
+                TIER 3: HOT
               </span>
+            </div>
+
+            <!-- Theme Switcher Pills -->
+            <div class="flex flex-wrap items-center justify-between text-[11px] font-mono gap-1 py-2 border-b border-[#30363D]/40 relative z-10">
+              <span class="text-[#7D8590] text-[10px]">THEME:</span>
+              <div class="inline-flex flex-wrap gap-1">
+                <button type="button" onclick="setStreakTheme('github')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#238636]/20 text-[#3FB950] border border-[#238636]/40 hover:bg-[#238636]/40 transition-colors">GitHub</button>
+                <button type="button" onclick="setStreakTheme('inferno')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#EA580C]/20 text-[#F97316] border border-[#EA580C]/40 hover:bg-[#EA580C]/40 transition-colors">Inferno</button>
+                <button type="button" onclick="setStreakTheme('arcane')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#7C3AED]/20 text-[#A855F7] border border-[#7C3AED]/40 hover:bg-[#7C3AED]/40 transition-colors">Arcane</button>
+                <button type="button" onclick="setStreakTheme('cyber')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#0284C7]/20 text-[#38BDF8] border border-[#0284C7]/40 hover:bg-[#0284C7]/40 transition-colors">Cyber</button>
+                <button type="button" onclick="setStreakTheme('zen')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#DB2777]/20 text-[#F472B6] border border-[#DB2777]/40 hover:bg-[#DB2777]/40 transition-colors">Zen</button>
+                <button type="button" onclick="setStreakTheme('legendary')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#D97706]/20 text-[#F59E0B] border border-[#D97706]/40 hover:bg-[#D97706]/40 transition-colors">Gold</button>
+                <button type="button" onclick="setStreakTheme('void')" class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#4C1D95]/20 text-[#818CF8] border border-[#4C1D95]/40 hover:bg-[#4C1D95]/40 transition-colors">Void</button>
+              </div>
             </div>
 
             <!-- Procedural Flame Canvas Viewport (Reacts to Hover & Drag) -->
@@ -715,29 +729,37 @@
               <!-- Centered Live Odometer Display Overlaid Under Fire -->
               <div class="absolute bottom-2 flex flex-col items-center pointer-events-none z-20">
                 <div class="flex items-baseline gap-2">
-                  <span id="streak-count-odometer" class="font-mono text-5xl md:text-6xl font-black tracking-tight text-[#F0F6FC] tabular-nums drop-shadow-[0_0_20px_rgba(245,158,11,0.5)]">42</span>
-                  <span class="font-mono text-sm font-bold text-[#F59E0B] tracking-wider uppercase" id="streak-odometer-unit">DAYS</span>
+                  <span id="streak-count-odometer" class="font-mono text-5xl md:text-6xl font-black tracking-tight text-[#F0F6FC] tabular-nums drop-shadow-[0_0_20px_rgba(63,185,80,0.5)]">10</span>
+                  <span class="font-mono text-sm font-bold text-[#3FB950] tracking-wider uppercase" id="streak-odometer-unit">DAYS</span>
                 </div>
-                <span class="text-[11px] font-mono text-[#7D8590] mt-0.5">Consecutive IST Execution</span>
+                <span class="text-[11px] font-mono text-[#7D8590] mt-0.5">Consecutive GitHub Contributions</span>
               </div>
             </div>
 
             <!-- Multiplier & Next Milestone Progress -->
             <div class="space-y-2 pt-2 border-t border-[#30363D]/60 relative z-10 font-mono text-xs">
               <div class="flex items-center justify-between">
-                <span class="text-[#7D8590] text-[11px]">Poisson Multiplier</span>
-                <span id="streak-multiplier-val" class="text-sm font-bold text-[#F59E0B] tabular-nums">4.20x BOOST</span>
+                <span class="text-[#7D8590] text-[11px]">Milestone Proximity</span>
+                <span id="streak-multiplier-val" class="text-sm font-bold text-[#3FB950] tabular-nums">4 DAYS TO GO</span>
               </div>
 
               <!-- Segmented Milestone Gauge -->
               <div class="space-y-1">
                 <div class="h-2 w-full bg-[#0D1117] rounded-sm overflow-hidden border border-[#30363D] flex">
-                  <div id="streak-progress-bar" class="h-full bg-gradient-to-r from-[#10B981] via-[#F59E0B] to-[#EC4899] transition-all duration-500" style="width: 70%;"></div>
+                  <div id="streak-progress-bar" class="h-full bg-gradient-to-r from-[#238636] to-[#3FB950] transition-all duration-500" style="width: 43%;"></div>
                 </div>
                 <div class="flex justify-between text-[10px] text-[#7D8590]">
-                  <span id="streak-current-tier-text">Tier 4: Supernova (30d)</span>
-                  <span id="streak-next-tier-text">Next: Godlike (60d)</span>
+                  <span id="streak-current-tier-text">Tier 3: Hot (7d)</span>
+                  <span id="streak-next-tier-text">Next: Blaze (14d)</span>
                 </div>
+              </div>
+
+              <!-- Streak Simulator Slider -->
+              <div class="pt-2 border-t border-[#30363D]/40 flex items-center justify-between gap-2 text-[10px] text-[#7D8590]">
+                <span>Simulate:</span>
+                <input type="range" id="streak-sim-slider" min="0" max="120" value="10" oninput="simulateStreakDays(this.value)" class="w-36 accent-[#3FB950] cursor-pointer" />
+                <span id="streak-sim-val" class="text-[#F0F6FC] font-bold">10d</span>
+                <button type="button" onclick="resetLiveStreak()" class="text-[10px] text-[#3FB950] underline hover:text-[#56D364]">Live</button>
               </div>
             </div>
           </div>
@@ -3641,92 +3663,180 @@
 
     const STREAK_TIERS = [
       {
+        minDays: 0,
+        maxDays: 0,
+        tierId: 0,
+        id: 'dormant',
+        name: 'Dormant Ember',
+        badgeText: 'TIER 0: DORMANT',
+        color: '#6E7681',
+        glowColor: 'rgba(110, 118, 129, 0.35)',
+        multiplier: 1.0,
+        flameColors: ['#21262D', '#30363D', '#484F58', '#6E7681', '#8B949E'],
+        nextTarget: 1,
+        nextTierName: 'Spark (1d)'
+      },
+      {
         minDays: 1,
-        maxDays: 6,
+        maxDays: 2,
         tierId: 1,
-        name: 'Sprout Ember',
-        badgeText: 'TIER 1: SPROUT',
-        color: '#39D353',
-        glowColor: 'rgba(57, 211, 83, 0.45)',
+        id: 'spark',
+        name: 'Nascent Spark',
+        badgeText: 'TIER 1: SPARK',
+        color: '#7EE787',
+        glowColor: 'rgba(126, 231, 135, 0.45)',
         multiplier: 1.25,
-        flameColors: ['#0E4429', '#006D32', '#26A641', '#39D353', '#FFFFFF'],
+        flameColors: ['#0E4429', '#006D32', '#26A641', '#39D353', '#7EE787'],
+        nextTarget: 3,
+        nextTierName: 'Flame (3d)'
+      },
+      {
+        minDays: 3,
+        maxDays: 6,
+        tierId: 2,
+        id: 'flame',
+        name: 'Living Flame',
+        badgeText: 'TIER 2: FLAME',
+        color: '#3FB950',
+        glowColor: 'rgba(63, 185, 80, 0.50)',
+        multiplier: 1.65,
+        flameColors: ['#196C2E', '#238636', '#2EA043', '#3FB950', '#56D364'],
         nextTarget: 7,
-        nextTierName: 'Blaze (7d)'
+        nextTierName: 'Hot (7d)'
       },
       {
         minDays: 7,
         maxDays: 13,
-        tierId: 2,
-        name: 'Phosphor Blaze',
-        badgeText: 'TIER 2: BLAZE',
-        color: '#38BDF8',
-        glowColor: 'rgba(56, 189, 248, 0.5)',
-        multiplier: 1.85,
-        flameColors: ['#0C4A6E', '#0284C7', '#38BDF8', '#7DD3FC', '#FFFFFF'],
+        tierId: 3,
+        id: 'hot',
+        name: 'Hot Blaze',
+        badgeText: 'TIER 3: HOT',
+        color: '#3FB950',
+        glowColor: 'rgba(63, 185, 80, 0.60)',
+        multiplier: 2.25,
+        flameColors: ['#238636', '#2EA043', '#3FB950', '#56D364', '#E6EDF3'],
         nextTarget: 14,
-        nextTierName: 'Inferno (14d)'
+        nextTierName: 'Blaze (14d)'
       },
       {
         minDays: 14,
         maxDays: 29,
-        tierId: 3,
-        name: 'Plasma Inferno',
-        badgeText: 'TIER 3: INFERNO',
-        color: '#A855F7',
-        glowColor: 'rgba(168, 85, 247, 0.55)',
-        multiplier: 2.75,
-        flameColors: ['#581C87', '#7E22CE', '#A855F7', '#C084FC', '#FFFFFF'],
+        tierId: 4,
+        id: 'blaze',
+        name: 'Dual Blaze',
+        badgeText: 'TIER 4: BLAZE',
+        color: '#F97316',
+        glowColor: 'rgba(249, 115, 22, 0.60)',
+        multiplier: 3.10,
+        flameColors: ['#C2410C', '#EA580C', '#F97316', '#FB923C', '#FDE047'],
         nextTarget: 30,
-        nextTierName: 'Supernova (30d)'
+        nextTierName: 'Inferno (30d)'
       },
       {
         minDays: 30,
         maxDays: 59,
-        tierId: 4,
-        name: 'Solar Supernova',
-        badgeText: 'TIER 4: SUPERNOVA',
-        color: '#F59E0B',
-        glowColor: 'rgba(245, 158, 11, 0.65)',
+        tierId: 5,
+        id: 'inferno',
+        name: 'Inferno Triple',
+        badgeText: 'TIER 5: INFERNO',
+        color: '#EF4444',
+        glowColor: 'rgba(239, 68, 68, 0.65)',
         multiplier: 4.20,
-        flameColors: ['#78350F', '#D97706', '#F59E0B', '#FDE047', '#FFFFFF'],
+        flameColors: ['#991B1B', '#DC2626', '#EF4444', '#F97316', '#FDE047'],
         nextTarget: 60,
-        nextTierName: 'Cosmic (60d)'
+        nextTierName: 'Legendary (60d)'
       },
       {
         minDays: 60,
         maxDays: 99,
-        tierId: 5,
-        name: 'Cosmic Singularity',
-        badgeText: 'TIER 5: COSMIC',
-        color: '#EC4899',
-        glowColor: 'rgba(236, 72, 153, 0.7)',
-        multiplier: 4.80,
-        flameColors: ['#831843', '#BE185D', '#EC4899', '#F472B6', '#FFFFFF'],
+        tierId: 6,
+        id: 'legendary',
+        name: 'Legendary Ring',
+        badgeText: 'TIER 6: LEGENDARY',
+        color: '#F59E0B',
+        glowColor: 'rgba(245, 158, 11, 0.70)',
+        multiplier: 4.85,
+        flameColors: ['#B45309', '#D97706', '#F59E0B', '#FBBF24', '#FEF08A'],
         nextTarget: 100,
-        nextTierName: 'Godlike (100d)'
+        nextTierName: 'Mythic (100d)'
       },
       {
         minDays: 100,
-        maxDays: 9999,
-        tierId: 6,
-        name: 'Godlike Singularity',
-        badgeText: 'TIER 6: GODLIKE',
-        color: '#FDE047',
-        glowColor: 'rgba(253, 224, 71, 0.8)',
-        multiplier: 5.00,
-        flameColors: ['#CA8A04', '#EAB308', '#FDE047', '#FEF08A', '#FFFFFF'],
+        maxDays: 99999,
+        tierId: 7,
+        id: 'mythic',
+        name: 'Mythic Core',
+        badgeText: 'TIER 7: MYTHIC',
+        color: '#A855F7',
+        glowColor: 'rgba(168, 85, 247, 0.80)',
+        multiplier: 5.50,
+        flameColors: ['#581C87', '#7C3AED', '#A855F7', '#C084FC', '#FFFFFF'],
         nextTarget: 365,
-        nextTierName: 'Transcendent (365d)'
+        nextTierName: 'Eternal (365d)'
       }
     ];
 
+    const STREAK_THEMES = {
+      github: {
+        id: 'github',
+        name: 'GitHub Green',
+        color: '#3FB950',
+        glow: 'rgba(63, 185, 80, 0.45)',
+        flameColors: ['#0E4429', '#238636', '#2EA043', '#3FB950', '#56D364', '#E6EDF3']
+      },
+      inferno: {
+        id: 'inferno',
+        name: 'Inferno Flame',
+        color: '#F97316',
+        glow: 'rgba(249, 115, 22, 0.45)',
+        flameColors: ['#7C2D12', '#C2410C', '#EA580C', '#F97316', '#FBBF24', '#FEF08A']
+      },
+      arcane: {
+        id: 'arcane',
+        name: 'Arcane Violet',
+        color: '#A855F7',
+        glow: 'rgba(168, 85, 247, 0.45)',
+        flameColors: ['#3B0764', '#581C87', '#7C3AED', '#A855F7', '#C084FC', '#F5D0FE']
+      },
+      cyber: {
+        id: 'cyber',
+        name: 'Cyber Aurora',
+        color: '#38BDF8',
+        glow: 'rgba(56, 189, 248, 0.45)',
+        flameColors: ['#0C4A6E', '#0369A1', '#0284C7', '#38BDF8', '#7DD3FC', '#FFFFFF']
+      },
+      zen: {
+        id: 'zen',
+        name: 'Zen Blossom',
+        color: '#F472B6',
+        glow: 'rgba(244, 114, 182, 0.45)',
+        flameColors: ['#701A75', '#9D174D', '#DB2777', '#F472B6', '#FBCFE8', '#FFFFFF']
+      },
+      legendary: {
+        id: 'legendary',
+        name: 'Legendary Gold',
+        color: '#F59E0B',
+        glow: 'rgba(245, 158, 11, 0.45)',
+        flameColors: ['#78350F', '#B45309', '#D97706', '#F59E0B', '#FDE047', '#FEF9C3']
+      },
+      void: {
+        id: 'void',
+        name: 'Cosmic Void',
+        color: '#6366F1',
+        glow: 'rgba(99, 102, 241, 0.45)',
+        flameColors: ['#1E1B4B', '#312E81', '#4338CA', '#6366F1', '#818CF8', '#FFFFFF']
+      }
+    };
+
+    let activeStreakTheme = localStorage.getItem('gitstreak_theme') || 'github';
+
     function getTierForDays(days) {
-      const d = Math.max(1, Number(days) || 1);
+      const d = Math.max(0, Number(days) || 0);
       return STREAK_TIERS.find(t => d >= t.minDays && d <= t.maxDays) || STREAK_TIERS[STREAK_TIERS.length - 1];
     }
 
-    let currentStreakDays = 42;
-    let realComputedStreakDays = 42;
+    let currentStreakDays = 10;
+    let realComputedStreakDays = 10;
     let isStreakAudioMuted = localStorage.getItem('autonomous_streak_audio_muted') === 'true';
     let isStreakShakeEnabled = localStorage.getItem('autonomous_streak_shake_disabled') !== 'true';
     let isStreakEngineInitialized = false;
@@ -3934,8 +4044,8 @@
     }
 
     function spawnFlameEmbersExplosion(originX, originY, count = 25) {
-      const tier = getTierForDays(currentStreakDays);
-      const colors = tier.flameColors;
+      const activeTheme = STREAK_THEMES[activeStreakTheme] || STREAK_THEMES.github;
+      const colors = activeTheme.flameColors;
       for (let i = 0; i < count; i++) {
         const angle = Math.random() * Math.PI * 2;
         const speed = 2.0 + Math.random() * 5.0;
@@ -3961,26 +4071,53 @@
       const width = flameCanvas.width / streakFlameDpr;
       const height = flameCanvas.height / streakFlameDpr;
       const tier = getTierForDays(currentStreakDays);
+      const activeTheme = STREAK_THEMES[activeStreakTheme] || STREAK_THEMES.github;
+      const palette = activeTheme.flameColors;
 
       ctx.clearRect(0, 0, width, height);
 
-      // Spawn new flame particles (more when charging)
-      const spawnCount = isStreakCharging ? 10 : 4;
+      // Spawn new flame particles (more when charging or higher tier)
+      const spawnCount = isStreakCharging ? (tier.tierId >= 6 ? 14 : 10) : (tier.tierId === 0 ? 1 : Math.max(2, Math.min(8, 2 + tier.tierId)));
       const centerX = width * 0.5;
       const baseY = height - 12;
 
       for (let i = 0; i < spawnCount; i++) {
-        const spread = (Math.random() - 0.5) * 38;
+        const spread = (Math.random() - 0.5) * (tier.tierId === 0 ? 12 : 20 + tier.tierId * 3);
         flameParticles.push({
           x: centerX + spread,
-          y: baseY + (Math.random() - 0.5) * 8,
-          vx: (Math.random() - 0.5) * 0.6 + (spread * 0.012),
-          vy: -(1.4 + Math.random() * (isStreakCharging ? 3.8 : 2.4)),
-          radius: 6 + Math.random() * (isStreakCharging ? 12 : 8),
+          y: baseY + (Math.random() - 0.5) * (tier.tierId === 0 ? 4 : 8),
+          vx: (Math.random() - 0.5) * (tier.tierId === 0 ? 0.3 : 0.6) + (spread * 0.012),
+          vy: -(tier.tierId === 0 ? 0.8 : (1.2 + Math.random() * (isStreakCharging ? 3.8 : (1.6 + tier.tierId * 0.2)))),
+          radius: (tier.tierId === 0 ? 2.5 : 5 + Math.random() * (isStreakCharging ? 12 : 7)),
           life: 0,
-          maxLife: 35 + Math.random() * 25,
-          colorIdx: Math.floor(Math.random() * tier.flameColors.length)
+          maxLife: (tier.tierId === 0 ? 22 : 32 + Math.random() * 24),
+          colorIdx: Math.floor(Math.random() * palette.length)
         });
+      }
+
+      // Orbital Ring for Legendary & Mythic Tiers
+      if (tier.tierId >= 6) {
+        ctx.save();
+        ctx.strokeStyle = activeTheme.color;
+        ctx.globalAlpha = 0.35 + Math.sin(flameTime * 4) * 0.15;
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.ellipse(centerX, baseY - 35, 34 + Math.sin(flameTime * 2) * 3, 12, flameTime * 0.5, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // Special Animated Core for Mythic Tier
+      if (tier.tierId >= 7) {
+        ctx.save();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = activeTheme.color;
+        ctx.shadowBlur = 16;
+        ctx.globalAlpha = 0.85 + Math.sin(flameTime * 6) * 0.15;
+        ctx.beginPath();
+        ctx.arc(centerX, baseY - 24, 4.5 + Math.sin(flameTime * 5) * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
       }
 
       // Update and draw particles with inward suction when charging
@@ -4008,7 +4145,6 @@
         }
 
         const alpha = Math.max(0, 1 - progress);
-        const palette = tier.flameColors;
         const colorStep = Math.min(palette.length - 1, Math.floor(progress * palette.length));
         const col = palette[colorStep] || palette[palette.length - 1];
 
@@ -4390,8 +4526,9 @@
     }
 
     function updateStreakUI(days, animate = false) {
-      const d = Math.max(1, Number(days) || 1);
+      const d = Math.max(0, Number(days) || 0);
       const tier = getTierForDays(d);
+      const activeTheme = STREAK_THEMES[activeStreakTheme] || STREAK_THEMES.github;
 
       // 1. Odometer
       const odometerEl = document.getElementById('streak-count-odometer');
@@ -4403,12 +4540,19 @@
       const heroStreakVal = document.getElementById('hero-streak-val');
       const heroMultiplier = document.getElementById('hero-streak-multiplier');
 
-      if (multValEl) multValEl.textContent = `${tier.multiplier.toFixed(2)}x BOOST`;
+      if (multValEl) {
+        if (d >= tier.nextTarget) {
+          multValEl.textContent = `${tier.multiplier.toFixed(2)}x (MAX TIER)`;
+        } else {
+          const daysLeft = tier.nextTarget - d;
+          multValEl.textContent = `${daysLeft} ${daysLeft === 1 ? 'DAY' : 'DAYS'} TO GO`;
+        }
+      }
       if (tierBadgeEl) {
         tierBadgeEl.textContent = tier.badgeText;
-        tierBadgeEl.style.color = tier.color;
-        tierBadgeEl.style.borderColor = `${tier.color}66`;
-        tierBadgeEl.style.backgroundColor = `${tier.color}22`;
+        tierBadgeEl.style.color = activeTheme.color;
+        tierBadgeEl.style.borderColor = `${activeTheme.color}66`;
+        tierBadgeEl.style.backgroundColor = `${activeTheme.color}22`;
       }
       if (heroStreakVal) heroStreakVal.textContent = `${d} Days`;
       if (heroMultiplier) heroMultiplier.textContent = `${tier.multiplier.toFixed(1)}x`;
@@ -4427,15 +4571,16 @@
 
       if (progressBar) {
         const tierSpan = Math.max(1, tier.nextTarget - tier.minDays);
-        const progressPct = d >= tier.nextTarget ? 100 : Math.min(100, Math.max(8, Math.round(((d - tier.minDays + 1) / (tierSpan + 1)) * 100)));
+        const progressPct = d >= tier.nextTarget ? 100 : Math.min(100, Math.max(8, Math.round(((d - tier.minDays) / (tierSpan + 1)) * 100)));
         progressBar.style.width = `${progressPct}%`;
+        progressBar.style.background = `linear-gradient(90deg, ${activeTheme.flameColors[1] || activeTheme.color}, ${activeTheme.color})`;
       }
 
       // 4. Milestone Lab Selected Preview Label & Color
       const selPreview = document.getElementById('selected-milestone-preview');
       if (selPreview) {
         selPreview.textContent = `${d} Days (${tier.name})`;
-        selPreview.style.color = tier.color;
+        selPreview.style.color = activeTheme.color;
       }
 
       // 5. Preset Buttons Active Highlight State
@@ -4446,9 +4591,9 @@
         if (btnDays === d || (btnTier.tierId === tier.tierId && !Array.from(presetBtns).some(b => Number(b.getAttribute('data-tier-days')) === d))) {
           pBtn.classList.remove('bg-[#0D1117]', 'text-[#7D8590]', 'border-[#30363D]');
           pBtn.classList.add('bg-[#21262D]', 'font-bold');
-          pBtn.style.borderColor = tier.color;
-          pBtn.style.color = tier.color;
-          pBtn.style.boxShadow = `0 0 12px ${tier.color}40`;
+          pBtn.style.borderColor = activeTheme.color;
+          pBtn.style.color = activeTheme.color;
+          pBtn.style.boxShadow = `0 0 12px ${activeTheme.color}40`;
         } else {
           pBtn.classList.remove('bg-[#21262D]', 'font-bold');
           pBtn.classList.add('bg-[#0D1117]', 'text-[#7D8590]', 'border-[#30363D]');
@@ -4458,11 +4603,59 @@
         }
       });
 
-      // 6. Crucible Border & Glow
+      // 6. Crucible Border & Glow & Unit Color
       const crucible = document.getElementById('streak-crucible-card');
       const glow = document.getElementById('crucible-radial-glow');
-      if (crucible) crucible.style.borderColor = `${tier.color}55`;
-      if (glow) glow.style.backgroundColor = tier.color;
+      const unit = document.getElementById('streak-odometer-unit');
+      if (crucible) crucible.style.borderColor = `${activeTheme.color}55`;
+      if (glow) glow.style.backgroundColor = activeTheme.color;
+      if (unit) unit.style.color = activeTheme.color;
+    }
+
+    function setStreakTheme(themeKey) {
+      if (!STREAK_THEMES[themeKey]) return;
+      activeStreakTheme = themeKey;
+      localStorage.setItem('gitstreak_theme', themeKey);
+      const theme = STREAK_THEMES[themeKey];
+
+      const glow = document.getElementById('crucible-radial-glow');
+      const unit = document.getElementById('streak-odometer-unit');
+      const odo = document.getElementById('streak-count-odometer');
+      const mult = document.getElementById('streak-multiplier-val');
+      const slider = document.getElementById('streak-sim-slider');
+
+      if (glow) glow.style.backgroundColor = theme.color;
+      if (unit) unit.style.color = theme.color;
+      if (mult) mult.style.color = theme.color;
+      if (slider) slider.style.accentColor = theme.color;
+      if (odo) odo.style.textShadow = `0 0 20px ${theme.color}80`;
+
+      updateStreakUI(currentStreakDays);
+
+      if (flameCanvas) {
+        const width = flameCanvas.width / streakFlameDpr;
+        const height = flameCanvas.height / streakFlameDpr;
+        spawnFlameEmbersExplosion(width / 2, height / 2, 35);
+      }
+      playTactileClick();
+    }
+
+    function simulateStreakDays(days) {
+      const d = Math.max(0, parseInt(days, 10) || 0);
+      currentStreakDays = d;
+      const simVal = document.getElementById('streak-sim-val');
+      if (simVal) simVal.textContent = `${d}d`;
+      updateStreakUI(d);
+    }
+
+    function resetLiveStreak() {
+      currentStreakDays = realComputedStreakDays;
+      const slider = document.getElementById('streak-sim-slider');
+      const simVal = document.getElementById('streak-sim-val');
+      if (slider) slider.value = currentStreakDays;
+      if (simVal) simVal.textContent = `${currentStreakDays}d`;
+      updateStreakUI(currentStreakDays);
+      playTactileClick();
     }
 
     function showStreakMilestoneToast(tier, days) {

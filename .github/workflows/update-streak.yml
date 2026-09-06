@@ -1,0 +1,49 @@
+name: Update GitStreak Flame
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Color theme (github, inferno, arcane, cyber, zen, legendary, void)'
+        required: false
+        default: 'github'
+      streak:
+        description: 'Optional streak override (leave empty for real data)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  update-streak:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate GitStreak SVG
+        run: |
+          THEME="${{ github.event.inputs.theme }}"
+          [ -z "$THEME" ] && THEME="github"
+          
+          STREAK="${{ github.event.inputs.streak }}"
+          if [ -n "$STREAK" ]; then
+            node scripts/generate-streak-svg.js --theme="$THEME" --streak="$STREAK"
+          else
+            node scripts/generate-streak-svg.js --theme="$THEME"
+          fi
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action Bot"
+          git add assets/git-streak.svg
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(streak): update GitStreak flame [skip ci]" && git push)
