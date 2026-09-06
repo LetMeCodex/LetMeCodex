@@ -42,7 +42,7 @@
       <text x="323" y="12" text-anchor="middle" class="mono" fill="#7D8590" font-size="10" font-weight="400">Sat</text>
   </g>
 
-  <!-- Left Radar & Planetary Sensor -->
+  <!-- Left Radar and Planetary Sensor -->
   <g transform="translate(20, 10)">
     <circle cx="50" cy="80" r="38" fill="none" stroke="#10B981" stroke-opacity="0.2" stroke-dasharray="3 3"/>
     <circle cx="50" cy="80" r="24" fill="none" stroke="#10B981" stroke-opacity="0.3"/>
@@ -56,7 +56,7 @@
     <g transform="translate(0, 0)">
       <rect width="180" height="20" rx="4" fill="#10B981" fill-opacity="0.12" stroke="#10B981" stroke-opacity="0.3" stroke-width="1"/>
       <circle cx="10" cy="10" r="3" fill="#10B981" class="beacon"/>
-      <text x="20" y="14" class="mono" fill="#10B981" font-size="10" font-weight="700">TODAY's EASTER EGG</text>
+      <text x="20" y="14" class="mono" fill="#10B981" font-size="10" font-weight="700">TODAY&apos;S EASTER EGG</text>
       <text x="200" y="14" class="mono" fill="#7D8590" font-size="10">IST DATE: 2026-09-07</text>
     </g>
 
@@ -65,7 +65,7 @@
     </text>
 
     <text x="0" y="64" class="inter" fill="#7D8590" font-size="12" font-style="italic">
-      "Continuous stream of green phosphor commits. Zero dropped frames."
+      &quot;Continuous stream of green phosphor commits. Zero dropped frames.&quot;
     </text>
 
     <!-- Palette Swatches for Today -->
@@ -82,7 +82,7 @@
       
         <rect x="209" y="1" width="12" height="12" rx="2" fill="#34D399" stroke="#21262D" stroke-width="1"/>
       
-      <text x="238" y="10" class="mono" fill="#7D8590" font-size="10">• Rough.js Circuit Traces & Terminal Bracket Geometries</text>
+      <text x="238" y="10" class="mono" fill="#7D8590" font-size="10">• Rough.js Circuit Traces &amp; Terminal Brackets</text>
     </g>
   </g>
 

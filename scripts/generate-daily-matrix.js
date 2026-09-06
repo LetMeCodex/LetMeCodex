@@ -1,5 +1,15 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
+
+function xmlEscape(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
 
 const SEVEN_DAY_EASTER_EGGS = {
   0: {
@@ -12,7 +22,7 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#161B22', '#78350F', '#D97706', '#F59E0B', '#FDE047'],
     symbol: '☀️',
     quote: '"Stellar fusion core ignited. High-energy radiation sweep active."',
-    sketchDetail: 'Rough.js Hand-Drawn Solar Corona & Stellar Flare Overlay'
+    sketchDetail: 'Rough.js Hand-Drawn Solar Corona & Stellar Flare'
   },
   1: {
     day: 1,
@@ -24,7 +34,7 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#0D1117', '#064E3B', '#059669', '#10B981', '#34D399'],
     symbol: '⚡',
     quote: '"Continuous stream of green phosphor commits. Zero dropped frames."',
-    sketchDetail: 'Rough.js Circuit Traces & Terminal Bracket Geometries'
+    sketchDetail: 'Rough.js Circuit Traces & Terminal Brackets'
   },
   2: {
     day: 2,
@@ -36,7 +46,7 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#0E121E', '#312E81', '#6366F1', '#06B6D4', '#38BDF8'],
     symbol: '🌌',
     quote: '"Magnetic dipole perturbation. Multi-harmonic ionosphere excitation."',
-    sketchDetail: 'Three.js Orthographic Wave Particles + Dual Sine Arcs'
+    sketchDetail: 'Three.js Orthographic Wave Particles & Dual Sine Arcs'
   },
   3: {
     day: 3,
@@ -48,7 +58,7 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#120F1D', '#701A75', '#C026D3', '#F43F5E', '#FB7185'],
     symbol: '🌆',
     quote: '"Neon wireframe grid extending toward infinite retro outrun horizon."',
-    sketchDetail: 'Rough.js Hachure Halftone Sun & Horizon Grid Lines'
+    sketchDetail: 'Rough.js Hachure Halftone Sun & Horizon Grid'
   },
   4: {
     day: 4,
@@ -60,7 +70,7 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#0D1518', '#134E4A', '#0D9488', '#14B8A6', '#5EEAD4'],
     symbol: '🌊',
     quote: '"Surface tension equilibrium. Sub-surface refraction caustics."',
-    sketchDetail: 'Procedural Concentric Caustics & Fluid Wave Propagation'
+    sketchDetail: 'Procedural Concentric Caustics & Fluid Wave'
   },
   5: {
     day: 5,
@@ -71,8 +81,8 @@ const SEVEN_DAY_EASTER_EGGS = {
     accent: '#84CC16',
     palette: ['#0F1612', '#365314', '#65A30D', '#84CC16', '#BEF264'],
     symbol: '🧬',
-    quote: '"Any live cell with two or three live neighbors survives into next generation."',
-    sketchDetail: 'Organic Cellular Spores & Glider Gun Automata Overlay'
+    quote: '"Any live cell with two or three live neighbors survives."',
+    sketchDetail: 'Organic Cellular Spores & Glider Gun Automata'
   },
   6: {
     day: 6,
@@ -84,15 +94,14 @@ const SEVEN_DAY_EASTER_EGGS = {
     palette: ['#161B22', '#631C03', '#BD561D', '#FA7A18', '#FDDF68'],
     symbol: '🎃',
     quote: '"Floating ghost silhouettes, carved pumpkin eyes, and rising embers."',
-    sketchDetail: 'Rough.js Jack-o-Lantern & Ghost Silhouette (Design Spells #321)'
+    sketchDetail: 'Rough.js Jack-o-Lantern & Ghost Silhouette'
   }
 };
 
 const now = new Date();
-// Convert to Indian Standard Time (IST)
 const utcTime = now.getTime();
 const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
-const dayOfWeek = istTime.getUTCDay(); // 0 = Sun, 1 = Mon ...
+const dayOfWeek = istTime.getUTCDay();
 const egg = SEVEN_DAY_EASTER_EGGS[dayOfWeek];
 const istDateString = istTime.toISOString().split('T')[0];
 
@@ -119,7 +128,7 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160
   <g transform="translate(16, 21)">
     <text x="0" y="0" class="mono" fill="#7D8590" font-size="11">02. GITHUB ACTIVITY</text>
     <text x="120" y="0" class="mono" fill="#30363D">•</text>
-    <text x="132" y="0" class="mono" fill="${egg.accent}" font-size="11" font-weight="700">${egg.tag}</text>
+    <text x="132" y="0" class="mono" fill="${egg.accent}" font-size="11" font-weight="700">${xmlEscape(egg.tag)}</text>
   </g>
 
   <!-- 7-Day Quick Pills on Top Right -->
@@ -137,7 +146,7 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160
     }).join('\n    ')}
   </g>
 
-  <!-- Left Radar & Planetary Sensor -->
+  <!-- Left Radar and Planetary Sensor -->
   <g transform="translate(20, 10)">
     <circle cx="50" cy="80" r="38" fill="none" stroke="${egg.accent}" stroke-opacity="0.2" stroke-dasharray="3 3"/>
     <circle cx="50" cy="80" r="24" fill="none" stroke="${egg.accent}" stroke-opacity="0.3"/>
@@ -151,16 +160,16 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160
     <g transform="translate(0, 0)">
       <rect width="180" height="20" rx="4" fill="${egg.accent}" fill-opacity="0.12" stroke="${egg.accent}" stroke-opacity="0.3" stroke-width="1"/>
       <circle cx="10" cy="10" r="3" fill="${egg.accent}" class="beacon"/>
-      <text x="20" y="14" class="mono" fill="${egg.accent}" font-size="10" font-weight="700">TODAY's EASTER EGG</text>
+      <text x="20" y="14" class="mono" fill="${egg.accent}" font-size="10" font-weight="700">TODAY&apos;S EASTER EGG</text>
       <text x="200" y="14" class="mono" fill="#7D8590" font-size="10">IST DATE: ${istDateString}</text>
     </g>
 
     <text x="0" y="44" class="mono" fill="#F0F6FC" font-size="20" font-weight="800">
-      ${egg.symbol} ${egg.name}
+      ${egg.symbol} ${xmlEscape(egg.name)}
     </text>
 
     <text x="0" y="64" class="inter" fill="#7D8590" font-size="12" font-style="italic">
-      ${egg.quote}
+      ${xmlEscape(egg.quote)}
     </text>
 
     <!-- Palette Swatches for Today -->
@@ -169,7 +178,7 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160
       ${egg.palette.map((c, i) => `
         <rect x="${145 + i * 16}" y="1" width="12" height="12" rx="2" fill="${c}" stroke="#21262D" stroke-width="1"/>
       `).join('')}
-      <text x="238" y="10" class="mono" fill="#7D8590" font-size="10">• ${egg.sketchDetail}</text>
+      <text x="238" y="10" class="mono" fill="#7D8590" font-size="10">• ${xmlEscape(egg.sketchDetail)}</text>
     </g>
   </g>
 
@@ -183,4 +192,4 @@ const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 160
 
 const outputPath = path.join(__dirname, '../assets/daily-easter-egg.svg');
 fs.writeFileSync(outputPath, svgContent, 'utf8');
-console.log(`[+] Generated daily easter egg card for ${egg.name} -> ${outputPath}`);
+console.log(`[+] Valid XML SVG generated for ${egg.name} -> ${outputPath}`);

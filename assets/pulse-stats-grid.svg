@@ -1,4 +1,4 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 90" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 90" width="100%" height="100%">
   <defs>
     <style>
       @keyframes flamePulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.2); } }
@@ -63,7 +63,7 @@
       <text x="16" y="10" class="mono" fill="#7D8590" font-size="11">Quartile Target</text>
 
       <text x="0" y="38" class="mono" fill="#38BDF8" font-size="13" font-weight="600">≥ 58 Commits</text>
-      <text x="0" y="54" class="mono" fill="#7D8590" font-size="10">L4 = ⌈0.75 × Max⌉</text>
+      <text x="0" y="54" class="mono" fill="#7D8590" font-size="10">L4 = ceil(0.75 &#215; Max)</text>
     </g>
   </g>
 
@@ -77,8 +77,8 @@
       <rect x="76" y="-3" width="34" height="15" rx="3" fill="rgba(245, 158, 11, 0.15)"/>
       <text x="80" y="8" class="mono" fill="#F59E0B" font-size="9" font-weight="700">4.2x</text>
 
-      <text x="0" y="38" class="mono" fill="#F59E0B" font-size="13" font-weight="700">42 Days</text>
-      <circle cx="65" cy="34" r="3" fill="#F59E0B" class="flame-dot"/>
+      <circle cx="4" cy="34" r="2.5" fill="#F59E0B" class="flame-dot"/>
+      <text x="14" y="38" class="mono" fill="#F59E0B" font-size="13" font-weight="700">42 Days</text>
       <text x="0" y="54" class="mono" fill="#7D8590" font-size="10">Solar Supernova</text>
     </g>
   </g>
