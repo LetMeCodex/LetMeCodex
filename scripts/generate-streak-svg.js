@@ -2,6 +2,14 @@ const fs = require('fs');
 const path = require('path');
 const { TIERS, fetchLetMeCodexContributions, calculateStreakData } = require('./streak-calculator.js');
 
+// Iconic Flame Palette from Image 1017 (Sunday: Solar Supernova - Warm Golden Fire)
+const GOLDEN_FIRE_THEME = {
+  accent: '#F59E0B',
+  palette: ['#161B22', '#78350F', '#D97706', '#F59E0B', '#FDE047'],
+  name: 'Solar Supernova',
+  symbol: '☀️'
+};
+
 const SEVEN_DAY_EASTER_EGGS = {
   0: { day: 0, shortName: 'Sun', name: 'Solar Supernova', accent: '#F59E0B', palette: ['#161B22', '#78350F', '#D97706', '#F59E0B', '#FDE047'], symbol: '☀️' },
   1: { day: 1, shortName: 'Mon', name: 'Cyberpunk Phosphor', accent: '#10B981', palette: ['#0D1117', '#064E3B', '#059669', '#10B981', '#34D399'], symbol: '⚡' },
@@ -12,7 +20,7 @@ const SEVEN_DAY_EASTER_EGGS = {
   6: { day: 6, shortName: 'Sat', name: 'Halloween Spook', accent: '#FA7A18', palette: ['#161B22', '#631C03', '#BD561D', '#FA7A18', '#FDDF68'], symbol: '🎃' },
 };
 
-function renderFlameGraphic(accent, palette, tier, idPrefix = '') {
+function renderFlameGraphic(accent = GOLDEN_FIRE_THEME.accent, palette = GOLDEN_FIRE_THEME.palette, tier = { id: 'hot' }, idPrefix = '') {
   const isDormant = tier.id === 'dormant';
   const isLegendary = tier.id === 'legendary';
   const isMythic = tier.id === 'mythic';
@@ -104,7 +112,7 @@ function renderFlameGraphic(accent, palette, tier, idPrefix = '') {
   `;
 }
 
-function renderEmbers(accent, count = 5) {
+function renderEmbers(accent = GOLDEN_FIRE_THEME.accent, count = 5) {
   const embersData = [
     { x: -14, y: 16, r: 1.4, dur: 1.9, del: 0 },
     { x: -22, y: 12, r: 1.1, dur: 2.3, del: 0.5 },
@@ -117,8 +125,9 @@ function renderEmbers(accent, count = 5) {
   ).join('\n      ');
 }
 
-function buildSingleDayStreakSvg(stats, dayIndex = 1) {
-  const egg = SEVEN_DAY_EASTER_EGGS[dayIndex] || SEVEN_DAY_EASTER_EGGS[1];
+function buildSingleDayStreakSvg(stats, dayIndex = 0) {
+  // Use the exact Golden Fire design from image 1017 as the canonical flame design
+  const egg = (dayIndex !== null && SEVEN_DAY_EASTER_EGGS[dayIndex]) ? SEVEN_DAY_EASTER_EGGS[dayIndex] : GOLDEN_FIRE_THEME;
   const { currentStreak, longestStreak, tier } = stats;
 
   const flameG = renderFlameGraphic(egg.accent, egg.palette, tier);
@@ -133,8 +142,8 @@ function buildSingleDayStreakSvg(stats, dayIndex = 1) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 76" width="100%" height="100%">
   <defs>
     <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.35" />
-      <stop offset="60%" stop-color="${c1}" stop-opacity="0.1" />
+      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.38" />
+      <stop offset="60%" stop-color="${c1}" stop-opacity="0.12" />
       <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
     </radialGradient>
     <linearGradient id="outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
@@ -222,112 +231,44 @@ function buildSingleDayStreakSvg(stats, dayIndex = 1) {
 </svg>`;
 }
 
-function buildCyclingShowcaseStreakSvg(stats) {
+function buildCanonicalStreakSvg(stats) {
+  // Exact flame design from image 1017 (Golden Amber Living Flame)
+  // Clean, persistent, ultra-minimal HUD that compliments the 7-day matrix below
+  const egg = GOLDEN_FIRE_THEME;
   const { currentStreak, longestStreak, tier } = stats;
 
-  const slices = [
-    { day: 0, start: 0, end: 14.28 },
-    { day: 1, start: 14.29, end: 28.57 },
-    { day: 2, start: 28.58, end: 42.85 },
-    { day: 3, start: 42.86, end: 57.14 },
-    { day: 4, start: 57.15, end: 71.42 },
-    { day: 5, start: 71.43, end: 85.71 },
-    { day: 6, start: 85.72, end: 100.0 }
-  ];
+  const flameG = renderFlameGraphic(egg.accent, egg.palette, tier);
+  const embers = renderEmbers(egg.accent, 5);
 
-  let cycleCss = `
-    .cycle-layer { opacity: 0; visibility: hidden; }
-  `;
+  const c0 = egg.palette[0];
+  const c1 = egg.palette[1];
+  const c2 = egg.palette[2];
+  const c3 = egg.palette[3];
+  const c4 = egg.palette[4];
 
-  slices.forEach((s, idx) => {
-    const egg = SEVEN_DAY_EASTER_EGGS[s.day];
-    const sStart = (s.start).toFixed(2);
-    const sMidEnd = (s.end - 0.6).toFixed(2);
-    const sEnd = (s.end).toFixed(2);
-
-    cycleCss += `
-    .cycle-layer-${idx} { animation: streakCycle${idx} 28s infinite; }`;
-
-    if (idx === 0) {
-      cycleCss += `
-      @keyframes streakCycle${idx} {
-        0%, ${sMidEnd}% { opacity: 1; visibility: visible; }
-        ${sEnd}%, 99.2% { opacity: 0; visibility: hidden; }
-        100% { opacity: 1; visibility: visible; }
-      }`;
-    } else if (idx === 6) {
-      cycleCss += `
-      @keyframes streakCycle${idx} {
-        0%, ${(slices[idx-1].end).toFixed(2)}% { opacity: 0; visibility: hidden; }
-        ${(slices[idx-1].end + 0.1).toFixed(2)}%, 99.2% { opacity: 1; visibility: visible; }
-        100% { opacity: 0; visibility: hidden; }
-      }`;
-    } else {
-      cycleCss += `
-      @keyframes streakCycle${idx} {
-        0%, ${(s.start - 0.1).toFixed(2)}% { opacity: 0; visibility: hidden; }
-        ${sStart}%, ${sMidEnd}% { opacity: 1; visibility: visible; }
-        ${sEnd}%, 100% { opacity: 0; visibility: hidden; }
-      }`;
-    }
-  });
-
-  let defsContent = '';
-  let layersContent = '';
-
-  slices.forEach((s, idx) => {
-    const egg = SEVEN_DAY_EASTER_EGGS[s.day];
-    const prefix = `c${idx}_`;
-    const c0 = egg.palette[0];
-    const c1 = egg.palette[1];
-    const c2 = egg.palette[2];
-    const c3 = egg.palette[3];
-    const c4 = egg.palette[4];
-
-    defsContent += `
-    <radialGradient id="${prefix}auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.35" />
-      <stop offset="60%" stop-color="${c1}" stop-opacity="0.1" />
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 76" width="100%" height="100%">
+  <defs>
+    <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="${egg.accent}" stop-opacity="0.38" />
+      <stop offset="60%" stop-color="${c1}" stop-opacity="0.12" />
       <stop offset="100%" stop-color="#0D1117" stop-opacity="0" />
     </radialGradient>
-    <linearGradient id="${prefix}outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="${c1}" />
       <stop offset="45%" stop-color="${c2}" />
       <stop offset="100%" stop-color="${egg.accent}" />
     </linearGradient>
-    <linearGradient id="${prefix}midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="${c2}" />
       <stop offset="55%" stop-color="${egg.accent}" />
       <stop offset="100%" stop-color="${c4}" />
     </linearGradient>
-    <linearGradient id="${prefix}coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <linearGradient id="coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
       <stop offset="0%" stop-color="${egg.accent}" />
       <stop offset="60%" stop-color="${c4}" />
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
-    `;
 
-    const flameG = renderFlameGraphic(egg.accent, egg.palette, tier, prefix);
-    const embs = renderEmbers(egg.accent, 5);
-
-    layersContent += `
-    <!-- Layer ${idx}: ${egg.shortName} (${egg.name}) In Lockstep with Matrix -->
-    <g class="cycle-layer cycle-layer-${idx}">
-      <!-- Flame Stage -->
-      <g transform="translate(48, 38)">
-        ${embs}
-        ${flameG}
-      </g>
-
-      <!-- Label in Active Theme Accent -->
-      <text x="${currentStreak >= 10 ? 138 : 116}" y="36" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
-    </g>
-    `;
-  });
-
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 76" width="100%" height="100%">
-  <defs>
-    ${defsContent}
     <style>
       @keyframes auraBreath {
         0%, 100% { transform: scale(1); opacity: 0.75; }
@@ -367,17 +308,22 @@ function buildCyclingShowcaseStreakSvg(stats) {
       .flame-core-anim { transform-origin: -11px 160px; animation: flameCorePulse 1.4s infinite ease-in-out; }
       .spark-float-anim { transform-origin: -81px -212px; animation: sparkFloat 2s infinite ease-in-out; }
       .ember { animation: emberAscent 2s infinite ease-out; }
-
-      ${cycleCss}
     </style>
   </defs>
 
   <!-- Clean Minimal Frame (76px Height) -->
   <rect width="920" height="76" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1"/>
 
-  <!-- Persistent Base Elements -->
+  <!-- Left: The Living Flame Animation (Exact 1017 Design) -->
+  <g transform="translate(48, 38)">
+    ${embers}
+    ${flameG}
+  </g>
+
+  <!-- Left Center: Streak Count & Tier Tag -->
   <g transform="translate(88, 0)">
     <text x="0" y="49" class="inter" fill="#F0F6FC" font-size="34" font-weight="800" letter-spacing="-1">${currentStreak}</text>
+    <text x="${currentStreak >= 10 ? 50 : 28}" y="36" class="inter" fill="${egg.accent}" font-size="13" font-weight="700" letter-spacing="0.5">DAYS STREAK</text>
     <text x="${currentStreak >= 10 ? 50 : 28}" y="52" class="mono" fill="#8B949E" font-size="11" font-weight="500">${tier.name.toUpperCase()} TIER</text>
   </g>
 
@@ -389,9 +335,6 @@ function buildCyclingShowcaseStreakSvg(stats) {
     <text x="0" y="36" class="mono" fill="#7D8590" font-size="10" letter-spacing="1">LONGEST STREAK</text>
     <text x="0" y="54" class="inter" fill="#F0F6FC" font-size="15" font-weight="700">${longestStreak} Days</text>
   </g>
-
-  <!-- 7 Synchronized Dynamic Layers (Matching Matrix Timeline Exactly) -->
-  ${layersContent}
 </svg>`;
 }
 
@@ -402,8 +345,6 @@ async function main() {
   const istTime = new Date(utcTime + (5.5 * 60 * 60 * 1000));
   const todayDay = istTime.getUTCDay();
 
-  const isCycle = args.includes('--cycle') || (!args.some(a => a.startsWith('--day=') || a.startsWith('--theme=')));
-  
   let targetDay = null;
   const dayArg = args.find(a => a.startsWith('--day='));
   if (dayArg) targetDay = parseInt(dayArg.split('=')[1], 10);
@@ -426,7 +367,6 @@ async function main() {
   if (forcedStreak !== null) {
     stats.currentStreak = forcedStreak;
     if (forcedStreak > stats.longestStreak) stats.longestStreak = forcedStreak;
-    // Re-evaluate tier
     for (const t of TIERS) {
       if (stats.currentStreak >= t.minStreak && stats.currentStreak <= t.maxStreak) {
         stats.tier = t;
@@ -440,30 +380,21 @@ async function main() {
   const assetsDir = path.join(__dirname, '..', 'assets');
   if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
 
-  if (isCycle) {
-    console.log('Generating Synchronized Cycling GitStreak SVG (28s timeline lockstep with matrix)...');
-    const cyclingSvg = buildCyclingShowcaseStreakSvg(stats);
-    const mainPath = path.join(assetsDir, 'git-streak.svg');
-    fs.writeFileSync(mainPath, cyclingSvg);
-    console.log(`Saved cycling streak to ${mainPath}`);
+  // Always generate canonical 1017 flame for git-streak.svg
+  console.log('Generating Canonical 1017 Living Flame GitStreak SVG...');
+  const streakSvg = buildCanonicalStreakSvg(stats);
+  const mainPath = path.join(assetsDir, 'git-streak.svg');
+  fs.writeFileSync(mainPath, streakSvg);
+  console.log(`Saved canonical streak to ${mainPath}`);
 
-    // Also generate static theme SVGs for all 7 days
-    for (let d = 0; d < 7; d++) {
-      const egg = SEVEN_DAY_EASTER_EGGS[d];
-      const singleSvg = buildSingleDayStreakSvg(stats, d);
-      const filename = `git-streak-${egg.shortName.toLowerCase()}.svg`;
-      fs.writeFileSync(path.join(assetsDir, filename), singleSvg);
-    }
-    console.log('Generated static SVGs for all 7 easter egg themes.');
-  } else {
-    const dayIndex = targetDay !== null ? targetDay : todayDay;
-    const egg = SEVEN_DAY_EASTER_EGGS[dayIndex];
-    console.log(`Generating GitStreak for Day ${dayIndex}: ${egg.shortName} (${egg.name})...`);
-    const singleSvg = buildSingleDayStreakSvg(stats, dayIndex);
-    const mainPath = path.join(assetsDir, 'git-streak.svg');
-    fs.writeFileSync(mainPath, singleSvg);
-    console.log(`Saved single-theme streak to ${mainPath}`);
+  // Also update day-specific SVGs
+  for (let d = 0; d < 7; d++) {
+    const egg = SEVEN_DAY_EASTER_EGGS[d];
+    const singleSvg = buildSingleDayStreakSvg(stats, d);
+    const filename = `git-streak-${egg.shortName.toLowerCase()}.svg`;
+    fs.writeFileSync(path.join(assetsDir, filename), singleSvg);
   }
+  console.log('Updated day-specific streak SVGs.');
 }
 
 main().catch(err => {
