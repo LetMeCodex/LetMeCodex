@@ -149,7 +149,34 @@ def generate_animated_avatar(input_path, output_path, mode='all', duration=260, 
     
     filesize_kb = os.path.getsize(output_path) / 1024.0
     print(f"Successfully saved animated avatar to: {output_path}")
-    print(f"File size: {filesize_kb:.1f} KB (Well within GitHub 10MB limit)")
+    print(f"File size: {filesize_kb:.1f} KB")
+
+    # Also generate circular avatar with CRT neon border ring for Profile README
+    circle_path = os.path.join(os.path.dirname(output_path), 'avatar_circle.gif')
+    cx, cy = w // 2, h // 2
+    radius = min(w, h) // 2 - 4
+    mask = Image.new('L', (w, h), 0)
+    draw_m = ImageDraw.Draw(mask)
+    draw_m.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], fill=255)
+
+    circle_frames = []
+    for idx, f in enumerate(frames):
+        bg = Image.new('RGBA', (w, h), (13, 17, 23, 255))
+        cropped = Image.composite(f.convert('RGBA'), bg, mask)
+        draw = ImageDraw.Draw(cropped)
+        accent = (20, 184, 166) if idx == 0 else (56, 189, 248)
+        draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline=accent, width=3)
+        circle_frames.append(cropped.convert('RGB'))
+
+    circle_frames[0].save(
+        circle_path,
+        save_all=True,
+        append_images=circle_frames[1:],
+        duration=duration,
+        loop=0,
+        optimize=True
+    )
+    print(f"Successfully saved circular animated avatar to: {circle_path} ({os.path.getsize(circle_path)/1024.0:.1f} KB)")
 
 def main():
     parser = argparse.ArgumentParser(description="Generate an animated GitHub PFP")

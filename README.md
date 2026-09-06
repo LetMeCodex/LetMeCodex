@@ -5,9 +5,9 @@
   Drop your personal hero banner, greetings, bio, tech stack, and social badges here.
 -->
 <div align="center">
-
-  <!-- Place your personal intro / bio / badges here -->
-
+  <img src="./assets/avatar_circle.gif" width="125" height="125" alt="Tyler Durden — LetMeCodex" />
+  <h1>Hey, I'm <a href="https://github.com/LetMeCodex">Anish</a> 👋</h1>
+  <p><b>I make creative things :)</b></p>
 </div>
 
 <br/>
