@@ -2,37 +2,37 @@
   <defs>
     <!-- Aura Radial Gradient -->
     <radialGradient id="auraGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#F97316" stop-opacity="0.38" />
-      <stop offset="60%" stop-color="#EA580C" stop-opacity="0.14" />
-      <stop offset="100%" stop-color="#EA580C" stop-opacity="0" />
+      <stop offset="0%" stop-color="#3FB950" stop-opacity="0.38" />
+      <stop offset="60%" stop-color="#238636" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#238636" stop-opacity="0" />
     </radialGradient>
 
     <!-- Outer Flame Linear Gradient -->
     <linearGradient id="outerFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#EA580C" />
-      <stop offset="55%" stop-color="#F97316" />
-      <stop offset="100%" stop-color="#FBBF24" />
+      <stop offset="0%" stop-color="#238636" />
+      <stop offset="55%" stop-color="#3FB950" />
+      <stop offset="100%" stop-color="#56D364" />
     </linearGradient>
 
     <!-- Mid Flame Linear Gradient -->
     <linearGradient id="midFlameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#F97316" />
-      <stop offset="65%" stop-color="#FBBF24" />
-      <stop offset="100%" stop-color="#FEF08A" />
+      <stop offset="0%" stop-color="#3FB950" />
+      <stop offset="65%" stop-color="#56D364" />
+      <stop offset="100%" stop-color="#E6EDF3" />
     </linearGradient>
 
     <!-- Inner Core Radiant Gradient -->
     <linearGradient id="innerCoreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" stop-color="#FBBF24" />
-      <stop offset="70%" stop-color="#FEF08A" />
+      <stop offset="0%" stop-color="#56D364" />
+      <stop offset="70%" stop-color="#E6EDF3" />
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
 
     <!-- Milestone Progress Gradient -->
     <linearGradient id="milestoneGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#EA580C" />
-      <stop offset="70%" stop-color="#F97316" />
-      <stop offset="100%" stop-color="#FBBF24" />
+      <stop offset="0%" stop-color="#238636" />
+      <stop offset="70%" stop-color="#3FB950" />
+      <stop offset="100%" stop-color="#56D364" />
     </linearGradient>
 
     <style>
@@ -103,7 +103,7 @@
   <rect width="920" height="280" rx="8" fill="#0D1117" stroke="#30363D" stroke-width="1.2"/>
 
   <!-- Subtle Accent Edge Line -->
-  <line x1="2" y1="2" x2="918" y2="2" stroke="#F97316" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <line x1="2" y1="2" x2="918" y2="2" stroke="#3FB950" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
 
   <!-- ══════════════════════════════════════════════════════════════ -->
   <!-- LEFT: THE LIVING FLAME HERO                                    -->
@@ -111,45 +111,37 @@
   <g transform="translate(0, 0)">
     <!-- Particles Layer -->
     <g>
-      <circle cx="160" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 1.4s; animation-delay: 0.00s;" />
-      <circle cx="138" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 1.7s; animation-delay: 0.25s;" />
-      <circle cx="152" cy="156" r="2" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.0s; animation-delay: 0.50s;" />
-      <circle cx="167" cy="144" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 2.3s; animation-delay: 0.75s;" />
-      <circle cx="117" cy="180" r="3" fill="#FBBF24" class="ember ember-4" style="animation-duration: 2.6s; animation-delay: 1.00s;" />
-      <circle cx="184" cy="168" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 1.4s; animation-delay: 1.25s;" />
-      <circle cx="147" cy="156" r="2" fill="#FEF08A" class="ember ember-0" style="animation-duration: 1.7s; animation-delay: 1.50s;" />
-      <circle cx="143" cy="144" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.0s; animation-delay: 0.00s;" />
-      <circle cx="171" cy="180" r="3" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.3s; animation-delay: 0.25s;" />
-      <circle cx="124" cy="168" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 2.6s; animation-delay: 0.50s;" />
-      <circle cx="164" cy="156" r="2" fill="#FBBF24" class="ember ember-4" style="animation-duration: 1.4s; animation-delay: 0.75s;" />
-      <circle cx="162" cy="144" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 1.7s; animation-delay: 1.00s;" />
-      <circle cx="141" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.0s; animation-delay: 1.25s;" />
-      <circle cx="166" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.3s; animation-delay: 1.50s;" />
-      <circle cx="137" cy="156" r="2" fill="#FBBF24" class="ember ember-2" style="animation-duration: 2.6s; animation-delay: 0.00s;" />
-      <circle cx="146" cy="144" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 1.4s; animation-delay: 0.25s;" />
-      <circle cx="176" cy="180" r="3" fill="#FBBF24" class="ember ember-4" style="animation-duration: 1.7s; animation-delay: 0.50s;" />
-      <circle cx="110" cy="168" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 2.0s; animation-delay: 0.75s;" />
-      <circle cx="157" cy="156" r="2" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.3s; animation-delay: 1.00s;" />
-      <circle cx="149" cy="144" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 2.6s; animation-delay: 1.25s;" />
-      <circle cx="136" cy="180" r="3" fill="#FBBF24" class="ember ember-2" style="animation-duration: 1.4s; animation-delay: 1.50s;" />
-      <circle cx="178" cy="168" r="1.5" fill="#FEF08A" class="ember ember-3" style="animation-duration: 1.7s; animation-delay: 0.00s;" />
-      <circle cx="122" cy="156" r="2" fill="#FBBF24" class="ember ember-4" style="animation-duration: 2.0s; animation-delay: 0.25s;" />
-      <circle cx="159" cy="144" r="1.5" fill="#F97316" class="ember ember-5" style="animation-duration: 2.3s; animation-delay: 0.50s;" />
-      <circle cx="155" cy="180" r="3" fill="#FEF08A" class="ember ember-0" style="animation-duration: 2.6s; animation-delay: 0.75s;" />
-      <circle cx="135" cy="168" r="1.5" fill="#F97316" class="ember ember-1" style="animation-duration: 1.4s; animation-delay: 1.00s;" />
+      <circle cx="160" cy="180" r="3" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 1.4s; animation-delay: 0.00s;" />
+      <circle cx="138" cy="168" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 1.7s; animation-delay: 0.25s;" />
+      <circle cx="152" cy="156" r="2" fill="#56D364" class="ember ember-2" style="animation-duration: 2.0s; animation-delay: 0.50s;" />
+      <circle cx="167" cy="144" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 2.3s; animation-delay: 0.75s;" />
+      <circle cx="117" cy="180" r="3" fill="#56D364" class="ember ember-4" style="animation-duration: 2.6s; animation-delay: 1.00s;" />
+      <circle cx="184" cy="168" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 1.4s; animation-delay: 1.25s;" />
+      <circle cx="147" cy="156" r="2" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 1.7s; animation-delay: 1.50s;" />
+      <circle cx="143" cy="144" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 2.0s; animation-delay: 0.00s;" />
+      <circle cx="171" cy="180" r="3" fill="#56D364" class="ember ember-2" style="animation-duration: 2.3s; animation-delay: 0.25s;" />
+      <circle cx="124" cy="168" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 2.6s; animation-delay: 0.50s;" />
+      <circle cx="164" cy="156" r="2" fill="#56D364" class="ember ember-4" style="animation-duration: 1.4s; animation-delay: 0.75s;" />
+      <circle cx="162" cy="144" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 1.7s; animation-delay: 1.00s;" />
+      <circle cx="141" cy="180" r="3" fill="#E6EDF3" class="ember ember-0" style="animation-duration: 2.0s; animation-delay: 1.25s;" />
+      <circle cx="166" cy="168" r="1.5" fill="#3FB950" class="ember ember-1" style="animation-duration: 2.3s; animation-delay: 1.50s;" />
+      <circle cx="137" cy="156" r="2" fill="#56D364" class="ember ember-2" style="animation-duration: 2.6s; animation-delay: 0.00s;" />
+      <circle cx="146" cy="144" r="1.5" fill="#E6EDF3" class="ember ember-3" style="animation-duration: 1.4s; animation-delay: 0.25s;" />
+      <circle cx="176" cy="180" r="3" fill="#56D364" class="ember ember-4" style="animation-duration: 1.7s; animation-delay: 0.50s;" />
+      <circle cx="110" cy="168" r="1.5" fill="#3FB950" class="ember ember-5" style="animation-duration: 2.0s; animation-delay: 0.75s;" />
     </g>
 
     <!-- Flame Graphics Hierarchy -->
     
       <!-- Flame Radiant Aura -->
-      <circle cx="150" cy="148" r="94.25" fill="url(#auraGlow)" class="flame-aura"/>
+      <circle cx="150" cy="148" r="81.25" fill="url(#auraGlow)" class="flame-aura"/>
 
       
 
       
 
       <!-- Outer Flame Body (Licking tongues) -->
-      <g transform="translate(150, 155) scale(1.28) translate(-150, -155)">
+      <g transform="translate(150, 155) scale(1.15) translate(-150, -155)">
         <!-- Layer 1: Outer Tongue (Broad Body) -->
         <path d="M 150 78 
                  C 178 108, 195 138, 185 174 
@@ -180,7 +172,7 @@
 
     <!-- Flame Base Pedestal Grid -->
     <ellipse cx="150" cy="196" rx="42" ry="7" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-    <ellipse cx="150" cy="196" rx="28" ry="4" fill="#EA580C" opacity="0.35"/>
+    <ellipse cx="150" cy="196" rx="28" ry="4" fill="#238636" opacity="0.35"/>
   </g>
 
   <!-- Vertical Divider 1 -->
@@ -193,21 +185,21 @@
     <!-- Header Tag Badge -->
     <g transform="translate(0, 0)">
       <rect x="0" y="0" width="168" height="24" rx="12" fill="#161B22" stroke="#30363D" stroke-width="1"/>
-      <circle cx="12" cy="12" r="4" fill="#F97316" class="badge-glow"/>
+      <circle cx="12" cy="12" r="4" fill="#3FB950" class="badge-glow"/>
       <text x="24" y="16" class="mono" fill="#F0F6FC" font-size="10" font-weight="700" letter-spacing="1">GITSTREAK ENGINE</text>
     </g>
 
     <!-- Large Streak Counter -->
     <g transform="translate(0, 72)">
-      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="68" font-weight="900" letter-spacing="-2">14</text>
-      <text x="98" y="-26" class="inter" fill="#F97316" font-size="20" font-weight="800">DAYS</text>
+      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="68" font-weight="900" letter-spacing="-2">10</text>
+      <text x="98" y="-26" class="inter" fill="#3FB950" font-size="20" font-weight="800">DAYS</text>
       <text x="98" y="-5" class="mono" fill="#7D8590" font-size="12" font-weight="600" letter-spacing="1">STREAK</text>
     </g>
 
     <!-- Tier and Status Pill -->
     <g transform="translate(0, 108)">
-      <rect x="0" y="0" width="180" height="26" rx="13" fill="#EA580C26" stroke="#F97316" stroke-width="1.2"/>
-      <text x="90" y="17" text-anchor="middle" class="mono" fill="#FEF08A" font-size="11" font-weight="700" letter-spacing="0.5">🔥 BLAZE TIER</text>
+      <rect x="0" y="0" width="180" height="26" rx="13" fill="#23863626" stroke="#3FB950" stroke-width="1.2"/>
+      <text x="90" y="17" text-anchor="middle" class="mono" fill="#E6EDF3" font-size="11" font-weight="700" letter-spacing="0.5">🔥 HOT TIER</text>
     </g>
 
     <!-- Fuel Status Callout -->
@@ -229,12 +221,12 @@
     <!-- Milestone Progress Card -->
     <g transform="translate(0, 0)">
       <text x="0" y="12" class="mono" fill="#7D8590" font-size="11" font-weight="600" letter-spacing="1">NEXT MILESTONE</text>
-      <text x="240" y="12" text-anchor="end" class="mono" fill="#F97316" font-size="12" font-weight="700">30 Days (16 to go)</text>
+      <text x="240" y="12" text-anchor="end" class="mono" fill="#3FB950" font-size="12" font-weight="700">14 Days (4 to go)</text>
 
       <!-- Progress Track -->
       <g transform="translate(0, 24)">
         <rect x="0" y="0" width="240" height="8" rx="4" fill="#161B22" stroke="#21262D" stroke-width="1"/>
-        <rect x="0" y="0" width="8" height="8" rx="4" fill="url(#milestoneGrad)"/>
+        <rect x="0" y="0" width="95" height="8" rx="4" fill="url(#milestoneGrad)"/>
       </g>
     </g>
 
@@ -257,7 +249,7 @@
       <!-- Intensity Factor -->
       <g transform="translate(0, 64)">
         <text x="0" y="0" fill="#7D8590">Heat Intensity</text>
-        <text x="240" y="0" text-anchor="end" class="mono" fill="#FBBF24" font-weight="700">63%</text>
+        <text x="240" y="0" text-anchor="end" class="mono" fill="#56D364" font-weight="700">63%</text>
         <line x1="0" y1="12" x2="240" y2="12" stroke="#21262D" stroke-width="1"/>
       </g>
     </g>
@@ -265,7 +257,7 @@
     <!-- Miniature Heatmap Energy Strip (Feeding toward flame) -->
     <g transform="translate(0, 160)">
       <text x="0" y="12" class="mono" fill="#7D8590" font-size="10" font-weight="600" letter-spacing="1">ENERGY CONNECTOR</text>
-      <text x="240" y="12" text-anchor="end" class="mono" fill="#F97316" font-size="10">20-DAY FUEL</text>
+      <text x="240" y="12" text-anchor="end" class="mono" fill="#3FB950" font-size="10">20-DAY FUEL</text>
 
       <!-- 20 Recent Days Bars -->
       <g transform="translate(-640, -42)">
