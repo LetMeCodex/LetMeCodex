@@ -2,7 +2,7 @@
   <defs>
     <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#05080f"/>
-      <stop offset="60%" stop-color="#3b0764"/>
+      <stop offset="60%" stop-color="#052e16"/>
       <stop offset="100%" stop-color="#020408"/>
     </linearGradient>
 
@@ -20,7 +20,7 @@
       @keyframes glitchText { 0%, 95%, 100% { transform: none; } 96% { transform: skewX(-6deg); } 98% { transform: skewX(6deg); } }
       @keyframes blinkBeacon { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-      .radar-arm { transform-origin: 80px 130px; animation: radarSweep 2.5s infinite linear; }
+      .radar-arm { transform-origin: 80px 130px; animation: radarSweep 4s infinite linear; }
       .bar-anim { animation: barPulse 1.2s infinite ease-in-out alternate; }
       .text-glitch { animation: glitchText 6s infinite ease; }
       .beacon { animation: blinkBeacon 1.5s infinite ease-in-out; }
@@ -29,47 +29,47 @@
   </defs>
 
   <!-- Base Card -->
-  <rect width="850" height="260" rx="16" fill="url(#cardGrad)" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect width="850" height="260" rx="16" fill="url(#cardGrad)" stroke="#00ff66" stroke-opacity="0.5" stroke-width="1.5"/>
 
   <!-- Radar HUD Circle -->
   <g transform="translate(10, 0)">
-    <circle cx="80" cy="130" r="50" fill="none" stroke="#a855f7" stroke-opacity="0.25" stroke-dasharray="3 3"/>
-    <circle cx="80" cy="130" r="32" fill="none" stroke="#a855f7" stroke-opacity="0.35"/>
-    <circle cx="80" cy="130" r="14" fill="none" stroke="#a855f7" stroke-opacity="0.5"/>
-    <circle cx="80" cy="130" r="3" fill="#a855f7" filter="url(#neonPulse)"/>
+    <circle cx="80" cy="130" r="50" fill="none" stroke="#00ff66" stroke-opacity="0.25" stroke-dasharray="3 3"/>
+    <circle cx="80" cy="130" r="32" fill="none" stroke="#00ff66" stroke-opacity="0.35"/>
+    <circle cx="80" cy="130" r="14" fill="none" stroke="#00ff66" stroke-opacity="0.5"/>
+    <circle cx="80" cy="130" r="3" fill="#00ff66" filter="url(#neonPulse)"/>
     <!-- Radar Arm -->
-    <line x1="80" y1="130" x2="130" y2="130" stroke="#a855f7" stroke-width="2" class="radar-arm"/>
+    <line x1="80" y1="130" x2="130" y2="130" stroke="#00ff66" stroke-width="2" class="radar-arm"/>
   </g>
 
   <!-- Header & Live Tag -->
   <g transform="translate(160, 45)">
-    <rect width="180" height="24" rx="6" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1"/>
-    <circle cx="12" cy="12" r="4" fill="#a855f7" class="beacon"/>
-    <text x="24" y="16" class="matrix-font" fill="#d8b4fe" font-size="10" font-weight="bold">STAGE 1: OVERCLOCKED</text>
+    <rect width="180" height="24" rx="6" fill="#00ff66" fill-opacity="0.15" stroke="#00ff66" stroke-width="1"/>
+    <circle cx="12" cy="12" r="4" fill="#00ff66" class="beacon"/>
+    <text x="24" y="16" class="matrix-font" fill="#86efac" font-size="10" font-weight="bold">STAGE 0: AWAKENING</text>
     
-    <text x="520" y="16" text-anchor="end" class="matrix-font" fill="#64748b" font-size="11">DATE: 2026-09-06 // MONDAY</text>
+    <text x="520" y="16" text-anchor="end" class="matrix-font" fill="#64748b" font-size="11">DATE: 2026-09-06 // SUNDAY</text>
   </g>
 
   <!-- Title Mode -->
   <g transform="translate(160, 100)">
     <text x="0" y="0" class="matrix-font text-glitch" fill="#ffffff" font-size="22" font-weight="900" letter-spacing="1">
-      OVERCLOCK OVERDRIVE // NEON PROTOCOL
+      MATRIX REBOOT // SEED PROTOCOL
     </text>
-    <text x="0" y="24" class="matrix-font" fill="#d8b4fe" font-size="12" font-style="italic">
-      "I can only show you the door. You have to walk through it."
+    <text x="0" y="24" class="matrix-font" fill="#86efac" font-size="12" font-style="italic">
+      "The Matrix is everywhere. It is all around us."
     </text>
   </g>
 
   <!-- Easter Egg Box -->
   <g transform="translate(160, 155)">
-    <rect width="520" height="42" rx="8" fill="#010308" stroke="#a855f7" stroke-opacity="0.4" stroke-width="1"/>
-    <text x="16" y="26" class="matrix-font" fill="#a855f7" font-size="12" font-weight="bold">
-      🕹️ Konami Code Active: [UP, UP, DOWN, DOWN, LEFT, RIGHT, B, A]
+    <rect width="520" height="42" rx="8" fill="#010308" stroke="#00ff66" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="16" y="26" class="matrix-font" fill="#00ff66" font-size="12" font-weight="bold">
+      🐰 Secret: Follow the white rabbit down the terminal rabbit hole.
     </text>
   </g>
 
   <!-- Interactive Equalizer Bars -->
-  <g transform="translate(710, 197)" fill="#a855f7">
+  <g transform="translate(710, 197)" fill="#00ff66">
     <rect x="0" y="-8" width="5" height="15" rx="2" class="bar-anim" style="animation-delay: 0.1s"/>
     <rect x="10" y="-14" width="5" height="25" rx="2" class="bar-anim" style="animation-delay: 0.4s"/>
     <rect x="20" y="-22" width="5" height="35" rx="2" class="bar-anim" style="animation-delay: 0.2s"/>
