@@ -205,10 +205,11 @@ async function buildActivitySvg(forcedDay = null) {
       // Highlight selected cell from screenshot (12 Feb 2026: 0 contributions) around col 22, row 4
       const isSelectedCell = (dateKey === '2026-02-12');
       const selectionBox = isSelectedCell
-        ? `<rect x="${colX - 2}" y="${cellY - 2}" width="15" height="15" rx="3" fill="none" stroke="#FFFFFF" stroke-width="2"/>`
+        ? `<rect x="${colX - 2}" y="${cellY - 2}" width="15" height="15" rx="3" fill="none" class="selected-box"/>`
         : '';
 
-      cellsSvg += `\n    <rect x="${colX}" y="${cellY}" width="11" height="11" rx="2" fill="${color}" ${strokeAttr}/>${selectionBox}`;
+      const animClass = level > 0 ? `class="rw-${w % 8}"` : '';
+      cellsSvg += `\n    <rect x="${colX}" y="${cellY}" width="11" height="11" rx="2" fill="${color}" ${strokeAttr} ${animClass}/>${selectionBox}`;
     }
   }
 
@@ -242,9 +243,35 @@ async function buildActivitySvg(forcedDay = null) {
         0%, 100% { transform: translateY(0); opacity: 0.3; }
         50% { transform: translateY(-8px) scale(1.3); opacity: 0.9; }
       }
+      @keyframes rippleWave {
+        0%, 100% { opacity: 0.85; filter: brightness(1); }
+        35% { opacity: 1; filter: brightness(1.45); }
+        70% { opacity: 0.85; filter: brightness(1); }
+      }
+      @keyframes selectedPulse {
+        0%, 100% { stroke: #FFFFFF; stroke-width: 1.5; opacity: 0.7; }
+        50% { stroke: #FFFFFF; stroke-width: 2.2; opacity: 1; }
+      }
+      @keyframes replayWiggle {
+        0%, 88%, 100% { transform: scale(1); }
+        92% { transform: scale(1.2) rotate(8deg); }
+        96% { transform: scale(1.1) rotate(-4deg); }
+      }
+
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
       .particle { animation: emberFloat infinite ease-in-out; }
+      .selected-box { animation: selectedPulse 2s infinite ease-in-out; }
+      .replay-btn { animation: replayWiggle 5s infinite ease-in-out; transform-origin: center; }
+
+      .rw-0 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.0s; }
+      .rw-1 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.35s; }
+      .rw-2 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.7s; }
+      .rw-3 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.05s; }
+      .rw-4 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.4s; }
+      .rw-5 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 1.75s; }
+      .rw-6 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 2.1s; }
+      .rw-7 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 2.45s; }
     </style>
   </defs>
 
