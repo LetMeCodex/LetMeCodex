@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 import os
 import subprocess
 import argparse
@@ -41,30 +41,38 @@ def run_cmd(cmd, cwd=ROOT_DIR):
 def set_theme(target, push=True):
     print("\n" + "="*58)
     if target == "cycle":
-        print(" [SHOWCASE] Activating ALL 7 DAYS AUTO-MORPH SHOWCASE...")
-        cmd = "node scripts/generate-github-activity.js --cycle"
-        commit_msg = "feat(matrix): activate 7-day auto-morph showcase animation"
+        print(" [SHOWCASE] Activating ALL 7 DAYS AUTO-MORPH SHOWCASE for Matrix & Streak...")
+        cmd_matrix = "node scripts/generate-github-activity.js --cycle"
+        cmd_streak = "node scripts/generate-streak-svg.js --cycle"
+        commit_msg = "feat(matrix+streak): activate synchronized 7-day auto-morph showcase animation"
     elif target == "today":
-        print(" [SYNC] Syncing to Current Real-World Calendar Day...")
-        cmd = "node scripts/generate-github-activity.js"
-        commit_msg = "chore(matrix): sync matrix to today real calendar day"
+        print(" [SYNC] Syncing Matrix & Streak to Current Real-World Calendar Day...")
+        cmd_matrix = "node scripts/generate-github-activity.js"
+        cmd_streak = "node scripts/generate-streak-svg.js"
+        commit_msg = "chore(matrix+streak): sync matrix and streak to today real calendar day"
     else:
         day_idx = int(target)
         dname, tname, color, sym = DAY_NAMES[day_idx]
-        print(f" {sym} Setting Matrix Theme -> {dname}: {tname} ({color})...")
-        cmd = f"node scripts/generate-github-activity.js --day={day_idx}"
-        commit_msg = f"feat(matrix): switch active theme to {dname} ({tname})"
+        print(f" {sym} Setting Matrix & Streak Theme -> {dname}: {tname} ({color})...")
+        cmd_matrix = f"node scripts/generate-github-activity.js --day={day_idx}"
+        cmd_streak = f"node scripts/generate-streak-svg.js --day={day_idx}"
+        commit_msg = f"feat(matrix+streak): switch active theme to {dname} ({tname})"
 
-    print(f"[+] Running: {cmd}")
-    res = run_cmd(cmd)
-    if res.returncode != 0:
+    print(f"[+] Running: {cmd_matrix}")
+    res1 = run_cmd(cmd_matrix)
+    print(res1.stdout.strip())
+
+    print(f"[+] Running: {cmd_streak}")
+    res2 = run_cmd(cmd_streak)
+    print(res2.stdout.strip())
+
+    if res1.returncode != 0 or res2.returncode != 0:
         print("[!] Generation failed.")
         return False
-    print(res.stdout.strip())
 
     if push:
         print("\n[+] Staging and committing changes...")
-        run_cmd("git add assets/github-activity*.svg")
+        run_cmd("git add assets/github-activity*.svg assets/git-streak*.svg")
         c_res = run_cmd(f'git commit -m "{commit_msg}"')
         print(c_res.stdout.strip() or "No new diff to commit.")
         print("[+] Pushing to GitHub remote (origin/main)...")
