@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1500" width="100%" height="100%">
+  <defs>
+    <!-- Background Dot Pattern -->
+    <pattern id="dotGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <circle cx="24" cy="24" r="1.5" fill="#DDD9CC" opacity="0.65" />
+    </pattern>
+
+    <!-- Drop Shadows -->
+    <filter id="tileShadow" x="-30%" y="-25%" width="160%" height="175%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#44403c" flood-opacity="0.12" />
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#44403c" flood-opacity="0.08" />
+    </filter>
+
+    <filter id="slabShadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="16" flood-color="#78716c" flood-opacity="0.10" />
+    </filter>
+
+    <filter id="crystalGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Gradients -->
+    <linearGradient id="crystalTopLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c4b5fd" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <linearGradient id="crystalTopRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+    <linearGradient id="crystalBotLeft" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a78bfa" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="crystalBotRight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6d28d9" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </linearGradient>
+
+    <!-- Water Canal Gradient -->
+    <linearGradient id="waterFlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#cce7eb" />
+      <stop offset="50%" stop-color="#b6dee3" />
+      <stop offset="100%" stop-color="#cce7eb" />
+    </linearGradient>
+
+    <!-- Glass Shrine -->
+    <linearGradient id="glassFace" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(215, 235, 237, 0.65)" />
+      <stop offset="100%" stop-color="rgba(182, 218, 222, 0.35)" />
+    </linearGradient>
+
+    <!-- Rocket Flame -->
+    <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="35%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    /* <![CDATA[ */
+    /* Fonts and Typography */
+    .serif-title { font-family: 'Playfair Display', 'Bodoni MT', 'Didot', Georgia, serif; font-weight: 700; }
+    .serif-italic { font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
+    .mono-meta { font-family: 'SF Mono', 'Geist Mono', 'Cascadia Code', Menlo, monospace; }
+    .sans-label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 700; }
+
+    /* Animations */
+    @keyframes crystalHover {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-16px) rotate(1.5deg); }
+    }
+    .anim-crystal {
+      animation: crystalHover 4s ease-in-out infinite;
+      transform-origin: 1200px 700px;
+    }
+
+    @keyframes pulseData {
+      0% { stroke-dashoffset: 96; }
+      100% { stroke-dashoffset: 0; }
+    }
+    .water-stream {
+      stroke-dasharray: 12, 20;
+      animation: pulseData 3s linear infinite;
+    }
+
+    @keyframes rocketHover {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(-1deg); }
+    }
+    .anim-rocket {
+      animation: rocketHover 3.2s ease-in-out infinite;
+      transform-origin: 1720px 1230px;
+    }
+
+    @keyframes flameFlicker {
+      0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
+      50% { transform: scaleY(1.25) scaleX(0.92); opacity: 1; }
+    }
+    .anim-flame {
+      animation: flameFlicker 0.35s ease-in-out infinite alternate;
+      transform-origin: 1720px 1290px;
+    }
+
+    @keyframes gyroSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .anim-gyro {
+      animation: gyroSpin 16s linear infinite;
+      transform-origin: 1220px 340px;
+    }
+
+    @keyframes dishSway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(4deg); }
+    }
+    .anim-dish-1 { animation: dishSway 4.5s ease-in-out infinite; transform-origin: 1870px 390px; }
+    .anim-dish-2 { animation: dishSway 3.8s ease-in-out infinite reverse; transform-origin: 1960px 345px; }
+    .anim-dish-3 { animation: dishSway 4.2s ease-in-out infinite 1s; transform-origin: 2050px 410px; }
+
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .anim-blink { animation: blink 1s steps(1) infinite; }
+
+    @keyframes birdDrift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(12px, -6px); }
+    }
+    .anim-bird { animation: birdDrift 6s ease-in-out infinite; }
+
+    .tile-badge {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .tile-badge:hover {
+      transform: translateY(-8px);
+    }
+    /* ]]> */
+  </style>
+
+  <!-- ================= BACKGROUND CANVAS ================= -->
+  <rect width="2400" height="1500" fill="#F6F5EF" />
+  <rect width="2400" height="1500" fill="url(#dotGrid)" />
+
+  <!-- Subtle Outer Border -->
+  <rect x="40" y="40" width="2320" height="1420" fill="none" stroke="#E5E2D5" stroke-width="1" />
+
+  <!-- ================= SEAGULLS / BIRDS ================= -->
+  <g class="anim-bird" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round">
+    <path d="M 680 430 Q 692 422 704 430 Q 716 422 728 430" />
+    <path d="M 720 460 Q 730 454 740 460 Q 750 454 760 460" />
+    <path d="M 1660 370 Q 1672 362 1684 370 Q 1696 362 1708 370" />
+    <path d="M 1720 400 Q 1730 394 1740 400 Q 1750 394 1760 400" />
+  </g>
+
+  <!-- ================= TOP LEFT HEADER ================= -->
+  <g id="header-top-left">
+    <text x="140" y="145" class="serif-title" font-size="64" fill="#1c1917" letter-spacing="2">TECH STACK</text>
+    <text x="140" y="195" class="serif-italic" font-size="24" fill="#78716c">Tools that turn ideas into reality.</text>
+    <line x1="140" y1="230" x2="880" y2="230" stroke="#d6d3c7" stroke-width="1.5" />
+    <text x="140" y="270" class="mono-meta" font-size="14" fill="#78716c" letter-spacing="5">ANISH JHA / SELECTED TOOLS / 2026</text>
+  </g>
+
+  <!-- ================= TOP RIGHT HEADER ================= -->
+  <g id="header-top-right">
+    <text x="1560" y="135" class="serif-italic" font-size="22" fill="#57534e">A curated set of technologies</text>
+    <text x="1560" y="168" class="serif-italic" font-size="22" fill="#57534e">I use to design, develop and ship</text>
+    <text x="1560" y="201" class="serif-italic" font-size="22" fill="#57534e">interactive experiences on the web.</text>
+
+    <!-- Checklist with dot marker -->
+    <circle cx="2160" cy="128" r="5" fill="#1c1917" />
+    <line x1="2160" y1="144" x2="2160" y2="258" stroke="#d6d3c7" stroke-width="1.5" />
+    <g class="mono-meta" font-size="13" fill="#78716c" letter-spacing="3">
+      <text x="2185" y="133">BUILD</text>
+      <text x="2185" y="163">EXPLORE</text>
+      <text x="2185" y="193">CREATE</text>
+      <text x="2185" y="223">IMPROVE</text>
+      <text x="2185" y="253">REPEAT</text>
+    </g>
+  </g>
+
+  <!-- ================= WATER CANALS / AQUEDUCTS ================= -->
+  <g id="water-canals">
+    <!-- Canal: Center to 01 Web -->
+    <path d="M 1120 780 L 580 580" fill="none" stroke="url(#waterFlow)" stroke-width="26" stroke-linecap="round" />
+    <path d="M 1120 780 L 580 580" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 02 3D -->
+    <path d="M 1200 730 L 1220 460" fill="none" stroke="url(#waterFlow)" stroke-width="28" stroke-linecap="round" />
+    <path d="M 1200 730 L 1220 460" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 03 Motion -->
+    <path d="M 1280 770 L 1820 560" fill="none" stroke="url(#waterFlow)" stroke-width="26" stroke-linecap="round" />
+    <path d="M 1280 770 L 1820 560" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 04 Graphics -->
+    <path d="M 1110 830 L 530 920" fill="none" stroke="url(#waterFlow)" stroke-width="26" stroke-linecap="round" />
+    <path d="M 1110 830 L 530 920" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 05 Browser -->
+    <path d="M 1290 830 L 1860 920" fill="none" stroke="url(#waterFlow)" stroke-width="26" stroke-linecap="round" />
+    <path d="M 1290 830 L 1860 920" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 06 Engineering -->
+    <path d="M 1130 870 L 680 1200" fill="none" stroke="url(#waterFlow)" stroke-width="28" stroke-linecap="round" />
+    <path d="M 1130 870 L 680 1200" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+
+    <!-- Canal: Center to 07 Deployment -->
+    <path d="M 1270 870 L 1720 1200" fill="none" stroke="url(#waterFlow)" stroke-width="28" stroke-linecap="round" />
+    <path d="M 1270 870 L 1720 1200" fill="none" stroke="#72b5bc" stroke-width="2" class="water-stream" />
+  </g>
+
+  <!-- ================= CENTRAL MONOLITH ISLAND ================= -->
+  <g id="central-island">
+    <!-- Water Moat Ring -->
+    <ellipse cx="1200" cy="840" rx="340" ry="170" fill="#cce7eb" stroke="#a4d3d8" stroke-width="3" />
+
+    <!-- Main Stepped Isometric Slab -->
+    <g filter="url(#slabShadow)">
+      <!-- Base Slab -->
+      <path d="M 1200 700 L 1440 820 L 1200 940 L 960 820 Z" fill="#E8E5DC" />
+      <path d="M 960 820 L 1200 940 L 1200 985 L 960 865 Z" fill="#C0BAAC" />
+      <path d="M 1200 940 L 1440 820 L 1440 865 L 1200 985 Z" fill="#9E988A" />
+
+      <!-- Inner Stepped Plinth -->
+      <path d="M 1200 730 L 1380 820 L 1200 910 L 1020 820 Z" fill="#F0EDE4" stroke="#DBD7C9" stroke-width="1.5" />
+    </g>
+
+    <!-- Miniature Trees around Island -->
+    <!-- Tree 1 (Left) -->
+    <line x1="1005" y1="830" x2="1005" y2="850" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1005" cy="824" r="14" fill="#607d67" />
+    <circle cx="1001" cy="820" r="9" fill="#75977d" />
+
+    <!-- Tree 2 (Top Left) -->
+    <line x1="1070" y1="770" x2="1070" y2="790" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1070" cy="764" r="13" fill="#607d67" />
+    <circle cx="1067" cy="760" r="8" fill="#75977d" />
+
+    <!-- Tree 3 (Bottom Left) -->
+    <line x1="1080" y1="895" x2="1080" y2="915" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1080" cy="889" r="14" fill="#607d67" />
+
+    <!-- Tree 4 (Right) -->
+    <line x1="1395" y1="830" x2="1395" y2="850" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1395" cy="824" r="14" fill="#607d67" />
+
+    <!-- Tree 5 (Bottom Right) -->
+    <line x1="1320" y1="895" x2="1320" y2="915" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+    <circle cx="1320" cy="889" r="14" fill="#607d67" />
+
+    <!-- Glass Shrine Cuboid -->
+    <g id="glass-shrine">
+      <!-- Back Wall -->
+      <polygon points="1120,760 1280,760 1280,875 1120,875" fill="rgba(205, 230, 233, 0.4)" stroke="#9bc2c5" stroke-width="1.5" />
+      
+      <!-- Creed Text Inside Shrine -->
+      <text x="1200" y="805" text-anchor="middle" class="serif-title" font-size="22" font-weight="700" fill="#292524" letter-spacing="4">CREATE</text>
+      <text x="1200" y="837" text-anchor="middle" class="serif-title" font-size="22" font-weight="700" fill="#292524" letter-spacing="4">BUILD</text>
+      <text x="1200" y="869" text-anchor="middle" class="serif-title" font-size="22" font-weight="700" fill="#292524" letter-spacing="4">SHIP</text>
+
+      <!-- Glass Front Pillars & Top Face -->
+      <polygon points="1105,790 1200,740 1295,790 1200,840" fill="url(#glassFace)" stroke="#89b7ba" stroke-width="1.5" />
+      <line x1="1105" y1="790" x2="1105" y2="905" stroke="#89b7ba" stroke-width="2" />
+      <line x1="1200" y1="840" x2="1200" y2="955" stroke="#89b7ba" stroke-width="2" />
+      <line x1="1295" y1="790" x2="1295" y2="905" stroke="#89b7ba" stroke-width="2" />
+      <polygon points="1105,905 1200,955 1295,905 1200,855" fill="none" stroke="#89b7ba" stroke-width="1.5" />
+    </g>
+
+    <!-- Levitating Crystal Monolith (Purple Octahedron) -->
+    <g class="anim-crystal" filter="url(#crystalGlow)">
+      <!-- Crystal Shadow on glass top -->
+      <ellipse cx="1200" cy="740" rx="35" ry="12" fill="rgba(109, 40, 217, 0.25)" />
+
+      <!-- Upper Facets -->
+      <polygon points="1200,580 1140,680 1200,730" fill="url(#crystalTopLeft)" />
+      <polygon points="1200,580 1200,730 1260,680" fill="url(#crystalTopRight)" />
+      <!-- Lower Facets -->
+      <polygon points="1200,795 1140,680 1200,730" fill="url(#crystalBotLeft)" />
+      <polygon points="1200,795 1200,730 1260,680" fill="url(#crystalBotRight)" />
+
+      <!-- Center Specular Highlight Line -->
+      <line x1="1200" y1="580" x2="1200" y2="795" stroke="#ede9fe" stroke-width="2" opacity="0.8" />
+    </g>
+  </g>
+
+  <!-- ================= 01 / WEB ISLAND ================= -->
+  <g id="zone-01-web">
+    <!-- Titles & Annotations -->
+    <text x="140" y="370" class="serif-title" font-size="34" fill="#1c1917">01 / WEB</text>
+    <text x="140" y="405" class="serif-italic" font-size="22" fill="#57534e">Build interfaces that feel alive.</text>
+    <text x="140" y="445" class="serif-italic" font-size="18" fill="#78716c">From design to delightful interfaces.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 460 480 L 800 610 L 460 740 L 120 610 Z" fill="#E8E5DC" />
+      <path d="M 120 610 L 460 740 L 460 775 L 120 645 Z" fill="#C0BAAC" />
+      <path d="M 460 740 L 800 610 L 800 645 L 460 775 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Desktop Screen with Code & Shrub -->
+    <g id="diorama-web-screen">
+      <!-- Stand -->
+      <rect x="255" y="555" width="20" height="30" fill="#a8a29e" />
+      <ellipse cx="265" cy="585" rx="22" ry="7" fill="#78716c" />
+      <!-- Monitor Frame -->
+      <rect x="180" y="475" width="170" height="110" rx="8" fill="#3a3734" stroke="#292524" stroke-width="2" />
+      <!-- Screen -->
+      <rect x="190" y="485" width="150" height="90" rx="4" fill="#1c1917" />
+      <!-- Code Syntax Lines -->
+      <line x1="205" y1="505" x2="260" y2="505" stroke="#38bdf8" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="205" y1="525" x2="295" y2="525" stroke="#f472b6" stroke-width="3.5" stroke-linecap="round" />
+      <line x1="205" y1="545" x2="250" y2="545" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round" />
+      <!-- Blinking Cursor -->
+      <rect x="258" y="538" width="7" height="12" fill="#38bdf8" class="anim-blink" />
+      <!-- Shrub behind monitor -->
+      <circle cx="355" cy="485" r="16" fill="#607d67" />
+      <circle cx="365" cy="495" r="12" fill="#75977d" />
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- Row 1: React, Vite, Tailwind -->
+    <!-- 1. React -->
+    <g class="tile-badge" transform="translate(390, 480)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <ellipse cx="36" cy="36" rx="20" ry="7" fill="none" stroke="#0284c7" stroke-width="3" transform="rotate(30 36 36)" />
+      <ellipse cx="36" cy="36" rx="20" ry="7" fill="none" stroke="#0284c7" stroke-width="3" transform="rotate(90 36 36)" />
+      <ellipse cx="36" cy="36" rx="20" ry="7" fill="none" stroke="#0284c7" stroke-width="3" transform="rotate(150 36 36)" />
+      <circle cx="36" cy="36" r="4.2" fill="#0284c7" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">React</text>
+    </g>
+
+    <!-- 2. Vite -->
+    <g class="tile-badge" transform="translate(485, 480)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="40,15 25,38 35,38 32,57 47,32 37,32" fill="#7c3aed" stroke="#6d28d9" stroke-width="1" />
+      <polygon points="39,17 27,37 35,37 33,53 45,33 37,33" fill="#fbbf24" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Vite</text>
+    </g>
+
+    <!-- 3. Tailwind CSS -->
+    <g class="tile-badge" transform="translate(580, 480)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <path d="M 23 36 C 26 26, 36 26, 39 31 C 42 36, 46 42, 51 42 C 57 42, 59 36, 59 36 C 56 46, 46 46, 43 41 C 40 36, 36 30, 31 30 C 25 30, 23 36, 23 36 Z" fill="#06b6d4" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Tailwind</text>
+    </g>
+
+    <!-- 4. CSS3 -->
+    <g class="tile-badge" transform="translate(675, 480)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="18,16 54,16 50,54 36,58 22,54" fill="#2563eb" />
+      <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">3</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">CSS3</text>
+    </g>
+
+    <!-- Row 2: JavaScript, TypeScript, HTML5 (Staggered forward) -->
+    <!-- 5. JavaScript -->
+    <g class="tile-badge" transform="translate(435, 575)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="10" y="10" width="52" height="52" rx="8" fill="#eab308" />
+      <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="22" fill="#1c1917">JS</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">JavaScript</text>
+    </g>
+
+    <!-- 6. TypeScript -->
+    <g class="tile-badge" transform="translate(535, 575)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="10" y="10" width="52" height="52" rx="8" fill="#d97706" />
+      <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="22" fill="#FFFFFF">TS</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">TypeScript</text>
+    </g>
+
+    <!-- 7. HTML5 -->
+    <g class="tile-badge" transform="translate(635, 575)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="18,16 54,16 50,54 36,58 22,54" fill="#ea580c" />
+      <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">5</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">HTML5</text>
+    </g>
+  </g>
+
+  <!-- ================= 02 / 3D + INTERACTIVE ISLAND ================= -->
+  <g id="zone-02-3d">
+    <!-- Titles & Annotations -->
+    <text x="680" y="210" class="serif-title" font-size="34" fill="#1c1917">02 / 3D + INTERACTIVE</text>
+    <text x="680" y="245" class="serif-italic" font-size="22" fill="#57534e">Turn ideas into interactive worlds.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 1220 280 L 1600 410 L 1220 540 L 840 410 Z" fill="#E8E5DC" />
+      <path d="M 840 410 L 1220 540 L 1220 575 L 840 445 Z" fill="#C0BAAC" />
+      <path d="M 1220 540 L 1600 410 L 1600 445 L 1220 575 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Celestial Gyroscope / Armillary Sphere -->
+    <g id="diorama-armillary">
+      <!-- 3 Angled Standing Pedestals -->
+      <polygon points="1165,400 1195,310 1210,315 1180,405" fill="#d6d1c4" />
+      <polygon points="1275,400 1245,310 1230,315 1260,405" fill="#b3ad9f" />
+      <polygon points="1220,420 1220,320 1228,320 1228,420" fill="#c4beaf" />
+
+      <!-- Center Lavender Planet Core -->
+      <circle cx="1220" cy="340" r="28" fill="#818cf8" opacity="0.3" stroke="#6366f1" stroke-width="1.5" />
+      <circle cx="1220" cy="340" r="10" fill="#a78bfa" />
+
+      <!-- Spinning Celestial Gyro Rings -->
+      <g class="anim-gyro">
+        <ellipse cx="1220" cy="340" rx="46" ry="18" fill="none" stroke="#78716c" stroke-width="2.5" transform="rotate(35 1220 340)" />
+        <ellipse cx="1220" cy="340" rx="46" ry="18" fill="none" stroke="#92400e" stroke-width="2" transform="rotate(-40 1220 340)" />
+      </g>
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- 1. Three.js -->
+    <g class="tile-badge" transform="translate(890, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 56,27 36,39 16,27" fill="#383533" />
+      <polygon points="16,27 36,39 36,57 16,45" fill="#292524" />
+      <polygon points="36,39 56,27 56,45 36,57" fill="#1c1917" />
+      <polygon points="36,25 46,31 36,37 26,31" fill="#a8a29e" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Three.js</text>
+    </g>
+
+    <!-- 2. R3F -->
+    <g class="tile-badge" transform="translate(995, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 58,36 36,57 14,36" fill="#8b5cf6" />
+      <polygon points="36,15 36,57 58,36" fill="#7c3aed" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">R3F</text>
+    </g>
+
+    <!-- 3. Drei -->
+    <g class="tile-badge" transform="translate(1100, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <circle cx="36" cy="36" r="21" fill="none" stroke="#52525b" stroke-width="6.5" />
+      <line x1="36" y1="12" x2="36" y2="60" stroke="#52525b" stroke-width="2.5" />
+      <line x1="12" y1="36" x2="60" y2="36" stroke="#52525b" stroke-width="2.5" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Drei</text>
+    </g>
+
+    <!-- 4. WebGL -->
+    <g class="tile-badge" transform="translate(1205, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,17 57,55 15,55" fill="none" stroke="#0d9488" stroke-width="2" />
+      <line x1="36" y1="17" x2="36" y2="55" stroke="#0d9488" stroke-width="1.5" />
+      <polygon points="36,17 36,55 15,55" fill="rgba(13, 148, 136, 0.25)" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">WebGL</text>
+    </g>
+
+    <!-- 5. GLSL -->
+    <g class="tile-badge" transform="translate(1310, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,17 54,28 36,39 18,28" fill="#818cf8" />
+      <polygon points="36,32 54,43 36,54 18,43" fill="#4f46e5" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GLSL</text>
+    </g>
+
+    <!-- 6. Spline -->
+    <g class="tile-badge" transform="translate(1415, 420)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <!-- Spline 3D S Curve Loop -->
+      <path d="M 22 46 C 20 28, 40 22, 48 30 C 56 38, 42 52, 28 46" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linecap="round" />
+      <circle cx="28" cy="46" r="3.5" fill="#f43f5e" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Spline</text>
+    </g>
+  </g>
+
+  <!-- ================= 03 / MOTION ISLAND ================= -->
+  <g id="zone-03-motion">
+    <!-- Titles & Annotations -->
+    <text x="1750" y="245" class="serif-italic" font-size="20" fill="#78716c">Smooth is a feeling.</text>
+    <text x="1750" y="285" class="serif-title" font-size="34" fill="#1c1917">03 / MOTION</text>
+    <text x="1750" y="320" class="serif-italic" font-size="22" fill="#57534e">Bring experiences to life.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 1940 450 L 2280 580 L 1940 710 L 1600 580 Z" fill="#E8E5DC" />
+      <path d="M 1600 580 L 1940 710 L 1940 745 L 1600 615 Z" fill="#C0BAAC" />
+      <path d="M 1940 710 L 2280 580 L 2280 615 L 1940 745 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Kinetic Antenna Towers -->
+    <g id="diorama-antennae">
+      <!-- Rail Line -->
+      <line x1="1780" y1="520" x2="2160" y2="520" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
+      
+      <!-- Tower 1 -->
+      <line x1="1870" y1="520" x2="1870" y2="400" stroke="#78716c" stroke-width="3.5" />
+      <g class="anim-dish-1">
+        <ellipse cx="1870" cy="390" rx="32" ry="14" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
+      </g>
+
+      <!-- Tower 2 (Tallest) -->
+      <line x1="1960" y1="520" x2="1960" y2="350" stroke="#78716c" stroke-width="3.5" />
+      <g class="anim-dish-2">
+        <ellipse cx="1960" cy="345" rx="34" ry="16" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
+      </g>
+
+      <!-- Tower 3 -->
+      <line x1="2050" y1="520" x2="2050" y2="420" stroke="#78716c" stroke-width="3.5" />
+      <g class="anim-dish-3">
+        <ellipse cx="2050" cy="410" rx="28" ry="12" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
+      </g>
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- 1. GSAP -->
+    <g class="tile-badge" transform="translate(1675, 520)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <path d="M 22 20 Q 36 36 22 52 L 50 52 Q 36 36 50 20 Z" fill="#65a30d" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GSAP</text>
+    </g>
+
+    <!-- 2. ScrollTrigger -->
+    <g class="tile-badge" transform="translate(1780, 520)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <ellipse cx="36" cy="36" rx="21" ry="11" fill="none" stroke="#b45309" stroke-width="3" />
+      <circle cx="36" cy="36" r="5.5" fill="#b45309" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">ScrollTrigger</text>
+    </g>
+
+    <!-- 3. Motion (Framer) -->
+    <g class="tile-badge" transform="translate(1885, 520)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="18,48 36,22 45,36 54,22 72,48" fill="#64748b" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Motion</text>
+    </g>
+
+    <!-- 4. React Spring -->
+    <g class="tile-badge" transform="translate(1990, 520)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <!-- Coil Spring Loop -->
+      <path d="M 20 46 C 20 26, 32 26, 36 36 C 40 46, 52 46, 52 26" fill="none" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Spring</text>
+    </g>
+
+    <!-- 5. Lenis -->
+    <g class="tile-badge" transform="translate(2095, 520)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <path d="M 18 26 Q 36 16 54 26" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" />
+      <path d="M 18 37 Q 36 27 54 37" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" />
+      <path d="M 18 48 Q 36 38 54 48" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Lenis</text>
+    </g>
+  </g>
+
+  <!-- ================= 04 / GRAPHICS ISLAND ================= -->
+  <g id="zone-04-graphics">
+    <!-- Titles & Annotations -->
+    <text x="140" y="780" class="serif-title" font-size="34" fill="#1c1917">04 / GRAPHICS</text>
+    <text x="140" y="815" class="serif-italic" font-size="22" fill="#57534e">Shape visuals with code.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 440 850 L 780 980 L 440 1110 L 100 980 Z" fill="#E8E5DC" />
+      <path d="M 100 980 L 440 1110 L 440 1145 L 100 1015 Z" fill="#C0BAAC" />
+      <path d="M 440 1110 L 780 980 L 780 1015 L 440 1145 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Miniature Art Easel Canvas -->
+    <g id="diorama-easel">
+      <!-- Easel Legs -->
+      <line x1="220" y1="960" x2="270" y2="840" stroke="#78716c" stroke-width="3.5" />
+      <line x1="380" y1="960" x2="330" y2="840" stroke="#78716c" stroke-width="3.5" />
+      <!-- Canvas Board Frame -->
+      <rect x="210" y="840" width="190" height="120" rx="6" fill="#FDFCF7" stroke="#b8b2a5" stroke-width="2.5" />
+      <!-- Landscape Mountain & Sun Artwork -->
+      <path d="M 225 940 Q 290 870 330 910 Q 360 930 385 940 Z" fill="#889985" />
+      <circle cx="350" cy="875" r="12" fill="#d97706" />
+      <!-- Drawn Bezier Vector Line -->
+      <path d="M 225 910 Q 280 890 310 905 T 385 890" fill="none" stroke="#292524" stroke-width="2.5" />
+      <circle cx="385" cy="890" r="4" fill="#ef4444" />
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- 1. SVG -->
+    <g class="tile-badge" transform="translate(435, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <line x1="20" y1="20" x2="52" y2="52" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
+      <line x1="52" y1="20" x2="20" y2="52" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
+      <circle cx="36" cy="36" r="5" fill="#f59e0b" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">SVG</text>
+    </g>
+
+    <!-- 2. Canvas -->
+    <g class="tile-badge" transform="translate(535, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <circle cx="36" cy="36" r="19" fill="none" stroke="#0e7490" stroke-width="5.5" />
+      <path d="M 23 41 Q 36 25 49 41" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Canvas</text>
+    </g>
+
+    <!-- 3. Mermaid -->
+    <g class="tile-badge" transform="translate(635, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <!-- Mermaid Flowchart Node Shape -->
+      <polygon points="36,16 54,36 36,56 18,36" fill="none" stroke="#e11d48" stroke-width="3.5" />
+      <circle cx="36" cy="36" r="4.5" fill="#e11d48" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Mermaid</text>
+    </g>
+
+    <!-- 4. Web Animations API (WAAPI) -->
+    <g class="tile-badge" transform="translate(735, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="14" y="14" width="44" height="44" rx="8" fill="#b0a99b" />
+      <polygon points="31,26 47,36 31,46" fill="#FFFFFF" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">WAAPI</text>
+    </g>
+  </g>
+
+  <!-- ================= 05 / BROWSER ISLAND ================= -->
+  <g id="zone-05-browser">
+    <!-- Titles & Annotations -->
+    <text x="1820" y="730" class="serif-italic" font-size="20" fill="#78716c">Closer to the platform.</text>
+    <text x="1800" y="780" class="serif-title" font-size="34" fill="#1c1917">05 / BROWSER</text>
+    <text x="1800" y="815" class="serif-italic" font-size="22" fill="#57534e">Extend the web.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 1960 850 L 2300 980 L 1960 1110 L 1620 980 Z" fill="#E8E5DC" />
+      <path d="M 1620 980 L 1960 1110 L 1960 1145 L 1620 1015 Z" fill="#C0BAAC" />
+      <path d="M 1960 1110 L 2300 980 L 2300 1015 L 1960 1145 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Browser Window Frame -->
+    <g id="diorama-browser">
+      <rect x="1940" y="830" width="180" height="115" rx="8" fill="#FDFCF7" stroke="#b8b2a5" stroke-width="2.5" />
+      <circle cx="1960" cy="850" r="5" fill="#78716c" />
+      <rect x="1975" y="845" width="125" height="10" rx="3" fill="#e7e5e4" />
+      <rect x="1960" y="875" width="140" height="7" rx="3" fill="#cbd5e1" />
+      <rect x="1960" y="895" width="110" height="7" rx="3" fill="#cbd5e1" />
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- 1. Chrome APIs -->
+    <g class="tile-badge" transform="translate(1660, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <circle cx="36" cy="36" r="18" fill="none" stroke="#2563eb" stroke-width="4" />
+      <path d="M 23 36 Q 36 27 49 36 Q 36 45 23 36 Z" fill="#3b82f6" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Chrome APIs</text>
+    </g>
+
+    <!-- 2. Manifest V3 -->
+    <g class="tile-badge" transform="translate(1765, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="18" y="15" width="36" height="42" rx="5" fill="#d6d3c7" />
+      <line x1="25" y1="26" x2="47" y2="26" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+      <line x1="25" y1="36" x2="47" y2="36" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+      <line x1="25" y1="46" x2="39" y2="46" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Manifest V3</text>
+    </g>
+
+    <!-- 3. Content Scripts -->
+    <g class="tile-badge" transform="translate(1870, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="16" y="16" width="40" height="40" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" />
+      <text x="24" y="42" class="mono-meta" font-size="18" font-weight="700" fill="#2563eb">&lt;/&gt;</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Scripts</text>
+    </g>
+
+    <!-- 4. Service Workers -->
+    <g class="tile-badge" transform="translate(1975, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="18,18 54,18 54,42 36,54 18,42" fill="#718d7f" />
+      <polyline points="27,32 36,41 45,32" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Workers</text>
+    </g>
+
+    <!-- 5. Chrome Storage -->
+    <g class="tile-badge" transform="translate(2080, 890)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <!-- Storage Disk Stack -->
+      <ellipse cx="36" cy="24" rx="18" ry="7" fill="#64748b" />
+      <path d="M 18 24 L 18 36 C 18 40, 54 40, 54 36 L 54 24" fill="#64748b" />
+      <path d="M 18 36 L 18 48 C 18 52, 54 52, 54 48 L 54 36" fill="#475569" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Storage</text>
+    </g>
+  </g>
+
+  <!-- ================= 06 / ENGINEERING ISLAND ================= -->
+  <g id="zone-06-engineering">
+    <!-- Titles & Annotations -->
+    <text x="220" y="1120" class="serif-title" font-size="34" fill="#1c1917">06 / ENGINEERING</text>
+    <text x="220" y="1155" class="serif-italic" font-size="22" fill="#57534e">Develop with confidence.</text>
+    <text x="660" y="1155" class="serif-italic" font-size="20" fill="#78716c">Tools for better builders.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 520 1200 L 940 1330 L 520 1460 L 100 1330 Z" fill="#E8E5DC" />
+      <path d="M 100 1330 L 520 1460 L 520 1495 L 100 1365 Z" fill="#C0BAAC" />
+      <path d="M 520 1460 L 940 1330 L 940 1365 L 520 1495 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Terminal Screen Monitor -->
+    <g id="diorama-terminal">
+      <rect x="230" y="1180" width="160" height="100" rx="6" fill="#3a3734" stroke="#292524" stroke-width="2" />
+      <rect x="240" y="1190" width="140" height="80" rx="3" fill="#1c1917" />
+      <line x1="255" y1="1210" x2="315" y2="1210" stroke="#a3e635" stroke-width="3" stroke-linecap="round" />
+      <line x1="255" y1="1228" x2="355" y2="1228" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+      <rect x="255" y="1240" width="6" height="10" fill="#a3e635" class="anim-blink" />
+      <circle cx="405" cy="1190" r="14" fill="#607d67" />
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- Row 1: Python, Node.js, npm, Git -->
+    <!-- 1. Python -->
+    <g class="tile-badge" transform="translate(420, 1190)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="17" y="15" width="38" height="42" rx="4" fill="#e2ded4" />
+      <line x1="23" y1="27" x2="47" y2="27" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+      <line x1="23" y1="36" x2="49" y2="36" stroke="#eab308" stroke-width="3" stroke-linecap="round" />
+      <line x1="23" y1="45" x2="37" y2="45" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Python</text>
+    </g>
+
+    <!-- 2. Node.js -->
+    <g class="tile-badge" transform="translate(525, 1190)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="17" y="15" width="38" height="42" rx="4" fill="#4d7c57" />
+      <line x1="24" y1="27" x2="48" y2="27" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="24" y1="36" x2="48" y2="36" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <line x1="24" y1="45" x2="40" y2="45" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Node.js</text>
+    </g>
+
+    <!-- 3. npm -->
+    <g class="tile-badge" transform="translate(630, 1190)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <rect x="15" y="15" width="42" height="42" rx="6" fill="#bfae99" />
+      <text x="24" y="43" class="mono-meta" font-size="20" font-weight="700" fill="#1c1917">&gt;_</text>
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">npm</text>
+    </g>
+
+    <!-- 4. Git -->
+    <g class="tile-badge" transform="translate(735, 1190)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 56,27 56,49 36,59 16,49 16,27" fill="#9a5a4a" />
+      <circle cx="27" cy="33" r="3.5" fill="#FFFFFF" />
+      <circle cx="45" cy="33" r="3.5" fill="#FFFFFF" />
+      <circle cx="36" cy="47" r="3.5" fill="#FFFFFF" />
+      <path d="M 27 33 L 36 41 L 36 47 M 45 33 L 36 41" stroke="#FFFFFF" stroke-width="2" fill="none" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Git</text>
+    </g>
+
+    <!-- Row 2: GitHub, Playwright, Chrome DevTools (In Front) -->
+    <!-- 5. GitHub -->
+    <g class="tile-badge" transform="translate(470, 1285)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <circle cx="36" cy="36" r="21" fill="#24292f" />
+      <circle cx="29" cy="33" r="4" fill="#FFFFFF" />
+      <circle cx="43" cy="41" r="4" fill="#FFFFFF" />
+      <line x1="29" y1="33" x2="43" y2="41" stroke="#FFFFFF" stroke-width="2.5" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GitHub</text>
+    </g>
+
+    <!-- 6. Playwright -->
+    <g class="tile-badge" transform="translate(575, 1285)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="18,18 54,18 54,42 36,54 18,42" fill="#718d7f" />
+      <polyline points="27,32 36,41 45,32" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Playwright</text>
+    </g>
+
+    <!-- 7. DevTools -->
+    <g class="tile-badge" transform="translate(680, 1285)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 53,25 53,47 36,57 19,47 19,25" fill="none" stroke="#52525b" stroke-width="4.5" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">DevTools</text>
+    </g>
+  </g>
+
+  <!-- ================= 07 / DEPLOYMENT ISLAND ================= -->
+  <g id="zone-07-deployment">
+    <!-- Titles & Annotations -->
+    <text x="1560" y="1210" class="serif-italic" font-size="20" fill="#78716c">Make it real.</text>
+    <text x="1720" y="1120" class="serif-title" font-size="34" fill="#1c1917">07 / DEPLOYMENT</text>
+    <text x="1720" y="1155" class="serif-italic" font-size="22" fill="#57534e">Ship to the world.</text>
+
+    <!-- Island Slab -->
+    <g filter="url(#slabShadow)">
+      <path d="M 1880 1200 L 2220 1330 L 1880 1460 L 1540 1330 Z" fill="#E8E5DC" />
+      <path d="M 1540 1330 L 1880 1460 L 1880 1495 L 1540 1365 Z" fill="#C0BAAC" />
+      <path d="M 1880 1460 L 2220 1330 L 2220 1365 L 1880 1495 Z" fill="#9E988A" />
+    </g>
+
+    <!-- Diorama: Retro Rocket on Launch Trajectory -->
+    <g id="diorama-rocket" class="anim-rocket">
+      <!-- Fiery Exhaust Plume -->
+      <polygon points="1714,1276 1726,1276 1720,1325" fill="url(#flameGrad)" class="anim-flame" />
+      
+      <!-- Rocket Body -->
+      <!-- Left Fin -->
+      <path d="M 1708 1253 L 1692 1276 L 1712 1272 Z" fill="#a8a29e" />
+      <!-- Right Fin -->
+      <path d="M 1732 1253 L 1748 1276 L 1728 1272 Z" fill="#a8a29e" />
+      <!-- Fuselage -->
+      <path d="M 1720 1178 Q 1740 1228 1732 1274 L 1708 1274 Q 1700 1228 1720 1178 Z" fill="#FDFCF7" stroke="#78716c" stroke-width="2.5" />
+      <!-- Porthole Window -->
+      <circle cx="1720" cy="1233" r="10" fill="#72b5bc" stroke="#57534e" stroke-width="2" />
+    </g>
+
+    <!-- Tech Badges -->
+    <!-- 1. Vercel -->
+    <g class="tile-badge" transform="translate(1800, 1240)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 56,36 36,57 16,36" fill="#1c1917" />
+      <polygon points="36,27 46,44 26,44" fill="#FFFFFF" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Vercel</text>
+    </g>
+
+    <!-- 2. Supabase -->
+    <g class="tile-badge" transform="translate(1910, 1240)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <polygon points="36,15 55,39 39,39 45,57 19,33 35,33" fill="#528f73" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Supabase</text>
+    </g>
+
+    <!-- 3. Actions -->
+    <g class="tile-badge" transform="translate(2020, 1240)">
+      <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
+      <circle cx="36" cy="36" r="21" fill="#d6d1c4" />
+      <line x1="36" y1="22" x2="36" y2="50" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
+      <line x1="22" y1="36" x2="50" y2="36" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
+      <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Actions</text>
+    </g>
+  </g>
+
+  <!-- ================= FOOTER ================= -->
+  <g id="footer">
+    <line x1="100" y1="1420" x2="2300" y2="1420" stroke="#d6d3c7" stroke-width="1.5" />
+    <text x="100" y="1460" class="mono-meta" font-size="14" fill="#78716c" letter-spacing="4">ANISH JHA / TECH STACK</text>
+    <text x="2300" y="1460" text-anchor="end" class="mono-meta" font-size="14" fill="#78716c" letter-spacing="4">IDEAS — CODE — EXPERIENCES</text>
+  </g>
+</svg>
