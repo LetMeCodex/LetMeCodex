@@ -666,22 +666,24 @@ async function main() {
   const todayDay = istTime.getUTCDay();
 
   const args = process.argv.slice(2);
-  const isCycle = args.includes('--cycle');
   let targetDay = null;
   const dayArg = args.find(a => a.startsWith('--day='));
   if (dayArg) {
     targetDay = parseInt(dayArg.split('=')[1], 10);
   }
+  const isSingle = args.includes('--single');
+  const forceCycle = args.includes('--cycle');
 
-  if (isCycle) {
-    const cycleSvg = buildCyclingShowcaseSvg(data);
-    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
-    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
-  } else {
+  // Default to 7-day auto-morph cycling showcase to ensure perfect synchronization with GitStreak flame
+  if (targetDay !== null || (isSingle && !forceCycle)) {
     const activeDay = targetDay !== null ? targetDay : todayDay;
     const mainSvg = buildSvgContent(data, activeDay);
     fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
     console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
+  } else {
+    const cycleSvg = buildCyclingShowcaseSvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
+    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
   }
 
   const dayFiles = [

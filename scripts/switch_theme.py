@@ -47,7 +47,7 @@ def set_theme(target, push=True):
         commit_msg = "feat(matrix+streak): activate synchronized 7-day auto-morph showcase animation"
     elif target == "today":
         print(" [SYNC] Syncing Matrix & Streak to Current Real-World Calendar Day...")
-        cmd_matrix = "node scripts/generate-github-activity.js"
+        cmd_matrix = "node scripts/generate-github-activity.js --single"
         cmd_streak = "node scripts/generate-streak-svg.js"
         commit_msg = "chore(matrix+streak): sync matrix and streak to today real calendar day"
     else:
