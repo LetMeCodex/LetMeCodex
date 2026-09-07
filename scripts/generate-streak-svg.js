@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { TIERS, fetchLetMeCodexContributions, calculateStreakData } = require('./streak-calculator.js');
+const { AVATAR_B64_F0, AVATAR_B64_F1 } = require('./avatar-assets.js');
 
 const SEVEN_DAY_EASTER_EGGS = {
   0: { day: 0, shortName: 'Sun', name: 'Solar Supernova', accent: '#F59E0B', palette: ['#161B22', '#78350F', '#D97706', '#F59E0B', '#FDE047'], symbol: '☀️' },
@@ -485,13 +486,50 @@ function generateCssRules() {
         .streak-num { fill: #1F2328; }
         .streak-sub-txt { fill: #57606A; }
       }
+
+      /* Right: Tyler Durden Glitch Avatar Keyframes */
+      @keyframes avatarFrameToggle0 {
+        0%, 49.99% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+      }
+      @keyframes avatarFrameToggle1 {
+        0%, 49.99% { opacity: 0; }
+        50%, 100% { opacity: 1; }
+      }
+      @keyframes avatarRingPulse {
+        0%, 100% { transform: scale(1); opacity: 0.35; }
+        50% { transform: scale(1.05); opacity: 0.75; }
+      }
+      @keyframes avatarOrbitSpin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .avatar-f0 { animation: avatarFrameToggle0 1.16s infinite steps(1); }
+      .avatar-f1 { animation: avatarFrameToggle1 1.16s infinite steps(1); }
+      .avatar-pulse { transform-origin: 841px 59px; animation: avatarRingPulse 2.8s infinite ease-in-out; }
+      .avatar-spin { transform-origin: 841px 59px; animation: avatarOrbitSpin 14s infinite linear; }
   `;
+}
+
+function renderRightAvatarGraphic(accent = '#00F0FF') {
+  return `
+  <!-- Right: Tyler Durden Glitch Avatar (Absolute Parallel to Streak) -->
+  <g class="avatar-system" transform="translate(841, 59)">
+    <!-- Ambient Holographic Glow Halo -->
+    <circle cx="0" cy="0" r="49" fill="none" stroke="${accent}" stroke-width="1.5" class="avatar-pulse" opacity="0.5" />
+    <circle cx="0" cy="0" r="53" fill="none" stroke="${accent}" stroke-width="1" stroke-dasharray="5 7" class="avatar-spin" opacity="0.4" />
+    <circle cx="0" cy="0" r="44.5" fill="none" stroke="${accent}" stroke-width="2.5" />
+
+    <!-- Alternating Frames (100% Reliable Glitch Animation) -->
+    <image class="avatar-f0" href="data:image/png;base64,${AVATAR_B64_F0}" xlink:href="data:image/png;base64,${AVATAR_B64_F0}" x="-44" y="-44" width="88" height="88" />
+    <image class="avatar-f1" href="data:image/png;base64,${AVATAR_B64_F1}" xlink:href="data:image/png;base64,${AVATAR_B64_F1}" x="-44" y="-44" width="88" height="88" />
+  </g>`;
 }
 
 function buildCanonicalStreakSvg(stats) {
   const { currentStreak, tier } = stats;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 118" width="100%" height="100%">
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 920 118" width="100%" height="100%">
   <defs>
     ${generateGradientsXml()}
     <style><![CDATA[
@@ -522,6 +560,8 @@ ${generateCssRules()}
       return `<text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-cycle-layer streak-cycle-${i} streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>`;
     }).join('\n    ')}
   </g>
+
+  ${renderRightAvatarGraphic()}
 </svg>`;
 }
 
@@ -554,7 +594,7 @@ function buildSingleDayStreakSvg(stats, dayIndex = 0) {
       <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>`;
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 118" width="100%" height="100%">
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 920 118" width="100%" height="100%">
   <defs>
     ${gradXml}
     <style><![CDATA[
@@ -572,6 +612,8 @@ ${generateCssRules()}
     <text x="${currentStreak >= 10 ? 64 : 36}" y="58" class="inter" fill="${egg.accent}" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
     <text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${egg.name.toUpperCase()}</text>
   </g>
+
+  ${renderRightAvatarGraphic(egg.accent)}
 </svg>`;
 }
 
