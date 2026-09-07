@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes pulseFlow {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.6); opacity: 1; filter: drop-shadow(0 0 5px #38BDF8); }
+    }
+    .flow-pulse { animation: pulseFlow 2s infinite ease-in-out; transform-origin: 0 0; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Flowchart Nodes -->
+      <rect x="-16" y="-14" width="12" height="10" rx="2" fill="#FF3570"/>
+      <rect x="4" y="-14" width="12" height="10" rx="2" fill="#38BDF8"/>
+      <rect x="-6" y="6" width="12" height="10" rx="2" fill="#10B981"/>
+      <!-- Connecting Flow Lines -->
+      <path d="M -10 -4 L -10 0 L 0 0 L 0 6" fill="none" stroke="#7D8590" stroke-width="1.4"/>
+      <path d="M 10 -4 L 10 0 L 0 0" fill="none" stroke="#7D8590" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="2.5" fill="#FFFFFF" class="flow-pulse"/>
+    </g>
+  
+</svg>

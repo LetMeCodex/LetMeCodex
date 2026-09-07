@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes puzzlePulse {
+      0%, 100% { transform: translate(32px, 32px) scale(1); filter: drop-shadow(0 0 2px #4285F4); }
+      50% { transform: translate(32px, 32px) scale(1.08); filter: drop-shadow(0 0 10px #4285F4); }
+    }
+    .ext-puzzle { animation: puzzlePulse 3s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="ext-puzzle">
+      <!-- Puzzle Piece -->
+      <path d="M -12 -12 L -4 -12 C -4 -16 4 -16 4 -12 L 12 -12 L 12 -4 C 16 -4 16 4 12 4 L 12 12 L 4 12 C 4 8 -4 8 -4 12 L -12 12 L -12 4 C -8 4 -8 -4 -12 -4 Z" fill="#4285F4"/>
+      <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+    </g>
+  
+</svg>

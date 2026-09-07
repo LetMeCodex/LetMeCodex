@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes reactSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes corePulse {
+      0%, 100% { r: 4; filter: drop-shadow(0 0 3px #00D8FF); }
+      50% { r: 5.5; filter: drop-shadow(0 0 9px #00D8FF); }
+    }
+    .react-rings { animation: reactSpin 12s infinite linear; transform-origin: 0 0; }
+    .react-core { animation: corePulse 2s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Central Glowing Nucleus -->
+      <circle cx="0" cy="0" r="4.2" fill="#00D8FF" class="react-core"/>
+      <!-- 3 Orbital Rings -->
+      <g class="react-rings">
+        <ellipse cx="0" cy="0" rx="19" ry="7.5" fill="none" stroke="#00D8FF" stroke-width="1.6" opacity="0.85"/>
+        <ellipse cx="0" cy="0" rx="19" ry="7.5" fill="none" stroke="#00D8FF" stroke-width="1.6" transform="rotate(60)" opacity="0.85"/>
+        <ellipse cx="0" cy="0" rx="19" ry="7.5" fill="none" stroke="#00D8FF" stroke-width="1.6" transform="rotate(120)" opacity="0.85"/>
+      </g>
+    </g>
+  
+</svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes drawSvg {
+      0% { stroke-dashoffset: 32; }
+      50% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -32; }
+    }
+    @keyframes penBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    .svg-curve { animation: drawSvg 3s infinite linear; }
+    .svg-pen { animation: penBob 3s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Pen Tool & Curve -->
+      <path d="M -14 10 Q 0 -14 14 10" fill="none" stroke="#FFB13B" stroke-width="2" stroke-dasharray="32" class="svg-curve"/>
+      <circle cx="-14" cy="10" r="2.5" fill="#FFFFFF"/>
+      <circle cx="14" cy="10" r="2.5" fill="#FFFFFF"/>
+      <!-- Pen Nib -->
+      <polygon points="0,-14 6,-6 0,-2 -6,-6" fill="#FFB13B" class="svg-pen"/>
+    </g>
+  
+</svg>

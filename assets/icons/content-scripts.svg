@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes injectFlash {
+      0%, 100% { transform: translate(0, 0); opacity: 0.7; }
+      50% { transform: translate(-3px, 3px); opacity: 1; filter: drop-shadow(0 0 6px #10B981); }
+    }
+    .cs-inject { animation: injectFlash 2s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Document File -->
+      <rect x="-12" y="-14" width="24" height="28" rx="3" fill="#1E293B" stroke="#64748B" stroke-width="1.4"/>
+      <line x1="-7" y1="-8" x2="2" y2="-8" stroke="#94A3B8" stroke-width="1.2"/>
+      <line x1="-7" y1="-3" x2="7" y2="-3" stroke="#94A3B8" stroke-width="1.2"/>
+      <line x1="-7" y1="2" x2="4" y2="2" stroke="#94A3B8" stroke-width="1.2"/>
+      <!-- Injected Electric Syringe/Beam -->
+      <polygon points="14,-14 6,-6 9,-3 17,-11" fill="#10B981" class="cs-inject"/>
+    </g>
+  
+</svg>

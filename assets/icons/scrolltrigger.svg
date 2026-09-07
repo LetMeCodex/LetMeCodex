@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes stWheel {
+      0%, 100% { transform: translateY(0); opacity: 1; }
+      50% { transform: translateY(5px); opacity: 0.3; }
+    }
+    @keyframes stArrow {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(4px); opacity: 1; }
+    }
+    .st-wheel { animation: stWheel 1.6s infinite ease-in-out; }
+    .st-arrow { animation: stArrow 1.6s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Mouse Shell -->
+      <rect x="-10" y="-16" width="20" height="32" rx="10" fill="none" stroke="#88CE02" stroke-width="1.8"/>
+      <!-- Wheel -->
+      <line x1="0" y1="-10" x2="0" y2="-3" stroke="#88CE02" stroke-width="2.4" stroke-linecap="round" class="st-wheel"/>
+      <!-- Scroll Arrow -->
+      <path d="M -5 6 L 0 11 L 5 6" fill="none" stroke="#88CE02" stroke-width="1.6" class="st-arrow"/>
+    </g>
+  
+</svg>

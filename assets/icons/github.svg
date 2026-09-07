@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes ghFloat {
+      0%, 100% { transform: translate(32px, 32px) translateY(0); filter: drop-shadow(0 0 2px rgba(240, 246, 252, 0.4)); }
+      50% { transform: translate(32px, 32px) translateY(-2.5px); filter: drop-shadow(0 0 8px rgba(240, 246, 252, 0.85)); }
+    }
+    .gh-cat { animation: ghFloat 3s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="gh-cat">
+      <path d="M 0 -16 C -9 -16 -16 -9 -16 0 C -16 7 -11 13 -5 15 C -4 15 -4 14 -4 14 L -4 11 C -9 12 -10 9 -10 9 C -11 7 -12 7 -12 7 C -13 6 -12 6 -12 6 C -11 6 -10 7 -10 7 C -9 9 -7 9 -6 8 C -6 7 -5 6 -4 6 C -8 5 -11 4 -11 -2 C -11 -4 -10 -5 -9 -6 C -9 -7 -10 -8 -9 -10 C -9 -10 -8 -10 -6 -9 C -4 -10 0 -10 2 -9 C 4 -10 5 -10 5 -10 C 6 -8 6 -7 5 -6 C 6 -5 7 -4 7 -2 C 7 4 4 5 0 6 C 1 6 2 8 2 10 L 2 14 C 2 14 2 15 3 15 C 9 13 14 7 14 0 C 14 -9 7 -16 0 -16 Z" fill="#F0F6FC"/>
+    </g>
+  
+</svg>

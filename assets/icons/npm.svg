@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes npmHop {
+      0%, 100% { transform: translate(32px, 32px) translateY(0); filter: drop-shadow(0 0 2px #CB3837); }
+      50% { transform: translate(32px, 32px) translateY(-3px); filter: drop-shadow(0 0 8px #CB3837); }
+    }
+    .npm-box { animation: npmHop 2.4s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="npm-box">
+      <rect x="-16" y="-12" width="32" height="24" rx="2" fill="#CB3837"/>
+      <!-- Inner Cutout n-p-m -->
+      <path d="M -12 -7 L 12 -7 L 12 7 L 7 7 L 7 -2 L 3 -2 L 3 7 L -12 7 Z M -8 3 L -4 3 L -4 -2 L -8 -2 Z" fill="#FFFFFF"/>
+    </g>
+  
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes jsGlow {
+      0%, 100% { filter: drop-shadow(0 0 2px rgba(247, 223, 30, 0.4)); transform: scale(1); }
+      50% { filter: drop-shadow(0 0 8px rgba(247, 223, 30, 0.85)); transform: scale(1.02); }
+    }
+    @keyframes sparkFloat {
+      0%, 100% { transform: translateY(0); opacity: 0.3; }
+      50% { transform: translateY(-4px); opacity: 1; }
+    }
+    .js-box { animation: jsGlow 2.5s infinite ease-in-out; transform-origin: 32px 32px; }
+    .js-spark { animation: sparkFloat 2s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <rect x="14" y="14" width="36" height="36" rx="6" fill="#F7DF1E" class="js-box"/>
+    <text x="32" y="41" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#000000" text-anchor="middle">JS</text>
+    <circle cx="48" cy="16" r="3" fill="#F7DF1E" class="js-spark" opacity="0.8"/>
+  
+</svg>

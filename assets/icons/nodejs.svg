@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes nodeBreathe {
+      0%, 100% { transform: translate(32px, 32px) scale(1); filter: drop-shadow(0 0 2px #5FA04E); }
+      50% { transform: translate(32px, 32px) scale(1.06); filter: drop-shadow(0 0 9px #5FA04E); }
+    }
+    .node-hex { animation: nodeBreathe 3s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="node-hex">
+      <polygon points="0,-16 14,-8 14,8 0,16 -14,8 -14,-8" fill="#5FA04E" opacity="0.9"/>
+      <polygon points="0,-12 10,-6 10,6 0,12 -10,6 -10,-6" fill="#111620"/>
+      <!-- Inner Cube -->
+      <polygon points="0,-8 7,-4 0,0 -7,-4" fill="#5FA04E"/>
+      <polygon points="-7,-4 0,0 0,8 -7,4" fill="#4B823E"/>
+      <polygon points="0,0 7,-4 7,4 0,8" fill="#6FB35C"/>
+    </g>
+  
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes ghaRotate {
+      0% { transform: translate(32px, 32px) rotate(0deg); }
+      100% { transform: translate(32px, 32px) rotate(360deg); }
+    }
+    .gha-spin { animation: ghaRotate 6s infinite linear; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="gha-spin">
+      <!-- Looping Arrows Circle -->
+      <circle cx="0" cy="0" r="14" fill="none" stroke="#2088FF" stroke-width="2.5" stroke-dasharray="24 10" stroke-linecap="round"/>
+      <circle cx="0" cy="0" r="4.5" fill="#2088FF"/>
+    </g>
+  
+</svg>

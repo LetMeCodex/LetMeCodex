@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes supaPulse {
+      0%, 100% { transform: translate(32px, 32px) scale(1); filter: drop-shadow(0 0 3px #3ECF8E); }
+      50% { transform: translate(32px, 32px) scale(1.08); filter: drop-shadow(0 0 11px #3ECF8E); }
+    }
+    .supa-bolt { animation: supaPulse 2.6s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="supa-bolt">
+      <path d="M -4 -16 L 14 -16 C 16 -16 17 -14 16 -12 L 4 4 L 12 4 C 14 4 15 7 13 9 L -6 24 C -8 26 -10 24 -9 22 L 0 6 L -8 6 C -10 6 -11 3 -10 1 Z" fill="#3ECF8E"/>
+    </g>
+  
+</svg>

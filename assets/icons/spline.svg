@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes splineRot {
+      0%, 100% { transform: translate(32px, 32px) rotate(0deg) scale(1); }
+      50% { transform: translate(32px, 32px) rotate(180deg) scale(1.1); filter: drop-shadow(0 0 8px #EC4899); }
+    }
+    .spline-ribbon { animation: splineRot 7s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="spline-ribbon">
+      <!-- 3D Extruded Infinity Ribbon -->
+      <path d="M -14 -6 C -6 -18 6 18 14 6 C 6 18 -6 -18 -14 -6 Z" fill="none" stroke="url(#splineGrad)" stroke-width="4.5" stroke-linecap="round"/>
+    </g>
+    <linearGradient id="splineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#EC4899"/>
+      <stop offset="100%" stop-color="#FACC15"/>
+    </linearGradient>
+  
+</svg>

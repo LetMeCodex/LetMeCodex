@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes dripAnim {
+      0% { transform: translateY(-4px); opacity: 0; }
+      50% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(6px); opacity: 0; }
+    }
+    .canvas-drip { animation: dripAnim 2.2s infinite ease-in; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)">
+      <!-- Palette Body -->
+      <path d="M -14 6 C -18 -8 0 -18 12 -10 C 18 -4 16 10 8 14 C 4 16 -2 14 -6 12 C -10 10 -12 14 -14 6 Z" fill="#E2E8F0"/>
+      <!-- Paint Wells -->
+      <circle cx="-6" cy="-8" r="2.2" fill="#EF4444"/>
+      <circle cx="2" cy="-10" r="2.2" fill="#F59E0B"/>
+      <circle cx="8" cy="-4" r="2.2" fill="#10B981"/>
+      <circle cx="2" cy="6" r="2.2" fill="#3B82F6"/>
+      <!-- Paint Drip -->
+      <circle cx="0" cy="18" r="2" fill="#3B82F6" class="canvas-drip"/>
+    </g>
+  
+</svg>

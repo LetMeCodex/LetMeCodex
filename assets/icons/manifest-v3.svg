@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, monospace; }
+      
+    @keyframes mv3Glow {
+      0%, 100% { transform: translate(32px, 32px) scale(1); filter: drop-shadow(0 0 2px #F59E0B); }
+      50% { transform: translate(32px, 32px) scale(1.06); filter: drop-shadow(0 0 9px #F59E0B); }
+    }
+    .mv3-shield { animation: mv3Glow 2.8s infinite ease-in-out; }
+  
+    </style>
+  </defs>
+  <!-- Card Base Plate -->
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#111620" stroke="#222C3D" stroke-width="1.2"/>
+  
+    <g transform="translate(32, 32)" class="mv3-shield">
+      <polygon points="0,-16 15,-8 12,12 0,18 -12,12 -15,-8" fill="#1E293B" stroke="#F59E0B" stroke-width="1.6"/>
+      <text x="0" y="4" class="mono" font-size="10" font-weight="900" fill="#F59E0B" text-anchor="middle">V3</text>
+      <circle cx="0" cy="-6" r="2" fill="#F59E0B"/>
+    </g>
+  
+</svg>
