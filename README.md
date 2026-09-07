@@ -18,24 +18,17 @@
 
 <h2>About (自己紹介)</h2>
 
-<p>I'm Anish — a creative coder &amp; systems engineer.</p>
+<p>I'm Anish — a creative dev who keeps trying to make software feel like something.</p>
 
-<p>
-I care about how systems hold up once they leave the laptop: how services talk
-to each other, where the bottlenecks hide, what breaks under load, and crafting
-interactive visual experiences. Most of my time goes into designing resilient
-architectures, generative motion, and building production-grade software.
-</p>
+<p>I started with the usual goal: make things work.</p>
 
-<p>Things I keep circling back to:</p>
+<p>Then came the unfortunate discovery that &ldquo;working&rdquo; is a dangerously low bar.</p>
 
-<p>
-<code>Creative Coding</code> · <code>Distributed Systems</code> ·
-<code>Microservices</code> · <code>System Design</code> · <code>API Design</code> ·
-<code>Real-time Systems</code> · <code>AI Engineering</code> ·
-<code>Infrastructure</code> · <code>Scalability</code> · <code>Security</code> ·
-<code>Production Architecture</code>
-</p>
+<p>So now I spend my time turning code into visual experiences — building interactive worlds, experimenting with 3D, motion, generative visuals, and interfaces that have absolutely no business being this elaborate.</p>
+
+<p>I like the space where engineering meets visual direction: where systems have structure, interfaces have personality, and every unnecessary detail is somehow very necessary.</p>
+
+<p>I don't just build the thing. I try to decide what the thing should feel like.</p>
 
 <h2>📫 Connect With Me</h2>
 <p align="left">
