@@ -148,16 +148,7 @@ function generateSVG() {
     /* 🌟 3D SPINNING & KINETIC LOGO ANIMATIONS (60FPS)     */
     /* ==================================================== */
 
-    /* 3D Coin Flip / Y-Axis Spin (Simulated Perspective) */
-    @keyframes spin3D_Y {
-      0% { transform: scaleX(1); }
-      25% { transform: scaleX(0.12) skewY(-4deg); }
-      50% { transform: scaleX(-1); }
-      75% { transform: scaleX(-0.12) skewY(4deg); }
-      100% { transform: scaleX(1); }
-    }
-
-    /* Transform-box rule ensuring all logo elements rotate around their own centers */
+    /* Bulletproof center-anchored origin: All icons are centered at (0,0) via parent translate(36,36) */
     .anim-react-1, .anim-react-2, .anim-react-3, .anim-react-core,
     .anim-spin-ts, .anim-spin-js, .anim-spin-css, .anim-spin-html,
     .anim-vite, .anim-tailwind,
@@ -167,11 +158,10 @@ function generateSVG() {
     .anim-chrome-api, .anim-scripts, .anim-worker, .anim-storage,
     .anim-py-blue, .anim-py-yellow, .anim-node, .anim-npm, .anim-git-node, .anim-github, .anim-playwright, .anim-devtools,
     .anim-vercel, .anim-supabase, .anim-actions {
-      transform-box: fill-box;
-      transform-origin: center;
+      transform-origin: 0 0;
     }
 
-    /* 3D Axial Rotation */
+    /* 360° Axial Rotations */
     @keyframes rotateClockwise {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -181,7 +171,7 @@ function generateSVG() {
       100% { transform: rotate(-360deg); }
     }
 
-    /* React 3-Axis Electron Orbit Spin */
+    /* React 3-Axis Orbit Rotations */
     @keyframes reactOrbit1 {
       0% { transform: rotate(30deg); }
       100% { transform: rotate(390deg); }
@@ -198,228 +188,171 @@ function generateSVG() {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.35); }
     }
-    .anim-react-1 { animation: reactOrbit1 5s linear infinite; transform-origin: 36px 36px; }
-    .anim-react-2 { animation: reactOrbit2 7s linear infinite reverse; transform-origin: 36px 36px; }
-    .anim-react-3 { animation: reactOrbit3 9s linear infinite; transform-origin: 36px 36px; }
-    .anim-react-core { animation: reactNucleusPulse 2s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-react-1 { animation: reactOrbit1 6s linear infinite; }
+    .anim-react-2 { animation: reactOrbit2 8s linear infinite reverse; }
+    .anim-react-3 { animation: reactOrbit3 10s linear infinite; }
+    .anim-react-core { animation: reactNucleusPulse 2.2s ease-in-out infinite; }
 
-    /* TypeScript & JavaScript 3D Coin Flip */
-    .anim-spin-ts { animation: spin3D_Y 6s ease-in-out infinite; transform-origin: 36px 36px; }
-    .anim-spin-js { animation: spin3D_Y 6s ease-in-out infinite 1.5s; transform-origin: 36px 36px; }
-
-    /* Vite Electric Surge */
-    @keyframes viteBolt {
-      0%, 100% { transform: scale(1) rotate(0deg); }
-      25% { transform: scale(1.15) rotate(-4deg); }
-      50% { transform: scale(0.95) rotate(2deg); }
-      75% { transform: scale(1.12) rotate(-2deg); }
+    /* Tactile Floating Hover with Subtle 3D Tilt (JS, TS, CSS3, HTML5, Vercel, Node) */
+    @keyframes floatTiltA {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(-2deg); }
     }
-    .anim-vite { animation: viteBolt 2.2s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes floatTiltB {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-4px) rotate(2deg); }
+    }
+    .anim-spin-js { animation: floatTiltA 4s ease-in-out infinite; }
+    .anim-spin-ts { animation: floatTiltB 4s ease-in-out infinite 1s; }
+    .anim-spin-css { animation: floatTiltA 4.5s ease-in-out infinite 0.5s; }
+    .anim-spin-html { animation: floatTiltB 4.5s ease-in-out infinite 1.5s; }
+    .anim-vercel { animation: floatTiltA 3.8s ease-in-out infinite; }
+    .anim-node { animation: floatTiltB 4s ease-in-out infinite 0.5s; }
+
+    /* Electric Bolt Surge (Vite, Supabase) */
+    @keyframes boltSurge {
+      0%, 100% { transform: scale(1) translateY(0) rotate(0deg); }
+      25% { transform: scale(1.12) translateY(-2px) rotate(-3deg); }
+      50% { transform: scale(0.96) translateY(1px); }
+      75% { transform: scale(1.08) translateY(-1px) rotate(2deg); }
+    }
+    .anim-vite { animation: boltSurge 2.2s ease-in-out infinite; }
+    .anim-supabase { animation: boltSurge 2.5s ease-in-out infinite 0.4s; }
 
     /* Tailwind Wave Flow */
     @keyframes tailwindFlow {
       0%, 100% { transform: scaleX(1) translateY(0); }
       50% { transform: scaleX(1.12) translateY(-2px); }
     }
-    .anim-tailwind { animation: tailwindFlow 3s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-tailwind { animation: tailwindFlow 3s ease-in-out infinite; }
 
-    /* HTML5 & CSS3 Shields 3D Spin */
-    .anim-spin-css { animation: spin3D_Y 7s ease-in-out infinite 0.8s; transform-origin: 36px 36px; }
-    .anim-spin-html { animation: spin3D_Y 7s ease-in-out infinite 2.2s; transform-origin: 36px 36px; }
-
-    /* Three.js 3D Isometric Cube Spin */
-    @keyframes threeCubeSpin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
+    /* Three.js Continuous 3D Rotating Cube */
+    .anim-threejs { animation: rotateClockwise 12s linear infinite; }
     @keyframes threeInnerPulse {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(0.7) rotate(45deg); }
+      50% { transform: scale(0.72) rotate(45deg); }
     }
-    .anim-threejs { animation: threeCubeSpin 10s linear infinite; transform-origin: 36px 36px; }
-    .anim-three-inner { animation: threeInnerPulse 3s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-three-inner { animation: threeInnerPulse 3.5s ease-in-out infinite; }
 
-    /* R3F Purple Rhombus 3D Spin */
+    /* R3F Continuous Rhombus Spin */
     @keyframes r3fRhombus {
       0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(0.78); }
+      50% { transform: rotate(180deg) scale(0.85); }
       100% { transform: rotate(360deg) scale(1); }
     }
-    .anim-r3f { animation: r3fRhombus 6s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-r3f { animation: r3fRhombus 8s ease-in-out infinite; }
 
     /* Drei Reticle Rotation & Crosshair Pulse */
-    .anim-drei-ring { animation: rotateClockwise 12s linear infinite; transform-origin: 36px 36px; }
+    .anim-drei-ring { animation: rotateClockwise 10s linear infinite; }
     @keyframes dreiCross {
       0%, 100% { opacity: 0.7; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.2); }
+      50% { opacity: 1; transform: scale(1.18); }
     }
-    .anim-drei-cross { animation: dreiCross 2.5s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-drei-cross { animation: dreiCross 2.5s ease-in-out infinite; }
 
     /* WebGL Wireframe Pyramid 3D Spin */
-    .anim-webgl { animation: spin3D_Y 5s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-webgl { animation: rotateClockwise 8s linear infinite; }
 
     /* GLSL Shader Diamond Layer Separation */
-    @keyframes glslTop {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-7px); }
-    }
-    @keyframes glslBottom {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(6px); }
-    }
-    .anim-glsl-top { animation: glslTop 2.8s ease-in-out infinite; transform-origin: 36px 36px; }
-    .anim-glsl-bot { animation: glslBottom 2.8s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes glslTop { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+    @keyframes glslBot { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+    .anim-glsl-top { animation: glslTop 2.6s ease-in-out infinite; }
+    .anim-glsl-bot { animation: glslBot 2.6s ease-in-out infinite; }
 
-    /* Spline 3D Möbius Curve Loop */
-    @keyframes splineLoop {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.14); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .anim-spline { animation: splineLoop 8s ease-in-out infinite; transform-origin: 36px 36px; }
+    /* Spline Möbius Continuous Spin */
+    .anim-spline { animation: rotateClockwise 9s linear infinite; }
 
-    /* GSAP Kinetic Hourglass Twist */
-    @keyframes gsapTwist {
-      0% { transform: rotate(0deg) scale(1); }
-      25% { transform: rotate(90deg) scale(1.15); }
-      50% { transform: rotate(180deg) scale(1); }
-      75% { transform: rotate(270deg) scale(1.15); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .anim-gsap { animation: gsapTwist 7s ease-in-out infinite; transform-origin: 36px 36px; }
+    /* GSAP Continuous Kinetic Hourglass Spin */
+    .anim-gsap { animation: rotateClockwise 7s linear infinite; }
 
     /* ScrollTrigger Eye Look & Dilate */
-    @keyframes eyeLook {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-4px); }
-      75% { transform: translateX(4px); }
-    }
-    @keyframes eyeDilate {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.35); }
-    }
-    .anim-eye-pupil { animation: eyeLook 3s ease-in-out infinite; transform-origin: 36px 36px; }
-    .anim-eye-core { animation: eyeDilate 2s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes eyeLook { 0%, 100% { transform: translateX(0); } 30% { transform: translateX(-3.5px); } 70% { transform: translateX(3.5px); } }
+    @keyframes eyeDilate { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.28); } }
+    .anim-eye-pupil { animation: eyeLook 3s ease-in-out infinite; }
+    .anim-eye-core { animation: eyeDilate 2s ease-in-out infinite; }
 
     /* Motion (Framer) Physics Rebound */
     @keyframes framerRebound {
       0%, 100% { transform: translateY(0) scaleY(1); }
-      40% { transform: translateY(-7px) scaleY(1.16); }
-      60% { transform: translateY(2px) scaleY(0.9); }
+      35% { transform: translateY(-6px) scaleY(1.14); }
+      55% { transform: translateY(2px) scaleY(0.92); }
+      75% { transform: translateY(-1px) scaleY(1.02); }
     }
-    .anim-motion { animation: framerRebound 2.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; transform-origin: 36px 36px; }
+    .anim-motion { animation: framerRebound 2.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
 
-    /* React Spring Physics Coil */
+    /* React Spring Physics Compression */
     @keyframes springCoil {
       0%, 100% { transform: scaleY(1); }
-      50% { transform: scaleY(0.62) translateY(5px); }
+      50% { transform: scaleY(0.68) translateY(4px); }
     }
-    .anim-spring { animation: springCoil 1.8s cubic-bezier(0.25, 1, 0.5, 1) infinite; transform-origin: 36px 36px; }
+    .anim-spring { animation: springCoil 1.8s cubic-bezier(0.25, 1, 0.5, 1) infinite; }
 
     /* Lenis Smooth Wave Undulation */
-    @keyframes wavePhase1 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
-    @keyframes wavePhase2 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
+    @keyframes wavePhase1 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3.5px); } }
+    @keyframes wavePhase2 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3.5px); } }
     @keyframes wavePhase3 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3px); } }
-    .anim-lenis-1 { animation: wavePhase1 2.2s ease-in-out infinite; transform-origin: 36px 36px; }
-    .anim-lenis-2 { animation: wavePhase2 2.2s ease-in-out infinite 0.3s; transform-origin: 36px 36px; }
-    .anim-lenis-3 { animation: wavePhase3 2.2s ease-in-out infinite 0.6s; transform-origin: 36px 36px; }
+    .anim-lenis-1 { animation: wavePhase1 2.2s ease-in-out infinite; }
+    .anim-lenis-2 { animation: wavePhase2 2.2s ease-in-out infinite 0.3s; }
+    .anim-lenis-3 { animation: wavePhase3 2.2s ease-in-out infinite 0.6s; }
 
     /* SVG Cross Node Spin */
-    .anim-svg-cross { animation: rotateClockwise 8s linear infinite; transform-origin: 36px 36px; }
+    .anim-svg-cross { animation: rotateClockwise 8s linear infinite; }
 
     /* Canvas Orbital Ring Spin */
-    .anim-canvas-ring { animation: rotateCounterClockwise 6s linear infinite; transform-origin: 36px 36px; }
+    .anim-canvas-ring { animation: rotateCounterClockwise 6s linear infinite; }
 
-    /* Mermaid Node Pulse */
-    @keyframes mermaidRotate {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.15); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-    .anim-mermaid { animation: mermaidRotate 6s ease-in-out infinite; transform-origin: 36px 36px; }
+    /* Mermaid Flowchart Node Spin */
+    .anim-mermaid { animation: rotateClockwise 7s linear infinite; }
 
     /* WAAPI Play Triangle Pulse */
-    @keyframes waapiPlay {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.22); }
-    }
-    .anim-waapi { animation: waapiPlay 1.6s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes waapiPlay { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+    .anim-waapi { animation: waapiPlay 1.8s ease-in-out infinite; }
 
     /* Chrome APIs Aperture Spin */
-    .anim-chrome-api { animation: rotateClockwise 10s linear infinite; transform-origin: 36px 36px; }
+    .anim-chrome-api { animation: rotateClockwise 10s linear infinite; }
 
     /* Manifest V3 Laser Scan */
-    @keyframes laserSweep {
-      0%, 100% { transform: translateY(0); opacity: 0.3; }
-      50% { transform: translateY(18px); opacity: 1; stroke: #2563eb; }
-    }
+    @keyframes laserSweep { 0%, 100% { transform: translateY(0); opacity: 0.3; } 50% { transform: translateY(18px); opacity: 1; } }
     .anim-manifest-scan { animation: laserSweep 2s ease-in-out infinite; }
 
-    /* Content Scripts Code Bracket Expansion */
-    @keyframes scriptBreath {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.18); }
-    }
-    .anim-scripts { animation: scriptBreath 2s ease-in-out infinite; transform-origin: 36px 36px; }
+    /* Scripts Code Expansion */
+    @keyframes scriptBreath { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+    .anim-scripts { animation: scriptBreath 2.2s ease-in-out infinite; }
 
-    /* Service Workers 3D Gear/Shield Tilt */
-    .anim-worker { animation: spin3D_Y 8s ease-in-out infinite 1s; transform-origin: 36px 36px; }
+    /* Workers Shield Hover */
+    @keyframes workerHover { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
+    .anim-worker { animation: workerHover 3s ease-in-out infinite; }
 
-    /* Chrome Storage Disk Head Sweep */
-    @keyframes diskBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-4px); }
-    }
-    .anim-storage { animation: diskBob 2.5s ease-in-out infinite; transform-origin: 36px 36px; }
+    /* Storage Database Disk Bob */
+    @keyframes diskBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
+    .anim-storage { animation: diskBob 2.5s ease-in-out infinite; }
 
-    /* Python Snakes Gliding Past Each Other */
-    @keyframes snakeBlue { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(4px); } }
-    @keyframes snakeYellow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-4px); } }
+    /* Python Snakes Gliding */
+    @keyframes snakeBlue { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(3.5px); } }
+    @keyframes snakeYellow { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-3.5px); } }
     .anim-py-blue { animation: snakeBlue 2.4s ease-in-out infinite; }
     .anim-py-yellow { animation: snakeYellow 2.4s ease-in-out infinite; }
 
-    /* Node.js Hexagon 3D Flip */
-    .anim-node { animation: spin3D_Y 7s ease-in-out infinite 0.5s; transform-origin: 36px 36px; }
-
     /* npm Terminal Prompt Flash */
-    @keyframes npmCursor {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15) translateX(2px); }
-    }
-    .anim-npm { animation: npmCursor 1.5s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes npmCursor { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12) translateX(2px); } }
+    .anim-npm { animation: npmCursor 1.6s ease-in-out infinite; }
 
     /* Git Commit Node Pulse */
-    @keyframes gitCommitPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.3); fill: #f97316; }
-    }
-    .anim-git-node { animation: gitCommitPulse 2s ease-in-out infinite; transform-origin: 36px 47px; }
+    @keyframes gitCommitPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.35); fill: #f97316; } }
+    .anim-git-node { animation: gitCommitPulse 2s ease-in-out infinite; }
 
-    /* GitHub Octocat Orbit Spin */
-    .anim-github { animation: rotateClockwise 14s linear infinite; transform-origin: 36px 36px; }
+    /* GitHub Octocat Orbit */
+    .anim-github { animation: rotateClockwise 12s linear infinite; }
 
     /* Playwright Chevron Flex */
-    @keyframes pwFlex {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(3.5px); }
-    }
-    .anim-playwright { animation: pwFlex 1.8s ease-in-out infinite; transform-origin: 36px 36px; }
+    @keyframes pwFlex { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(3.5px); } }
+    .anim-playwright { animation: pwFlex 1.8s ease-in-out infinite; }
 
     /* DevTools Hexagon Spin */
-    .anim-devtools { animation: rotateClockwise 9s linear infinite; transform-origin: 36px 36px; }
-
-    /* Vercel 3D Triangle Spin */
-    .anim-vercel { animation: spin3D_Y 4.5s ease-in-out infinite; transform-origin: 36px 36px; }
-
-    /* Supabase Emerald Lightning Pulse */
-    @keyframes supaPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.16); }
-    }
-    .anim-supabase { animation: supaPulse 2.2s ease-in-out infinite; transform-origin: 36px 36px; }
+    .anim-devtools { animation: rotateClockwise 9s linear infinite; }
 
     /* GitHub Actions CI/CD Pipeline Spin */
-    .anim-actions { animation: rotateClockwise 5s linear infinite; transform-origin: 36px 36px; }
+    .anim-actions { animation: rotateClockwise 5s linear infinite; }
 
     /* Interactive Tile Badge Hover */
     .tile-badge {
@@ -594,11 +527,17 @@ function generateSVG() {
     <!-- 1. React (3-Axis Spinning Orbit Model) -->
     <g class="tile-badge" transform="translate(390, 480)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g>
-        <ellipse cx="36" cy="36" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" class="anim-react-1" />
-        <ellipse cx="36" cy="36" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" class="anim-react-2" />
-        <ellipse cx="36" cy="36" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" class="anim-react-3" />
-        <circle cx="36" cy="36" r="4.5" fill="#0284c7" class="anim-react-core" />
+      <g transform="translate(36, 36)">
+        <g class="anim-react-1">
+          <ellipse cx="0" cy="0" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" />
+        </g>
+        <g class="anim-react-2">
+          <ellipse cx="0" cy="0" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" />
+        </g>
+        <g class="anim-react-3">
+          <ellipse cx="0" cy="0" rx="21" ry="7.5" fill="none" stroke="#0284c7" stroke-width="3" />
+        </g>
+        <circle cx="0" cy="0" r="4.5" fill="#0284c7" class="anim-react-core" />
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">React</text>
     </g>
@@ -606,9 +545,11 @@ function generateSVG() {
     <!-- 2. Vite (Electric Lightning Bolt Surge) -->
     <g class="tile-badge" transform="translate(485, 480)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-vite">
-        <polygon points="40,15 25,38 35,38 32,57 47,32 37,32" fill="#7c3aed" stroke="#6d28d9" stroke-width="1" />
-        <polygon points="39,17 27,37 35,37 33,53 45,33 37,33" fill="#fbbf24" />
+      <g transform="translate(36, 36)">
+        <g class="anim-vite">
+          <polygon points="4,-21 -11,2 -1,2 -4,21 11,-4 1,-4" fill="#7c3aed" stroke="#6d28d9" stroke-width="1" />
+          <polygon points="3,-19 -9,1 -1,1 -3,17 9,-3 1,-3" fill="#fbbf24" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Vite</text>
     </g>
@@ -616,46 +557,58 @@ function generateSVG() {
     <!-- 3. Tailwind CSS (Flowing Wind Ribbon) -->
     <g class="tile-badge" transform="translate(580, 480)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <path d="M 23 36 C 26 26, 36 26, 39 31 C 42 36, 46 42, 51 42 C 57 42, 59 36, 59 36 C 56 46, 46 46, 43 41 C 40 36, 36 30, 31 30 C 25 30, 23 36, 23 36 Z" fill="#06b6d4" class="anim-tailwind" />
+      <g transform="translate(36, 36)">
+        <g class="anim-tailwind">
+          <path d="M -13 0 C -10 -10, 0 -10, 3 -5 C 6 0, 10 6, 15 6 C 21 6, 23 0, 23 0 C 20 10, 10 10, 7 5 C 4 0, 0 -6, -5 -6 C -11 -6, -13 0, -13 0 Z" fill="#06b6d4" />
+        </g>
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Tailwind</text>
     </g>
 
-    <!-- 4. CSS3 (3D Spinning Shield) -->
+    <!-- 4. CSS3 (3D Tilting Shield) -->
     <g class="tile-badge" transform="translate(675, 480)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spin-css">
-        <polygon points="18,16 54,16 50,54 36,58 22,54" fill="#2563eb" />
-        <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">3</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-spin-css">
+          <polygon points="-18,-20 18,-20 14,18 0,22 -14,18" fill="#2563eb" />
+          <text x="0" y="8" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">3</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">CSS3</text>
     </g>
 
-    <!-- 5. JavaScript (3D Spinning Gold Tile) -->
+    <!-- 5. JavaScript (Floating Gold Tile) -->
     <g class="tile-badge" transform="translate(435, 575)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spin-js">
-        <rect x="11" y="11" width="50" height="50" rx="8" fill="#eab308" />
-        <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="22" fill="#1c1917">JS</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-spin-js">
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="#eab308" />
+          <text x="0" y="8" text-anchor="middle" class="sans-label" font-size="22" fill="#1c1917">JS</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">JavaScript</text>
     </g>
 
-    <!-- 6. TypeScript (3D Spinning Amber Tile) -->
+    <!-- 6. TypeScript (Floating Amber Tile) -->
     <g class="tile-badge" transform="translate(535, 575)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spin-ts">
-        <rect x="11" y="11" width="50" height="50" rx="8" fill="#d97706" />
-        <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="22" fill="#FFFFFF">TS</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-spin-ts">
+          <rect x="-25" y="-25" width="50" height="50" rx="8" fill="#d97706" />
+          <text x="0" y="8" text-anchor="middle" class="sans-label" font-size="22" fill="#FFFFFF">TS</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">TypeScript</text>
     </g>
 
-    <!-- 7. HTML5 (3D Spinning Orange Shield) -->
+    <!-- 7. HTML5 (3D Tilting Shield) -->
     <g class="tile-badge" transform="translate(635, 575)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spin-html">
-        <polygon points="18,16 54,16 50,54 36,58 22,54" fill="#ea580c" />
-        <text x="36" y="44" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">5</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-spin-html">
+          <polygon points="-18,-20 18,-20 14,18 0,22 -14,18" fill="#ea580c" />
+          <text x="0" y="8" text-anchor="middle" class="sans-label" font-size="18" fill="#FFFFFF">5</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">HTML5</text>
     </g>
@@ -690,11 +643,13 @@ function generateSVG() {
     <!-- 1. Three.js (Continuous 3D Rotating Cube) -->
     <g class="tile-badge" transform="translate(890, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-threejs">
-        <polygon points="36,15 56,27 36,39 16,27" fill="#383533" />
-        <polygon points="16,27 36,39 36,57 16,45" fill="#292524" />
-        <polygon points="36,39 56,27 56,45 36,57" fill="#1c1917" />
-        <polygon points="36,25 46,31 36,37 26,31" fill="#a8a29e" class="anim-three-inner" />
+      <g transform="translate(36, 36)">
+        <g class="anim-threejs">
+          <polygon points="0,-21 20,-9 0,3 -20,-9" fill="#383533" />
+          <polygon points="-20,-9 0,3 0,21 -20,9" fill="#292524" />
+          <polygon points="0,3 20,-9 20,9 0,21" fill="#1c1917" />
+          <polygon points="0,-11 10,-5 0,1 -10,-5" fill="#a8a29e" class="anim-three-inner" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Three.js</text>
     </g>
@@ -702,9 +657,11 @@ function generateSVG() {
     <!-- 2. R3F (Spinning Purple Rhombus) -->
     <g class="tile-badge" transform="translate(995, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-r3f">
-        <polygon points="36,15 58,36 36,57 14,36" fill="#8b5cf6" />
-        <polygon points="36,15 36,57 58,36" fill="#7c3aed" />
+      <g transform="translate(36, 36)">
+        <g class="anim-r3f">
+          <polygon points="0,-21 22,0 0,21 -22,0" fill="#8b5cf6" />
+          <polygon points="0,-21 0,21 22,0" fill="#7c3aed" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">R3F</text>
     </g>
@@ -712,12 +669,14 @@ function generateSVG() {
     <!-- 3. Drei (Spinning Reticle Target) -->
     <g class="tile-badge" transform="translate(1100, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-drei-ring">
-        <circle cx="36" cy="36" r="21" fill="none" stroke="#52525b" stroke-width="6.5" />
-      </g>
-      <g class="anim-drei-cross">
-        <line x1="36" y1="12" x2="36" y2="60" stroke="#52525b" stroke-width="2.5" />
-        <line x1="12" y1="36" x2="60" y2="36" stroke="#52525b" stroke-width="2.5" />
+      <g transform="translate(36, 36)">
+        <g class="anim-drei-ring">
+          <circle cx="0" cy="0" r="21" fill="none" stroke="#52525b" stroke-width="6.5" />
+        </g>
+        <g class="anim-drei-cross">
+          <line x1="0" y1="-24" x2="0" y2="24" stroke="#52525b" stroke-width="2.5" />
+          <line x1="-24" y1="0" x2="24" y2="0" stroke="#52525b" stroke-width="2.5" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Drei</text>
     </g>
@@ -725,10 +684,12 @@ function generateSVG() {
     <!-- 4. WebGL (3D Spinning Wireframe Pyramid) -->
     <g class="tile-badge" transform="translate(1205, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-webgl">
-        <polygon points="36,17 57,55 15,55" fill="none" stroke="#0d9488" stroke-width="2" />
-        <line x1="36" y1="17" x2="36" y2="55" stroke="#0d9488" stroke-width="1.5" />
-        <polygon points="36,17 36,55 15,55" fill="rgba(13, 148, 136, 0.25)" />
+      <g transform="translate(36, 36)">
+        <g class="anim-webgl">
+          <polygon points="0,-19 21,19 -21,19" fill="none" stroke="#0d9488" stroke-width="2" />
+          <line x1="0" y1="-19" x2="0" y2="19" stroke="#0d9488" stroke-width="1.5" />
+          <polygon points="0,-19 0,19 -21,19" fill="rgba(13, 148, 136, 0.25)" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">WebGL</text>
     </g>
@@ -736,9 +697,9 @@ function generateSVG() {
     <!-- 5. GLSL (Breathing Stacked Diamonds) -->
     <g class="tile-badge" transform="translate(1310, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g>
-        <polygon points="36,17 54,28 36,39 18,28" fill="#818cf8" class="anim-glsl-top" />
-        <polygon points="36,32 54,43 36,54 18,43" fill="#4f46e5" class="anim-glsl-bot" />
+      <g transform="translate(36, 36)">
+        <polygon points="0,-19 18,-8 0,3 -18,-8" fill="#818cf8" class="anim-glsl-top" />
+        <polygon points="0,-4 18,7 0,18 -18,7" fill="#4f46e5" class="anim-glsl-bot" />
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GLSL</text>
     </g>
@@ -746,9 +707,11 @@ function generateSVG() {
     <!-- 6. Spline (Continuous 3D Möbius Curve Loop) -->
     <g class="tile-badge" transform="translate(1415, 420)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spline">
-        <path d="M 22 46 C 20 28, 40 22, 48 30 C 56 38, 42 52, 28 46" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linecap="round" />
-        <circle cx="28" cy="46" r="3.5" fill="#f43f5e" />
+      <g transform="translate(36, 36)">
+        <g class="anim-spline">
+          <path d="M -14 10 C -16 -8, 4 -14, 12 -6 C 20 2, 6 16, -8 10" fill="none" stroke="#ec4899" stroke-width="4.5" stroke-linecap="round" />
+          <circle cx="-8" cy="10" r="3.5" fill="#f43f5e" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Spline</text>
     </g>
@@ -770,17 +733,14 @@ function generateSVG() {
     <!-- Diorama: Kinetic Antenna Towers -->
     <g id="diorama-antennae">
       <line x1="1780" y1="520" x2="2160" y2="520" stroke="#78716c" stroke-width="3" stroke-linecap="round" />
-      
       <line x1="1870" y1="520" x2="1870" y2="400" stroke="#78716c" stroke-width="3.5" />
       <g class="anim-dish-1">
         <ellipse cx="1870" cy="390" rx="32" ry="14" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
       </g>
-
       <line x1="1960" y1="520" x2="1960" y2="350" stroke="#78716c" stroke-width="3.5" />
       <g class="anim-dish-2">
         <ellipse cx="1960" cy="345" rx="34" ry="16" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
       </g>
-
       <line x1="2050" y1="520" x2="2050" y2="420" stroke="#78716c" stroke-width="3.5" />
       <g class="anim-dish-3">
         <ellipse cx="2050" cy="410" rx="28" ry="12" fill="#d6d1c4" stroke="#78716c" stroke-width="2.5" />
@@ -791,8 +751,10 @@ function generateSVG() {
     <!-- 1. GSAP (Kinetic Twisting Hourglass) -->
     <g class="tile-badge" transform="translate(1675, 520)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-gsap">
-        <path d="M 22 20 Q 36 36 22 52 L 50 52 Q 36 36 50 20 Z" fill="#65a30d" />
+      <g transform="translate(36, 36)">
+        <g class="anim-gsap">
+          <path d="M -14 -16 Q 0 0 -14 16 L 14 16 Q 0 0 14 -16 Z" fill="#65a30d" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GSAP</text>
     </g>
@@ -800,9 +762,11 @@ function generateSVG() {
     <!-- 2. ScrollTrigger (Animated Looking Eye) -->
     <g class="tile-badge" transform="translate(1780, 520)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <ellipse cx="36" cy="36" rx="21" ry="11" fill="none" stroke="#b45309" stroke-width="3" />
-      <g class="anim-eye-pupil">
-        <circle cx="36" cy="36" r="5.5" fill="#b45309" class="anim-eye-core" />
+      <g transform="translate(36, 36)">
+        <ellipse cx="0" cy="0" rx="21" ry="11" fill="none" stroke="#b45309" stroke-width="3" />
+        <g class="anim-eye-pupil">
+          <circle cx="0" cy="0" r="5.5" fill="#b45309" class="anim-eye-core" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">ScrollTrigger</text>
     </g>
@@ -810,8 +774,10 @@ function generateSVG() {
     <!-- 3. Motion (Physical Spring Rebound) -->
     <g class="tile-badge" transform="translate(1885, 520)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-motion">
-        <polygon points="18,48 36,22 45,36 54,22 72,48" fill="#64748b" />
+      <g transform="translate(36, 36)">
+        <g class="anim-motion">
+          <polygon points="-18,12 0,-14 9,0 18,-14 36,12" fill="#64748b" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Motion</text>
     </g>
@@ -819,8 +785,10 @@ function generateSVG() {
     <!-- 4. React Spring (Compressing & Rebounding Coil) -->
     <g class="tile-badge" transform="translate(1990, 520)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-spring">
-        <path d="M 20 46 C 20 26, 32 26, 36 36 C 40 46, 52 46, 52 26" fill="none" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round" />
+      <g transform="translate(36, 36)">
+        <g class="anim-spring">
+          <path d="M -16 10 C -16 -10, -4 -10, 0 0 C 4 10, 16 10, 16 -10" fill="none" stroke="#e11d48" stroke-width="3.5" stroke-linecap="round" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Spring</text>
     </g>
@@ -828,9 +796,11 @@ function generateSVG() {
     <!-- 5. Lenis (Phase-Shifted Triple Wave) -->
     <g class="tile-badge" transform="translate(2095, 520)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <path d="M 18 26 Q 36 16 54 26" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-1" />
-      <path d="M 18 37 Q 36 27 54 37" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-2" />
-      <path d="M 18 48 Q 36 38 54 48" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-3" />
+      <g transform="translate(36, 36)">
+        <path d="M -18 -10 Q 0 -20 18 -10" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-1" />
+        <path d="M -18 1 Q 0 -9 18 1" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-2" />
+        <path d="M -18 12 Q 0 2 18 12" fill="none" stroke="#0f766e" stroke-width="3.8" stroke-linecap="round" class="anim-lenis-3" />
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Lenis</text>
     </g>
   </g>
@@ -862,30 +832,36 @@ function generateSVG() {
     <!-- 1. SVG (Spinning Vector Cross) -->
     <g class="tile-badge" transform="translate(435, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-svg-cross">
-        <line x1="20" y1="20" x2="52" y2="52" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
-        <line x1="52" y1="20" x2="20" y2="52" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
+      <g transform="translate(36, 36)">
+        <g class="anim-svg-cross">
+          <line x1="-16" y1="-16" x2="16" y2="16" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
+          <line x1="16" y1="-16" x2="-16" y2="16" stroke="#1c1917" stroke-width="4.5" stroke-linecap="round" />
+        </g>
+        <circle cx="0" cy="0" r="5" fill="#f59e0b" />
       </g>
-      <circle cx="36" cy="36" r="5" fill="#f59e0b" />
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">SVG</text>
     </g>
 
     <!-- 2. Canvas (Spinning Orbital Ring) -->
     <g class="tile-badge" transform="translate(535, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-canvas-ring">
-        <circle cx="36" cy="36" r="19" fill="none" stroke="#0e7490" stroke-width="5.5" stroke-dasharray="25 6" />
+      <g transform="translate(36, 36)">
+        <g class="anim-canvas-ring">
+          <circle cx="0" cy="0" r="19" fill="none" stroke="#0e7490" stroke-width="5.5" stroke-dasharray="25 6" />
+        </g>
+        <path d="M -13 5 Q 0 -11 13 5" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" />
       </g>
-      <path d="M 23 41 Q 36 25 49 41" fill="none" stroke="#38bdf8" stroke-width="4.5" stroke-linecap="round" />
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Canvas</text>
     </g>
 
     <!-- 3. Mermaid (Rotating Flowchart Node) -->
     <g class="tile-badge" transform="translate(635, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-mermaid">
-        <polygon points="36,16 54,36 36,56 18,36" fill="none" stroke="#e11d48" stroke-width="3.5" />
-        <circle cx="36" cy="36" r="4.5" fill="#e11d48" />
+      <g transform="translate(36, 36)">
+        <g class="anim-mermaid">
+          <polygon points="0,-20 18,0 0,20 -18,0" fill="none" stroke="#e11d48" stroke-width="3.5" />
+          <circle cx="0" cy="0" r="4.5" fill="#e11d48" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Mermaid</text>
     </g>
@@ -893,9 +869,11 @@ function generateSVG() {
     <!-- 4. Web Animations API (WAAPI Play Pulse) -->
     <g class="tile-badge" transform="translate(735, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <rect x="14" y="14" width="44" height="44" rx="8" fill="#b0a99b" />
-      <g class="anim-waapi">
-        <polygon points="31,26 47,36 31,46" fill="#FFFFFF" />
+      <g transform="translate(36, 36)">
+        <rect x="-22" y="-22" width="44" height="44" rx="8" fill="#b0a99b" />
+        <g class="anim-waapi">
+          <polygon points="-5,-10 11,0 -5,10" fill="#FFFFFF" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">WAAPI</text>
     </g>
@@ -927,9 +905,11 @@ function generateSVG() {
     <!-- 1. Chrome APIs (Spinning Aperture Ring) -->
     <g class="tile-badge" transform="translate(1660, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-chrome-api">
-        <circle cx="36" cy="36" r="18" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="18 6" />
-        <path d="M 23 36 Q 36 27 49 36 Q 36 45 23 36 Z" fill="#3b82f6" />
+      <g transform="translate(36, 36)">
+        <g class="anim-chrome-api">
+          <circle cx="0" cy="0" r="18" fill="none" stroke="#2563eb" stroke-width="4" stroke-dasharray="18 6" />
+          <path d="M -13 0 Q 0 -9 13 0 Q 0 9 -13 0 Z" fill="#3b82f6" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Chrome APIs</text>
     </g>
@@ -937,31 +917,36 @@ function generateSVG() {
     <!-- 2. Manifest V3 (Laser Document Scan) -->
     <g class="tile-badge" transform="translate(1765, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <rect x="18" y="15" width="36" height="42" rx="5" fill="#d6d3c7" />
-      <line x1="25" y1="26" x2="47" y2="26" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
-      <line x1="25" y1="36" x2="47" y2="36" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
-      <line x1="25" y1="46" x2="39" y2="46" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
-      <!-- Sweeping Laser Beam -->
-      <line x1="16" y1="20" x2="56" y2="20" stroke="#3b82f6" stroke-width="2" class="anim-manifest-scan" />
+      <g transform="translate(36, 36)">
+        <rect x="-18" y="-21" width="36" height="42" rx="5" fill="#d6d3c7" />
+        <line x1="-11" y1="-10" x2="11" y2="-10" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+        <line x1="-11" y1="0" x2="11" y2="0" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+        <line x1="-11" y1="10" x2="3" y2="10" stroke="#1c1917" stroke-width="3" stroke-linecap="round" />
+        <line x1="-20" y1="-16" x2="20" y2="-16" stroke="#3b82f6" stroke-width="2" class="anim-manifest-scan" />
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Manifest V3</text>
     </g>
 
     <!-- 3. Content Scripts (Breathing Code Injection) -->
     <g class="tile-badge" transform="translate(1870, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-scripts">
-        <rect x="16" y="16" width="40" height="40" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" />
-        <text x="24" y="42" class="mono-meta" font-size="18" font-weight="700" fill="#2563eb">&lt;/&gt;</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-scripts">
+          <rect x="-20" y="-20" width="40" height="40" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" />
+          <text x="0" y="6" text-anchor="middle" class="mono-meta" font-size="18" font-weight="700" fill="#2563eb">&lt;/&gt;</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Scripts</text>
     </g>
 
-    <!-- 4. Service Workers (3D Spinning Shield) -->
+    <!-- 4. Service Workers (3D Shield Float) -->
     <g class="tile-badge" transform="translate(1975, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-worker">
-        <polygon points="18,18 54,18 54,42 36,54 18,42" fill="#718d7f" />
-        <polyline points="27,32 36,41 45,32" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+      <g transform="translate(36, 36)">
+        <g class="anim-worker">
+          <polygon points="-18,-18 18,-18 18,6 0,18 -18,6" fill="#718d7f" />
+          <polyline points="-9,-4 0,5 9,-4" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Workers</text>
     </g>
@@ -969,10 +954,12 @@ function generateSVG() {
     <!-- 5. Chrome Storage (Bobbing Database Disks) -->
     <g class="tile-badge" transform="translate(2080, 890)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-storage">
-        <ellipse cx="36" cy="24" rx="18" ry="7" fill="#64748b" />
-        <path d="M 18 24 L 18 36 C 18 40, 54 40, 54 36 L 54 24" fill="#64748b" />
-        <path d="M 18 36 L 18 48 C 18 52, 54 52, 54 48 L 54 36" fill="#475569" />
+      <g transform="translate(36, 36)">
+        <g class="anim-storage">
+          <ellipse cx="0" cy="-12" rx="18" ry="7" fill="#64748b" />
+          <path d="M -18 -12 L -18 0 C -18 4, 18 4, 18 0 L 18 -12" fill="#64748b" />
+          <path d="M -18 0 L -18 12 C -18 16, 18 16, 18 12 L 18 0" fill="#475569" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Storage</text>
     </g>
@@ -1005,31 +992,37 @@ function generateSVG() {
     <!-- 1. Python (Gliding Interlocking Snakes) -->
     <g class="tile-badge" transform="translate(420, 1190)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <rect x="17" y="15" width="38" height="42" rx="4" fill="#e2ded4" />
-      <line x1="23" y1="27" x2="47" y2="27" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" class="anim-py-blue" />
-      <line x1="23" y1="36" x2="49" y2="36" stroke="#eab308" stroke-width="3" stroke-linecap="round" class="anim-py-yellow" />
-      <line x1="23" y1="45" x2="37" y2="45" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" class="anim-py-blue" />
+      <g transform="translate(36, 36)">
+        <rect x="-19" y="-21" width="38" height="42" rx="4" fill="#e2ded4" />
+        <line x1="-13" y1="-9" x2="11" y2="-9" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" class="anim-py-blue" />
+        <line x1="-13" y1="0" x2="13" y2="0" stroke="#eab308" stroke-width="3" stroke-linecap="round" class="anim-py-yellow" />
+        <line x1="-13" y1="9" x2="1" y2="9" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" class="anim-py-blue" />
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Python</text>
     </g>
 
-    <!-- 2. Node.js (3D Hexagon Flip) -->
+    <!-- 2. Node.js (Floating Hexagon) -->
     <g class="tile-badge" transform="translate(525, 1190)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-node">
-        <rect x="17" y="15" width="38" height="42" rx="4" fill="#4d7c57" />
-        <line x1="24" y1="27" x2="48" y2="27" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-        <line x1="24" y1="36" x2="48" y2="36" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
-        <line x1="24" y1="45" x2="40" y2="45" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+      <g transform="translate(36, 36)">
+        <g class="anim-node">
+          <rect x="-19" y="-21" width="38" height="42" rx="4" fill="#4d7c57" />
+          <line x1="-12" y1="-9" x2="12" y2="-9" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          <line x1="-12" y1="0" x2="12" y2="0" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+          <line x1="-12" y1="9" x2="4" y2="9" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Node.js</text>
     </g>
 
-    <!-- 3. npm (Flashing Command Prompt) -->
+    <!-- 3. npm (Terminal Prompt Pulse) -->
     <g class="tile-badge" transform="translate(630, 1190)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-npm">
-        <rect x="15" y="15" width="42" height="42" rx="6" fill="#bfae99" />
-        <text x="24" y="43" class="mono-meta" font-size="20" font-weight="700" fill="#1c1917">&gt;_</text>
+      <g transform="translate(36, 36)">
+        <g class="anim-npm">
+          <rect x="-21" y="-21" width="42" height="42" rx="6" fill="#bfae99" />
+          <text x="0" y="7" text-anchor="middle" class="mono-meta" font-size="20" font-weight="700" fill="#1c1917">&gt;_</text>
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">npm</text>
     </g>
@@ -1037,22 +1030,26 @@ function generateSVG() {
     <!-- 4. Git (Pulsing Commit Nodes) -->
     <g class="tile-badge" transform="translate(735, 1190)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <polygon points="36,15 56,27 56,49 36,59 16,49 16,27" fill="#9a5a4a" />
-      <circle cx="27" cy="33" r="3.5" fill="#FFFFFF" />
-      <circle cx="45" cy="33" r="3.5" fill="#FFFFFF" />
-      <circle cx="36" cy="47" r="3.5" fill="#FFFFFF" class="anim-git-node" />
-      <path d="M 27 33 L 36 41 L 36 47 M 45 33 L 36 41" stroke="#FFFFFF" stroke-width="2" fill="none" />
+      <g transform="translate(36, 36)">
+        <polygon points="0,-21 20,-9 20,13 0,23 -20,13 -20,-9" fill="#9a5a4a" />
+        <circle cx="-9" cy="-3" r="3.5" fill="#FFFFFF" />
+        <circle cx="9" cy="-3" r="3.5" fill="#FFFFFF" />
+        <circle cx="0" cy="11" r="3.5" fill="#FFFFFF" class="anim-git-node" />
+        <path d="M -9 -3 L 0 5 L 0 11 M 9 -3 L 0 5" stroke="#FFFFFF" stroke-width="2" fill="none" />
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Git</text>
     </g>
 
     <!-- 5. GitHub (Orbiting Radar Octocat Node) -->
     <g class="tile-badge" transform="translate(470, 1285)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <circle cx="36" cy="36" r="21" fill="#24292f" />
-      <g class="anim-github">
-        <circle cx="29" cy="33" r="4" fill="#FFFFFF" />
-        <circle cx="43" cy="41" r="4" fill="#FFFFFF" />
-        <line x1="29" y1="33" x2="43" y2="41" stroke="#FFFFFF" stroke-width="2.5" />
+      <g transform="translate(36, 36)">
+        <circle cx="0" cy="0" r="21" fill="#24292f" />
+        <g class="anim-github">
+          <circle cx="-7" cy="-3" r="4" fill="#FFFFFF" />
+          <circle cx="7" cy="5" r="4" fill="#FFFFFF" />
+          <line x1="-7" y1="-3" x2="7" y2="5" stroke="#FFFFFF" stroke-width="2.5" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">GitHub</text>
     </g>
@@ -1060,16 +1057,20 @@ function generateSVG() {
     <!-- 6. Playwright (Testing Chevron Flex) -->
     <g class="tile-badge" transform="translate(575, 1285)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <polygon points="18,18 54,18 54,42 36,54 18,42" fill="#718d7f" />
-      <polyline points="27,32 36,41 45,32" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="anim-playwright" />
+      <g transform="translate(36, 36)">
+        <polygon points="-18,-18 18,-18 18,6 0,18 -18,6" fill="#718d7f" />
+        <polyline points="-9,-4 0,5 9,-4" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" class="anim-playwright" />
+      </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Playwright</text>
     </g>
 
     <!-- 7. DevTools (Rotating Inspector Hexagon) -->
     <g class="tile-badge" transform="translate(680, 1285)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-devtools">
-        <polygon points="36,15 53,25 53,47 36,57 19,47 19,25" fill="none" stroke="#52525b" stroke-width="4.5" />
+      <g transform="translate(36, 36)">
+        <g class="anim-devtools">
+          <polygon points="0,-21 17,-11 17,11 0,21 -17,11 -17,-11" fill="none" stroke="#52525b" stroke-width="4.5" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">DevTools</text>
     </g>
@@ -1098,12 +1099,14 @@ function generateSVG() {
     </g>
 
     <!-- Tech Badges with 3D Animations -->
-    <!-- 1. Vercel (3D Spinning Black Diamond) -->
+    <!-- 1. Vercel (Floating Black Diamond) -->
     <g class="tile-badge" transform="translate(1800, 1240)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-vercel">
-        <polygon points="36,15 56,36 36,57 16,36" fill="#1c1917" />
-        <polygon points="36,27 46,44 26,44" fill="#FFFFFF" />
+      <g transform="translate(36, 36)">
+        <g class="anim-vercel">
+          <polygon points="0,-21 20,0 0,21 -20,0" fill="#1c1917" />
+          <polygon points="0,-9 10,8 -10,8" fill="#FFFFFF" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Vercel</text>
     </g>
@@ -1111,8 +1114,10 @@ function generateSVG() {
     <!-- 2. Supabase (Pulsing Emerald Origami Surge) -->
     <g class="tile-badge" transform="translate(1910, 1240)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-supabase">
-        <polygon points="36,15 55,39 39,39 45,57 19,33 35,33" fill="#528f73" />
+      <g transform="translate(36, 36)">
+        <g class="anim-supabase">
+          <polygon points="0,-21 19,3 3,3 9,21 -17,-3 -1,-3" fill="#528f73" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Supabase</text>
     </g>
@@ -1120,10 +1125,12 @@ function generateSVG() {
     <!-- 3. Actions (Continuous CI/CD Pipeline Spin) -->
     <g class="tile-badge" transform="translate(2020, 1240)">
       <rect width="72" height="72" rx="14" fill="#FFFFFF" stroke="#E7E4DA" stroke-width="1.5" filter="url(#tileShadow)" />
-      <g class="anim-actions">
-        <circle cx="36" cy="36" r="21" fill="#d6d1c4" />
-        <line x1="36" y1="22" x2="36" y2="50" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
-        <line x1="22" y1="36" x2="50" y2="36" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
+      <g transform="translate(36, 36)">
+        <circle cx="0" cy="0" r="21" fill="#d6d1c4" />
+        <g class="anim-actions">
+          <line x1="0" y1="-14" x2="0" y2="14" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
+          <line x1="-14" y1="0" x2="14" y2="0" stroke="#57534e" stroke-width="5.5" stroke-linecap="round" />
+        </g>
       </g>
       <text x="36" y="94" text-anchor="middle" class="sans-label" font-size="13" fill="#1c1917">Actions</text>
     </g>
