@@ -68,8 +68,8 @@ architectures, generative motion, and building production-grade software.
 <td width="38%" valign="top" align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/LetMeCodex/LetMeCodex/main/assets/portrait-dark.png" />
-  <img src="https://raw.githubusercontent.com/LetMeCodex/LetMeCodex/main/assets/portrait-light.png" width="100%" alt="Anish" />
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/LetMeCodex/LetMeCodex/main/assets/portrait-dark.gif" />
+  <img src="https://raw.githubusercontent.com/LetMeCodex/LetMeCodex/main/assets/portrait-light.gif" width="100%" alt="Batman — LetMeCodex" />
 </picture>
 
 </td>
