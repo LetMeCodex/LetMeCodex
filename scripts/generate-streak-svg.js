@@ -774,8 +774,8 @@ async function main() {
   const assetsDir = path.join(__dirname, '..', 'assets');
   if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
 
-  const isEasterEggs = args.includes('--easter-eggs') || args.includes('--cycle');
-  if (isEasterEggs) {
+  const isMinimal = args.includes('--minimal');
+  if (!isMinimal) {
     console.log('Generating 7-Day Synchronized Living Easter Egg GitStreak SVGs...');
     const streakSvg = buildCanonicalStreakSvg(stats);
     const mainPath = path.join(assetsDir, 'git-streak.svg');

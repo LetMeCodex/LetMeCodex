@@ -828,22 +828,22 @@ async function main() {
     targetDay = parseInt(dayArg.split('=')[1], 10);
   }
   const isSingle = args.includes('--single');
-  const isCycle = args.includes('--cycle') || args.includes('--easter-eggs');
+  const isMinimal = args.includes('--minimal');
 
-  // Default to Linear / Apple Minimalist borderless floating matrix
-  if (isCycle) {
-    const cycleSvg = buildCyclingShowcaseSvg(data);
-    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
-    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
+  // Default to 7-Day Synchronized Easter Egg Auto-Morph Showcase
+  if (isMinimal) {
+    const minimalSvg = buildLinearMinimalistActivitySvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), minimalSvg, 'utf8');
+    console.log('[+] Generated Linear / Apple Minimalist Activity SVG -> github-activity.svg');
   } else if (targetDay !== null || isSingle) {
     const activeDay = targetDay !== null ? targetDay : todayDay;
     const mainSvg = buildSvgContent(data, activeDay);
     fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
     console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
   } else {
-    const minimalSvg = buildLinearMinimalistActivitySvg(data);
-    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), minimalSvg, 'utf8');
-    console.log('[+] Generated Linear / Apple Minimalist Activity SVG -> github-activity.svg');
+    const cycleSvg = buildCyclingShowcaseSvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
+    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
   }
 
   const dayFiles = [
