@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <i style="color:#7aa2f7;">Cracked dev. nerding out.</i>
+  <img src="./assets/ephemeral.svg" alt="Ephemeral" />
 </p>
 
 ---
