@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 42" width="135" height="42">
+  <defs>
+    <linearGradient id="bgOrcid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111d09" />
+      <stop offset="100%" stop-color="#080e04" />
+    </linearGradient>
+    <filter id="glowOrcid">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#a6ce39" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <style>
+    /* <![CDATA[ */
+    @keyframes orbitNode {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes orcidPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); fill: #bef264; }
+    }
+    .anim-orbit {
+      animation: orbitNode 5s linear infinite;
+      transform-box: fill-box;
+      transform-origin: 12px 12px;
+    }
+    .anim-id-text {
+      animation: orcidPulse 2.5s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    /* ]]> */
+  </style>
+
+  <!-- Button Chassis -->
+  <rect x="1" y="1" width="133" height="40" rx="9" fill="url(#bgOrcid)" stroke="#a6ce39" stroke-width="1.6" filter="url(#glowOrcid)" />
+
+  <!-- ORCID Glyph -->
+  <g transform="translate(14, 9)">
+    <!-- Base Green Disc -->
+    <circle cx="12" cy="12" r="11" fill="#a6ce39" />
+    
+    <!-- Orbiting Satellite Dot -->
+    <g class="anim-orbit">
+      <circle cx="12" cy="1" r="2" fill="#ffffff" />
+    </g>
+
+    <!-- White iD Typography -->
+    <g class="anim-id-text">
+      <!-- 'i' -->
+      <line x1="7.8" y1="9.5" x2="7.8" y2="16" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+      <circle cx="7.8" cy="7" r="1.1" fill="#ffffff" />
+      <!-- 'D' -->
+      <path d="M 11 7.2 L 13.8 7.2 C 16.5 7.2, 17.5 9, 17.5 11.5 C 17.5 14, 16.5 15.8, 13.8 15.8 L 11 15.8 Z" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round" />
+      <line x1="11" y1="7.2" x2="11" y2="15.8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+    </g>
+  </g>
+
+  <!-- Label -->
+  <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#ecfccb">ORCID</text>
+</svg>

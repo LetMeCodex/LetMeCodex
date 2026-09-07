@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 42" width="165" height="42">
+  <defs>
+    <linearGradient id="bgInsta" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e0c1b" />
+      <stop offset="100%" stop-color="#0d040e" />
+    </linearGradient>
+    <linearGradient id="instaGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="30%" stop-color="#e11d48" />
+      <stop offset="70%" stop-color="#c026d3" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <filter id="glowInsta">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#e11d48" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <style>
+    /* <![CDATA[ */
+    @keyframes lensSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes flashFire {
+      0%, 80%, 100% { transform: scale(1); opacity: 0.5; fill: #ffffff; }
+      88% { transform: scale(2.2); opacity: 1; fill: #fef08a; filter: drop-shadow(0 0 6px #fef08a); }
+    }
+    @keyframes borderPulse {
+      0%, 100% { stroke-opacity: 0.6; }
+      50% { stroke-opacity: 1; }
+    }
+    .anim-lens {
+      animation: lensSpin 8s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .anim-flash {
+      animation: flashFire 2.8s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    .anim-insta-border {
+      animation: borderPulse 3s ease-in-out infinite;
+    }
+    /* ]]> */
+  </style>
+
+  <!-- Button Chassis -->
+  <rect x="1" y="1" width="163" height="40" rx="9" fill="url(#bgInsta)" stroke="url(#instaGrad)" stroke-width="1.6" class="anim-insta-border" filter="url(#glowInsta)" />
+
+  <!-- Instagram Camera Glyph -->
+  <g transform="translate(14, 9)">
+    <!-- Outer Rounded Square -->
+    <rect width="24" height="24" rx="6.5" fill="none" stroke="url(#instaGrad)" stroke-width="2.5" />
+    
+    <!-- Spinning Center Lens -->
+    <g class="anim-lens">
+      <circle cx="12" cy="12" r="5.8" fill="none" stroke="url(#instaGrad)" stroke-width="2.5" stroke-dasharray="24 6" />
+      <circle cx="12" cy="12" r="2.2" fill="#ffffff" opacity="0.9" />
+    </g>
+
+    <!-- Pulsing Shutter Flash Dot -->
+    <circle cx="18.5" cy="5.5" r="1.5" class="anim-flash" />
+  </g>
+
+  <!-- Label -->
+  <text x="48" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="1.5" fill="#fdf2f8">INSTAGRAM</text>
+</svg>

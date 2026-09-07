@@ -32,29 +32,20 @@
 
 <h2>📫 Connect With Me</h2>
 <p align="left">
-  <a href="https://github.com/LetMeCodex">
-    <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio">
+  <a href="https://www.linkedin.com/in/anish-jha-1585753a3">
+    <img src="./assets/socials/linkedin.svg" height="38" alt="LinkedIn" />
   </a>
-  <a href="https://linkedin.com/in/letmecodex">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a>
-  <a href="https://x.com/letmecodex">
-    <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X">
+  <a href="https://x.com/aniiishhh07">
+    <img src="./assets/socials/x.svg" height="38" alt="X" />
   </a>
   <a href="https://instagram.com/letmecodex">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="Instagram">
-  </a>
-  <a href="https://discord.com/users/letmecodex">
-    <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Discord">
-  </a>
-  <a href="https://hashnode.com/@letmecodex">
-    <img src="https://img.shields.io/badge/Hashnode-2962FF?style=for-the-badge&logo=hashnode&logoColor=white" alt="Hashnode">
+    <img src="./assets/socials/instagram.svg" height="38" alt="Instagram" />
   </a>
   <a href="https://orcid.org/0009-0005-8865-5726">
-    <img src="https://img.shields.io/badge/ORCID-A6CE39?style=for-the-badge&logo=orcid&logoColor=white" alt="ORCID">
+    <img src="./assets/socials/orcid.svg" height="38" alt="ORCID" />
   </a>
   <a href="mailto:akj8183@gmail.com">
-    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email">
+    <img src="./assets/socials/email.svg" height="38" alt="Email" />
   </a>
 </p>
 </td>
