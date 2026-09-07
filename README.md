@@ -38,7 +38,7 @@
   <a href="https://x.com/aniiishhh07">
     <img src="./assets/socials/x.svg" height="38" alt="X" />
   </a>
-  <a href="https://instagram.com/letmecodex">
+  <a href="https://instagram.com/anii.ssshhh">
     <img src="./assets/socials/instagram.svg" height="38" alt="Instagram" />
   </a>
   <a href="https://orcid.org/0009-0005-8865-5726">
