@@ -96,4 +96,12 @@ architectures, generative motion, and building production-grade software.
   <a href="#github-activity" id="github-activity">
     <img src="./assets/github-activity.svg" width="100%" alt="GitHub Activity and 7-Day Easter Egg Matrix" />
   </a>
+
+  <!-- Seamless 4px Docking Spacer -->
+  <div style="height: 4px; line-height: 4px;">&nbsp;</div>
+
+  <!-- 3D Floating Obsidian Citadel // Orbital Topography -->
+  <a href="#profile-3d" id="profile-3d">
+    <img src="./assets/profile-3d.svg" width="100%" alt="3D Floating Obsidian Citadel — Orbital Topography" />
+  </a>
 </div>

@@ -571,11 +571,57 @@ function buildCyclingShowcaseSvg(data) {
         96% { transform: scale(1.1) rotate(-4deg); }
       }
 
+      @keyframes photonPulse {
+        0%, 100% { r: 5.5; opacity: 0.95; }
+        50% { r: 8; opacity: 1; }
+      }
+      @keyframes auraBreathe {
+        0%, 100% { r: 12; opacity: 0.22; }
+        50% { r: 18; opacity: 0.45; }
+      }
+      @keyframes laserDash {
+        0% { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -2080; }
+      }
+      @keyframes shockPulse1 {
+        0%, 8%, 100% { r: 2; opacity: 0; }
+        9% { r: 3; opacity: 1; stroke-width: 2; }
+        18% { r: 22; opacity: 0; stroke-width: 0.5; }
+      }
+      @keyframes shockPulse2 {
+        0%, 32%, 100% { r: 2; opacity: 0; }
+        33% { r: 3; opacity: 1; stroke-width: 2; }
+        42% { r: 24; opacity: 0; stroke-width: 0.5; }
+      }
+      @keyframes shockPulse3 {
+        0%, 54%, 100% { r: 2; opacity: 0; }
+        55% { r: 4; opacity: 1; stroke-width: 2.5; }
+        66% { r: 28; opacity: 0; stroke-width: 0.5; }
+      }
+      @keyframes arcFlash {
+        0%, 53%, 65%, 100% { opacity: 0; }
+        55%, 62% { opacity: 0.95; stroke: #FFFFFF; }
+        58% { opacity: 0.4; }
+      }
+      @keyframes paddleGlow {
+        0%, 100% { opacity: 0.55; }
+        50% { opacity: 1; }
+      }
+
       .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
       .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
       .particle { animation: emberFloat infinite ease-in-out; }
       .selected-box { animation: selectedPulse 2s infinite ease-in-out; }
-      .replay-btn { animation: replayWiggle 5s infinite ease-in-out; transform-origin: center; }
+      .replay-btn { transform-box: fill-box; transform-origin: center; }
+
+      .photon-mid { animation: photonPulse 1.8s infinite ease-in-out; }
+      .photon-aura { animation: auraBreathe 1.8s infinite ease-in-out; }
+      .laser-track { animation: laserDash 14s infinite linear; }
+      .shock-1 { animation: shockPulse1 14s infinite ease-out; }
+      .shock-2 { animation: shockPulse2 14s infinite ease-out; }
+      .shock-3 { animation: shockPulse3 14s infinite ease-out; }
+      .arc-flash { animation: arcFlash 14s infinite ease-in-out; }
+      .paddle-deflector { animation: paddleGlow 3s infinite ease-in-out; }
 
       .rw-0 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.0s; }
       .rw-1 { animation: rippleWave 2.8s infinite ease-in-out; animation-delay: 0.35s; }
@@ -594,7 +640,7 @@ function buildCyclingShowcaseSvg(data) {
 
   <!-- Top Header Bar -->
   <g transform="translate(16, 12)">
-    <text x="20" y="32" class="mono" fill="#7D8590" font-size="11" letter-spacing="1">GITHUB ACTIVITY</text>
+    <text x="20" y="32" class="mono" fill="#7D8590" font-size="11" letter-spacing="1">GITHUB ACTIVITY // ⚡ KINETIC RESONATOR</text>
     <text x="20" y="55" class="inter" fill="#F0F6FC" font-size="20" font-weight="700">${totalContribs.toLocaleString()}</text>
     <text x="80" y="55" class="inter" fill="#7D8590" font-size="13">contributions in the last 12 months</text>
   </g>
@@ -638,6 +684,38 @@ function buildCyclingShowcaseSvg(data) {
 
     <!-- 7 Continuous Morph Layers -->
     ${layersSvg}
+
+    <!-- ⚡ QUANTUM KINETIC BREAKOUT ENGINE -->
+    <g class="breakout-engine">
+      <!-- Trailing Laser Track -->
+      <path d="M 68 46 L 160 125 L 310 42 L 460 126 L 610 44 L 730 120 L 810 52 L 750 42 L 640 124 L 510 44 L 370 122 L 230 42 L 120 124 Z"
+            fill="none" stroke="rgba(56, 189, 248, 0.45)" stroke-width="1.6" stroke-dasharray="100 240" stroke-linecap="round" class="laser-track" />
+
+      <!-- Kinetic Deflector Pads at Top/Bottom Grid Edges -->
+      <rect x="142" y="38" width="36" height="3" rx="1.5" fill="#38BDF8" class="paddle-deflector" />
+      <rect x="592" y="40" width="38" height="3" rx="1.5" fill="#38BDF8" class="paddle-deflector" />
+      <rect x="442" y="128" width="40" height="3" rx="1.5" fill="#38BDF8" class="paddle-deflector" />
+      <rect x="712" y="128" width="44" height="3" rx="1.5" fill="#38BDF8" class="paddle-deflector" />
+
+      <!-- Collision Shockwave Rings -->
+      <circle cx="160" cy="125" r="3" fill="none" stroke="#38BDF8" class="shock-1" />
+      <circle cx="460" cy="126" r="3" fill="none" stroke="#F59E0B" class="shock-2" />
+      <circle cx="730" cy="120" r="4" fill="none" stroke="#38BDF8" class="shock-3" />
+
+      <!-- Critical Overdrive Electric Arc at Level 4 Commit Cluster (730, 120) -->
+      <path d="M 730 120 L 718 105 L 726 100 L 710 88 M 730 120 L 745 132 L 758 126 L 766 140" fill="none" stroke="#38BDF8" stroke-width="1.4" stroke-linecap="round" class="arc-flash" />
+
+      <!-- High-Energy Moving Photon Core -->
+      <g>
+        <animateMotion path="M 68 46 L 160 125 L 310 42 L 460 126 L 610 44 L 730 120 L 810 52 L 750 42 L 640 124 L 510 44 L 370 122 L 230 42 L 120 124 Z" dur="14s" repeatCount="indefinite" />
+        <!-- Aura -->
+        <circle cx="0" cy="0" r="14" fill="rgba(56, 189, 248, 0.22)" class="photon-aura" />
+        <!-- Mid Core -->
+        <circle cx="0" cy="0" r="5.5" fill="#38BDF8" class="photon-mid" />
+        <!-- Center Hot Core -->
+        <circle cx="0" cy="0" r="2.2" fill="#FFFFFF" />
+      </g>
+    </g>
 
     <!-- Bottom Separator Line -->
     <line x1="16" y1="198" x2="872" y2="198" stroke="#21262D" stroke-width="1"/>
