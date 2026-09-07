@@ -4,7 +4,7 @@ from PIL import Image
 import math
 import os
 
-src_path = r'C:\Users\anish jha\.gemini\antigravity\brain\c3b127c2-0743-4d73-82e0-0fbec4661310\batman_portrait_1788780767555.jpg'
+src_path = r'C:\Users\anish jha\.gemini\antigravity\brain\c3b127c2-0743-4d73-82e0-0fbec4661310\batman_jacked_front_1788789712791.jpg'
 img = cv2.imread(src_path)
 H_orig, W_orig = img.shape[:2]
 
@@ -15,45 +15,72 @@ gray = cv2.cvtColor(base_bgr, cv2.COLOR_BGR2GRAY)
 
 sy = target_h / H_orig
 sx = target_w / W_orig
-ey1, ey2 = int(320 * sy), int(385 * sy)
-ex1, ex2 = int(460 * sx), int(600 * sx)
 
-roi = gray[ey1:ey2, ex1:ex2]
-_, thresh = cv2.threshold(roi, 210, 255, cv2.THRESH_BINARY)
-num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(thresh)
+# Extract both left and right eye masks
+ey1, ey2 = int(370 * sy), int(445 * sy)
+ex1_l, ex2_l = int(260 * sx), int(355 * sx)
+ex1_r, ex2_r = int(410 * sx), int(510 * sx)
 
-eye_mask = np.zeros_like(gray)
-for i in range(1, num_labels):
-    if stats[i, cv2.CC_STAT_AREA] > 10:
-        c_mask = (labels == i).astype(np.uint8) * 255
-        eye_mask[ey1:ey2, ex1:ex2] = np.maximum(eye_mask[ey1:ey2, ex1:ex2], c_mask)
+def get_eye_blob(roi):
+    _, thresh = cv2.threshold(roi, 200, 255, cv2.THRESH_BINARY)
+    num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(thresh)
+    best_i = None
+    best_area = 0
+    for i in range(1, num_labels):
+        area = stats[i, cv2.CC_STAT_AREA]
+        if area > best_area:
+            best_area = area
+            best_i = i
+    mask = np.zeros_like(roi)
+    if best_i is not None:
+        mask[labels == best_i] = 255
+    return mask
 
-eye_ys, eye_xs = np.where(eye_mask > 0)
-eye_cy = int(np.mean(eye_ys))
-eye_cx = int(np.mean(eye_xs))
+mask_l = get_eye_blob(gray[ey1:ey2, ex1_l:ex2_l])
+mask_r = get_eye_blob(gray[ey1:ey2, ex1_r:ex2_r])
 
-# Base image with eye socket blacked out (for drawing dynamic eye on top)
+eye_mask_l = np.zeros_like(gray)
+eye_mask_r = np.zeros_like(gray)
+eye_mask_l[ey1:ey2, ex1_l:ex2_l] = mask_l
+eye_mask_r[ey1:ey2, ex1_r:ex2_r] = mask_r
+total_eye_mask = cv2.bitwise_or(eye_mask_l, eye_mask_r)
+
+# Centroids
+l_ys, l_xs = np.where(eye_mask_l > 0)
+r_ys, r_xs = np.where(eye_mask_r > 0)
+l_cy, l_cx = int(np.mean(l_ys)), int(np.mean(l_xs))
+r_cy, r_cx = int(np.mean(r_ys)), int(np.mean(r_xs))
+
+# Base image with eye sockets darkened
 base_no_eyes = base_bgr.copy()
-base_no_eyes[eye_mask > 0] = 0
+base_no_eyes[total_eye_mask > 0] = 0
 
-# Smooth breathing displacement weight map
-# 0 at head/cowl (y < 360), ramping to 1.0 at chest/shoulders (y > 480)
-breath_weight = np.zeros((target_h, target_w), dtype=np.float32)
+# Breathing displacement vector field maps
+# Muscular chest & traps expand on inhale
+cx_mid = target_w / 2.0
+weight_y = np.zeros((target_h, target_w), dtype=np.float32)
+weight_x = np.zeros((target_h, target_w), dtype=np.float32)
+
 for y in range(target_h):
-    if y > 360:
-        w = min(1.0, (y - 360) / 120.0)
-        breath_weight[y, :] = w
+    if y > 270:  # Below cowl forehead: neck, traps, chest
+        wy = min(1.0, (y - 270) / 180.0)
+        weight_y[y, :] = wy
+    if y > 380:  # Chest pectorals & lats expand outward
+        wx = min(1.0, (y - 380) / 180.0)
+        for x in range(target_w):
+            norm_x = (x - cx_mid) / cx_mid
+            weight_x[y, x] = wx * norm_x
 
 # Rain simulation
-np.random.seed(1337)
-num_drops = 42
+np.random.seed(42)
+num_drops = 45
 drops = []
 for _ in range(num_drops):
     x0 = np.random.uniform(0, target_w)
     y0 = np.random.uniform(0, target_h)
-    length = np.random.uniform(20, 36)
-    speed = np.random.uniform(24, 34)
-    alpha = np.random.uniform(0.35, 0.72)
+    length = np.random.uniform(22, 38)
+    speed = np.random.uniform(24, 36)
+    alpha = np.random.uniform(0.35, 0.70)
     drops.append({'x0': x0, 'y0': y0, 'len': length, 'speed': speed, 'alpha': alpha})
 
 total_frames = 32
@@ -63,64 +90,70 @@ frames_light = []
 # Canny edges for lightning contour glint
 edges_f = cv2.Canny(gray, 70, 190).astype(np.float32) / 255.0
 
+grid_x, grid_y = np.meshgrid(np.arange(target_w), np.arange(target_h))
+grid_x = grid_x.astype(np.float32)
+grid_y = grid_y.astype(np.float32)
+
 for f in range(total_frames):
     t = f / total_frames
 
-    # 1. Subtle smooth breathing
-    dy = 1.4 * math.sin(2 * math.pi * t)
-    # Remap image with vertical displacement modulated by breath_weight
-    map_x, map_y = np.meshgrid(np.arange(target_w), np.arange(target_h))
-    map_x = map_x.astype(np.float32)
-    map_y = (map_y.astype(np.float32) - (breath_weight * dy)).clip(0, target_h - 1)
-    
+    # 1. Muscular breathing: vertical rise + horizontal pectoral swell
+    sin_breath = math.sin(2 * math.pi * t)
+    dy = 2.0 * sin_breath
+    dx = 1.4 * sin_breath
+
+    map_x = (grid_x - (weight_x * dx)).clip(0, target_w - 1)
+    map_y = (grid_y - (weight_y * dy)).clip(0, target_h - 1)
+
     frame_base = cv2.remap(base_no_eyes, map_x, map_y, interpolation=cv2.INTER_LINEAR)
 
-    # 2. Eye blink & pulse
-    # Blink cycle at frames 22..26:
-    # 22: squint (0.45)
-    # 23: fully closed (0.0)
-    # 24: opening with snap (0.65)
-    # 25: wide open flare (1.20)
-    # others: breathing glow
+    # 2. Eye blink & optic flare
+    # Blink cycle at frames 22..26
     if f == 22:
-        blink = 0.45
-        flare = 0.8
+        blink = 0.40
+        flare = 0.75
     elif f == 23:
         blink = 0.0
         flare = 0.0
     elif f == 24:
-        blink = 0.65
-        flare = 1.35
+        blink = 0.70
+        flare = 1.45
     elif f == 25:
         blink = 1.0
-        flare = 1.25
+        flare = 1.30
     else:
         blink = 1.0
-        flare = 0.65 + 0.35 * math.sin(2 * math.pi * t)
+        flare = 0.70 + 0.30 * math.sin(2 * math.pi * t)
 
-    # Current eye geometry
-    cur_eye = np.zeros_like(eye_mask)
+    # Left and right eye blink geometry
+    cur_eyes = np.zeros_like(gray)
     if blink > 0.05:
-        for y, x in zip(eye_ys, eye_xs):
-            new_y = int(round(eye_cy + (y - eye_cy) * min(1.0, blink)))
-            if 0 <= new_y < target_h:
-                cur_eye[new_y, x] = 255
-        # Morphological close if compressed to fill small gaps
+        for y, x in zip(l_ys, l_xs):
+            new_y = int(round(l_cy + (y - l_cy) * min(1.0, blink) - (weight_y[y, x] * dy)))
+            new_x = int(round(x - (weight_x[y, x] * dx)))
+            if 0 <= new_y < target_h and 0 <= new_x < target_w:
+                cur_eyes[new_y, new_x] = 255
+        for y, x in zip(r_ys, r_xs):
+            new_y = int(round(r_cy + (y - r_cy) * min(1.0, blink) - (weight_y[y, x] * dy)))
+            new_x = int(round(x - (weight_x[y, x] * dx)))
+            if 0 <= new_y < target_h and 0 <= new_x < target_w:
+                cur_eyes[new_y, new_x] = 255
+
         if blink < 0.95:
             kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (2, 2))
-            cur_eye = cv2.morphologyEx(cur_eye, cv2.MORPH_CLOSE, kernel)
+            cur_eyes = cv2.morphologyEx(cur_eyes, cv2.MORPH_CLOSE, kernel)
 
-    cur_eye_f = cur_eye.astype(np.float32) / 255.0
+    cur_eyes_f = cur_eyes.astype(np.float32) / 255.0
 
-    # Gaussian bloom around eye
+    # Gaussian optical bloom
     if flare > 0.05:
-        bloom1 = cv2.GaussianBlur(cur_eye_f, (13, 13), 0) * (0.85 * flare)
-        bloom2 = cv2.GaussianBlur(cur_eye_f, (27, 27), 0) * (0.50 * flare)
-        total_bloom = np.clip(cur_eye_f + bloom1 + bloom2, 0, 1.0)
+        bloom1 = cv2.GaussianBlur(cur_eyes_f, (13, 13), 0) * (0.85 * flare)
+        bloom2 = cv2.GaussianBlur(cur_eyes_f, (27, 27), 0) * (0.50 * flare)
+        total_bloom = np.clip(cur_eyes_f + bloom1 + bloom2, 0, 1.0)
     else:
-        total_bloom = np.zeros_like(cur_eye_f)
+        total_bloom = np.zeros_like(cur_eyes_f)
 
-    # Composite eye onto frame_base
+    # Composite eyes onto frame_base
     frame_dark = frame_base.astype(np.float32) / 255.0
     for c in range(3):
         frame_dark[:, :, c] = np.maximum(frame_dark[:, :, c], total_bloom)
@@ -128,10 +161,10 @@ for f in range(total_frames):
     # 3. Ambient lightning contour flash at frame 30
     if f == 30:
         for c in range(3):
-            frame_dark[:, :, c] = np.clip(frame_dark[:, :, c] + edges_f * 0.28, 0, 1.0)
+            frame_dark[:, :, c] = np.clip(frame_dark[:, :, c] + edges_f * 0.32, 0, 1.0)
 
     # 4. Gotham rain streaks
-    slant = -0.22
+    slant = -0.18
     rain_overlay = np.zeros((target_h, target_w), dtype=np.float32)
     for drop in drops:
         cur_y = (drop['y0'] + f * drop['speed']) % target_h
@@ -143,10 +176,7 @@ for f in range(total_frames):
     for c in range(3):
         frame_dark[:, :, c] = np.clip(frame_dark[:, :, c] + rain_overlay, 0, 1.0)
 
-    # Dark uint8
     dark_uint8 = (frame_dark * 255).astype(np.uint8)
-    
-    # Light uint8 (clean inversion: white paper background, dark ink lines)
     light_uint8 = 255 - dark_uint8
 
     im_dark_rgb = Image.fromarray(cv2.cvtColor(dark_uint8, cv2.COLOR_BGR2RGB))
