@@ -40,7 +40,12 @@ def run_cmd(cmd, cwd=ROOT_DIR):
 
 def set_theme(target, push=True):
     print("\n" + "="*58)
-    if target == "cycle":
+    if target == "minimal":
+        print(" [MINIMAL] Activating Linear / Apple Minimalist Platinum & Graphite Theme...")
+        cmd_matrix = "node scripts/generate-github-activity.js"
+        cmd_streak = "node scripts/generate-streak-svg.js"
+        commit_msg = "feat(minimal): activate Linear / Apple Minimalist platinum aesthetic"
+    elif target == "cycle":
         print(" [SHOWCASE] Activating ALL 7 DAYS AUTO-MORPH SHOWCASE for Matrix & Streak...")
         cmd_matrix = "node scripts/generate-github-activity.js --cycle"
         cmd_streak = "node scripts/generate-streak-svg.js --cycle"
@@ -124,6 +129,7 @@ def interactive_menu():
 def main():
     parser = argparse.ArgumentParser(description="LetMeCodex Matrix Easter Egg Switcher")
     parser.add_argument("--day", help="Target day: sun, mon, tue, wed, thu, fri, sat (or 0-6)")
+    parser.add_argument("--minimal", action="store_true", help="Activate Linear / Apple Minimalist platinum theme")
     parser.add_argument("--cycle", action="store_true", help="Activate continuous 7-day auto-morph cycle")
     parser.add_argument("--today", action="store_true", help="Sync to today real calendar day")
     parser.add_argument("--no-push", action="store_true", help="Generate SVG only without git commit/push")
@@ -132,7 +138,9 @@ def main():
 
     push = not args.no_push
 
-    if args.cycle:
+    if args.minimal:
+        set_theme("minimal", push=push)
+    elif args.cycle:
         set_theme("cycle", push=push)
     elif args.today:
         set_theme("today", push=push)

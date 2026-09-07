@@ -85,11 +85,11 @@ def build_dual_frame_avatar(
         transparent = Image.new('RGBA', (w, h), (0, 0, 0, 0))
         cropped = Image.composite(rgba, transparent, mask)
         
-        # Draw glowing CRT cyan neon ring
+        # Draw sleek Linear/Apple minimal hairline titanium bezel
         draw = ImageDraw.Draw(cropped)
-        # Subtle color breathing between teal (#14b8a6) and bright cyber cyan (#38bdf8)
-        border_color = (20, 184, 166, 255) if idx == 0 else (56, 189, 248, 255)
-        draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline=border_color, width=3)
+        # Subtle brushed titanium / frosted platinum hairline border (crisp and minimal)
+        border_color = (210, 215, 225, 150) if idx == 0 else (235, 240, 250, 190)
+        draw.ellipse([cx - radius, cy - radius, cx + radius, cy + radius], outline=border_color, width=2)
         circle_frames.append(cropped)
         
     # Convert RGBA circular frames to GIF with transparent color index
@@ -120,7 +120,7 @@ def build_dual_frame_avatar(
         loop=0,
         transparency=255,
         disposal=2,
-        optimize=True
+        optimize=False
     )
     circle_size_kb = os.path.getsize(circle_path) / 1024.0
     print(f"Saved circular transparent avatar to: {circle_path} ({circle_size_kb:.1f} KB)")

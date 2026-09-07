@@ -651,6 +651,162 @@ function buildCyclingShowcaseSvg(data) {
   return cleanedSvg;
 }
 
+function buildLinearMinimalistActivitySvg(data) {
+  const now = new Date();
+  const totalContribs = (data && data.total && (data.total['2026'] || data.total['lastYear'])) || 1423;
+  const contribsList = (data && data.contributions) || [];
+  const contribMap = {};
+  contribsList.forEach(c => { contribMap[c.date] = c; });
+
+  const currentDayOfWeek = now.getUTCDay();
+  const totalDays = 52 * 7 + currentDayOfWeek;
+  const startDate = new Date(now);
+  startDate.setUTCDate(now.getUTCDate() - totalDays);
+  const endDate = new Date(now);
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthHeaders = [];
+  let lastMonth = -1;
+  for (let w = 0; w < 53; w++) {
+    const weekDate = new Date(startDate);
+    weekDate.setUTCDate(startDate.getUTCDate() + (w * 7));
+    const m = weekDate.getUTCMonth();
+    if (m !== lastMonth && w < 51) {
+      monthHeaders.push({ label: months[m], x: 44 + (w * 14.8) });
+      lastMonth = m;
+    }
+  }
+
+  // Linear Platinum & Graphite Monochrome Palette
+  const platPalette = ['#18181B', '#363C45', '#636C76', '#A1A1AA', '#F4F4F5'];
+
+  let cursor = new Date(startDate);
+  let cellsSvg = '';
+
+  for (let w = 0; w < 53; w++) {
+    const colX = 44 + (w * 14.8);
+    for (let r = 0; r < 7; r++) {
+      const cellDate = new Date(cursor);
+      const dateKey = cellDate.toISOString().substring(0, 10);
+      cursor.setUTCDate(cursor.getUTCDate() + 1);
+
+      if (cellDate > endDate) continue;
+
+      const item = contribMap[dateKey] || { count: 0, level: 0 };
+      const count = item.count || 0;
+      let level = item.level;
+      if (level === undefined) {
+        if (count >= 30) level = 4;
+        else if (count >= 20) level = 3;
+        else if (count >= 10) level = 2;
+        else if (count >= 1) level = 1;
+        else level = 0;
+      }
+
+      const color = platPalette[level] || platPalette[0];
+      const cellY = 38 + (r * 14.5);
+      const strokeAttr = level === 0 ? 'stroke="#27272A" stroke-width="1" class="cell-l0"' : '';
+
+      const isSelectedCell = (dateKey === '2026-02-12');
+      const selectionBox = isSelectedCell
+        ? `<rect x="${colX - 2}" y="${cellY - 2}" width="15" height="15" rx="3" fill="none" class="selected-box"/>`
+        : '';
+
+      const animClass = level > 0 ? `class="sw-${w % 8}"` : '';
+      cellsSvg += `\n      <rect x="${colX}" y="${cellY}" width="11" height="11" rx="2" fill="${color}" ${strokeAttr} ${animClass}/>${selectionBox}`;
+    }
+  }
+
+  const finalSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 225" width="100%" height="100%">
+  <defs>
+    <style>
+      @keyframes shimmerWave {
+        0%, 100% { opacity: 0.88; filter: brightness(1); }
+        50% { opacity: 1; filter: brightness(1.22); }
+      }
+      @keyframes selectedPulse {
+        0%, 100% { stroke: #FFFFFF; stroke-width: 1.5; opacity: 0.6; }
+        50% { stroke: #FFFFFF; stroke-width: 2.2; opacity: 1; }
+      }
+
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+      .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      
+      .activity-title { fill: #71717A; }
+      .activity-num { fill: #F4F4F5; }
+      .activity-sub { fill: #71717A; }
+      .hairline-div { stroke: #27272A; }
+      .cell-l0 { fill: #18181B; stroke: #27272A; }
+      .selected-box { animation: selectedPulse 2.4s infinite ease-in-out; }
+
+      .sw-0 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 0.0s; }
+      .sw-1 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 0.45s; }
+      .sw-2 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 0.9s; }
+      .sw-3 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 1.35s; }
+      .sw-4 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 1.8s; }
+      .sw-5 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 2.25s; }
+      .sw-6 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 2.7s; }
+      .sw-7 { animation: shimmerWave 3.6s infinite ease-in-out; animation-delay: 3.15s; }
+
+      @media (prefers-color-scheme: light) {
+        .activity-num { fill: #18181B; }
+        .activity-title { fill: #52525B; }
+        .activity-sub { fill: #71717A; }
+        .hairline-div { stroke: #E4E4E7; }
+        .cell-l0 { fill: #EBEDF0; stroke: #E1E4E8; }
+      }
+    </style>
+  </defs>
+
+  <!-- Top Header Row (Minimal Editorial) -->
+  <g transform="translate(16, 26)">
+    <text x="0" y="0" class="mono activity-title" font-size="11" font-weight="600" letter-spacing="1.5">GITHUB ACTIVITY</text>
+    <g transform="translate(0, 30)">
+      <text x="0" y="0" class="inter activity-num" font-size="28" font-weight="700" letter-spacing="-0.5">${Number(totalContribs).toLocaleString()}</text>
+      <text x="88" y="-2" class="inter activity-sub" font-size="13">contributions in the last 12 months</text>
+    </g>
+  </g>
+
+  <!-- Activity Grid Canvas (100% Borderless and Transparent) -->
+  <g transform="translate(16, 68)">
+    <!-- Month Labels -->
+    <g class="inter activity-sub" font-size="11" font-weight="500">
+      ${monthHeaders.map(m => `<text x="${m.x}" y="22">${m.label}</text>`).join('\n      ')}
+    </g>
+
+    <!-- Weekday Labels -->
+    <g class="inter activity-sub" font-size="10" font-weight="500" text-anchor="end">
+      <text x="32" y="47">Mon</text>
+      <text x="32" y="76">Wed</text>
+      <text x="32" y="105">Fri</text>
+    </g>
+
+    <!-- Contribution Grid Cells -->
+    ${cellsSvg}
+
+    <!-- Bottom Hairline Separator -->
+    <line x1="16" y1="148" x2="872" y2="148" class="hairline-div" stroke-width="1"/>
+
+    <!-- Bottom Footer (Minimal Legend) -->
+    <g transform="translate(20, 166)">
+      <text x="0" y="0" class="inter activity-sub" font-size="11">12 Feb 2026: 0 contributions</text>
+
+      <g transform="translate(735, -9)" class="inter activity-sub" font-size="11">
+        <text x="-32" y="9">Less</text>
+        <rect x="0" y="0" width="10" height="10" rx="2" class="cell-l0"/>
+        <rect x="13" y="0" width="10" height="10" rx="2" fill="#363C45"/>
+        <rect x="26" y="0" width="10" height="10" rx="2" fill="#636C76"/>
+        <rect x="39" y="0" width="10" height="10" rx="2" fill="#A1A1AA"/>
+        <rect x="52" y="0" width="10" height="10" rx="2" fill="#F4F4F5"/>
+        <text x="68" y="9">More</text>
+      </g>
+    </g>
+  </g>
+</svg>`;
+
+  return finalSvg;
+}
+
 async function main() {
   let data;
   try {
@@ -672,18 +828,22 @@ async function main() {
     targetDay = parseInt(dayArg.split('=')[1], 10);
   }
   const isSingle = args.includes('--single');
-  const forceCycle = args.includes('--cycle');
+  const isCycle = args.includes('--cycle') || args.includes('--easter-eggs');
 
-  // Default to 7-day auto-morph cycling showcase to ensure perfect synchronization with GitStreak flame
-  if (targetDay !== null || (isSingle && !forceCycle)) {
+  // Default to Linear / Apple Minimalist borderless floating matrix
+  if (isCycle) {
+    const cycleSvg = buildCyclingShowcaseSvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
+    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
+  } else if (targetDay !== null || isSingle) {
     const activeDay = targetDay !== null ? targetDay : todayDay;
     const mainSvg = buildSvgContent(data, activeDay);
     fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), mainSvg, 'utf8');
     console.log(`[+] Generated active SVG -> github-activity.svg (Day ${activeDay})`);
   } else {
-    const cycleSvg = buildCyclingShowcaseSvg(data);
-    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), cycleSvg, 'utf8');
-    console.log('[+] Generated 7-day auto-morph cycling showcase SVG -> github-activity.svg');
+    const minimalSvg = buildLinearMinimalistActivitySvg(data);
+    fs.writeFileSync(path.join(__dirname, '../assets/github-activity.svg'), minimalSvg, 'utf8');
+    console.log('[+] Generated Linear / Apple Minimalist Activity SVG -> github-activity.svg');
   }
 
   const dayFiles = [

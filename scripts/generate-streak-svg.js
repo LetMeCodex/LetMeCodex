@@ -575,6 +575,171 @@ ${generateCssRules()}
 </svg>`;
 }
 
+function buildLinearMinimalistStreakSvg(stats) {
+  const { currentStreak, tier } = stats;
+
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 118" width="100%" height="100%">
+  <defs>
+    <radialGradient id="plat_auraGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.12" />
+      <stop offset="50%" stop-color="#A1A1AA" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="plat_outerGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#27272A" />
+      <stop offset="45%" stop-color="#52525B" />
+      <stop offset="100%" stop-color="#71717A" />
+    </linearGradient>
+    <linearGradient id="plat_midGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#52525B" />
+      <stop offset="55%" stop-color="#A1A1AA" />
+      <stop offset="100%" stop-color="#E4E4E7" />
+    </linearGradient>
+    <linearGradient id="plat_coreGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#A1A1AA" />
+      <stop offset="60%" stop-color="#E4E4E7" />
+      <stop offset="100%" stop-color="#FFFFFF" />
+    </linearGradient>
+
+    <style><![CDATA[
+      @keyframes auraPlat { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.15); opacity: 0.95; } }
+      @keyframes basePlat { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(1.04) skewX(1deg); } }
+      @keyframes surgePlat {
+        0%, 100% { transform: scaleY(1) translateY(0) skewX(0deg); }
+        25% { transform: scaleY(1.14) translateY(-22px) skewX(2deg); }
+        50% { transform: scaleY(0.92) translateY(5px) skewX(-1.5deg); }
+        75% { transform: scaleY(1.1) translateY(-15px) skewX(1.5deg); }
+      }
+      @keyframes lickLeftPlat { 0%, 100% { transform: rotate(0deg); } 35% { transform: rotate(-7deg) scaleY(1.15) translateY(-20px); } 70% { transform: rotate(3deg) scaleY(0.92); } }
+      @keyframes lickRightPlat { 0%, 100% { transform: rotate(0deg); } 40% { transform: rotate(7deg) scaleY(1.14) translateY(-18px); } 75% { transform: rotate(-3deg) scaleY(0.93); } }
+      @keyframes flutterPlat { 0%, 100% { transform: scaleY(1); } 30% { transform: scaleY(1.12) translateY(-15px); } 65% { transform: scaleY(0.92); } }
+      @keyframes throbPlat { 0%, 100% { transform: scale(1); } 30% { transform: scale(1.16) translateY(-4px); } 70% { transform: scale(0.92); } }
+      @keyframes sparkPlat { 0%, 100% { transform: translate(0, 0); } 30% { transform: translate(-10px, -20px) rotate(-10deg); } 70% { transform: translate(-4px, -35px) rotate(5deg); } }
+      @keyframes wispPlat { 0% { transform: translateY(20px) scale(0.8); opacity: 0; } 25% { opacity: 0.9; } 100% { transform: translateY(-190px) scale(0.3); opacity: 0; } }
+
+      .heat-aura { transform-origin: -11px 0; animation: auraPlat 2.4s infinite ease-in-out; }
+      .flame-sway-base { transform-origin: -11px 192px; animation: basePlat 2.4s infinite ease-in-out; }
+      .flame-surge-center { transform-origin: -11px 192px; animation: surgePlat 1.2s infinite ease-in-out; }
+      .flame-lick-left { transform-origin: -60px 150px; animation: lickLeftPlat 1.35s infinite ease-in-out; }
+      .flame-lick-right { transform-origin: 50px 150px; animation: lickRightPlat 1.45s infinite ease-in-out -0.4s; }
+      .flame-mid { transform-origin: -11px 180px; animation: flutterPlat 0.95s infinite ease-in-out; }
+      .flame-core { transform-origin: -11px 160px; animation: throbPlat 0.75s infinite ease-in-out; }
+      .spark-whipping { transform-origin: -81px -212px; animation: sparkPlat 1.6s infinite ease-in-out; }
+      .spark-rise-right { animation: wispPlat 1.6s infinite ease-out; }
+      .spark-rise-left { animation: wispPlat 1.4s infinite ease-out -0.4s; }
+      .rising-wisp-1 { animation: wispPlat 1.3s infinite linear; }
+      .rising-wisp-2 { animation: wispPlat 1.5s infinite linear -0.5s; }
+      .rising-wisp-3 { animation: wispPlat 1.7s infinite linear -0.9s; }
+      .rising-wisp-4 { animation: wispPlat 1.2s infinite linear -0.3s; }
+      .ember-particle { animation: wispPlat 1.6s infinite ease-out; }
+
+      .mono { font-family: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace; }
+      .inter { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      
+      .streak-num { fill: #F4F4F5; }
+      .streak-label { fill: #D4D4D8; }
+      .streak-sub-txt { fill: #71717A; }
+
+      @media (prefers-color-scheme: light) {
+        .streak-num { fill: #18181B; }
+        .streak-label { fill: #52525B; }
+        .streak-sub-txt { fill: #71717A; }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Left: Monochrome Living Platinum Flame -->
+  <g transform="translate(52, 64)">
+    <circle cx="-26" cy="24" r="2.2" fill="#FFFFFF" class="ember-particle" style="--dx: -9px; animation-duration: 1.4s; animation-delay: 0s;" />
+    <circle cx="-38" cy="18" r="1.8" fill="#E4E4E7" class="ember-particle" style="--dx: -16px; animation-duration: 1.9s; animation-delay: 0.3s;" />
+    <circle cx="-11" cy="28" r="2.4" fill="#FFFFFF" class="ember-particle" style="--dx: -4px; animation-duration: 1.5s; animation-delay: 0.8s;" />
+    <circle cx="12" cy="22" r="2.5" fill="#E4E4E7" class="ember-particle" style="--dx: 8px; animation-duration: 1.3s; animation-delay: 0.1s;" />
+    <circle cx="30" cy="16" r="1.9" fill="#FFFFFF" class="ember-particle" style="--dx: 14px; animation-duration: 2s; animation-delay: 0.6s;" />
+
+    <g class="flame-master" transform="scale(0.23)">
+      <circle cx="-11" cy="0" r="240" fill="url(#plat_auraGlow)" class="heat-aura" />
+
+      <!-- Shadow and Base Foundation -->
+      <g class="flame-sway-base" opacity="0.45">
+        <path fill="#27272A" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+        <path stroke="#71717A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.25" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+      </g>
+
+      <!-- Center Main Tongue -->
+      <g class="flame-surge-center">
+        <path fill="url(#plat_outerGrad)" d="M-11.648,-198.368 C-42.315,-49.21 -191.842,-7.631 -11,192 C136.105,-1.263 65.263,-120 -11.648,-198.368z"/>
+        <path fill="url(#plat_outerGrad)" d="M-36.898,-145.17 C-101.993,-71.701 -126.604,15.347 -11,192 C115.073,-14.97 -61.444,-36.548 -36.898,-145.17z"/>
+        <path fill="url(#plat_outerGrad)" d="M-36.898,-145.17 C-29.625,-141.125 -8.262,-154.805 -11.627,-198.246 C2.443,-53.713 -69.323,-90.814 -36.898,-145.17z"/>
+      </g>
+
+      <!-- Left Flank Tongues -->
+      <g class="flame-lick-left">
+        <path fill="url(#plat_outerGrad)" d="M-107.023,-59.32 C-166.38,13.28 -113.38,144.70 -11,192 C81.5,-23.5 -116.16,47.34 -107.023,-59.32z"/>
+        <path fill="url(#plat_outerGrad)" d="M-135.05,84.36 C-148.51,123.68 -85.94,192 -11,192 C17.15,68.55 -110.18,126.14 -135.05,84.36z"/>
+        <path fill="url(#plat_outerGrad)" d="M-88.60,158.17 C-68.90,166.72 -65,192 -11,192 C-21.72,149.02 -65.19,155.08 -88.60,158.17z"/>
+      </g>
+
+      <!-- Right Flank Tongues -->
+      <g class="flame-lick-right">
+        <path fill="url(#plat_outerGrad)" d="M108.98,-59.68 C75.36,10.05 -46.55,2.52 -11,192 C122.73,140.84 144.78,40.84 108.98,-59.68z"/>
+        <path fill="url(#plat_outerGrad)" d="M121.36,118.23 C75,114.89 -10.79,121.61 -11,192 C87.47,192 107.68,134.94 121.36,118.23z"/>
+        <path fill="url(#plat_outerGrad)" d="M30.97,176.34 C14.27,167.16 -10.95,175.79 -11.04,191.24 C15.45,191.24 24.57,172.66 30.97,176.34z"/>
+      </g>
+
+      <!-- Middle Layer -->
+      <g class="flame-mid">
+        <path fill="url(#plat_midGrad)" d="M-11,192 C95.52,-18.31 32.10,-80.47 -8.70,-156.68 C-20.73,-86.36 -137.36,-109.73 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-11,192 C91.10,134.84 87.78,21.68 89.94,-18.17 C66.10,16.26 -35.5,-26.39 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-11,192 C72.68,161 101.84,113.57 103.95,90.03 C80.63,96 0.10,82.63 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-11,192 C59.28,192 51.13,153.18 76.98,142.36 C51.55,130.44 -9.80,147.38 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-8.17,-154.36 C-34.65,101.78 66.13,95 89.94,-18.17 C82.97,-8.24 71.32,-5.95 59.66,-8.89 C26.23,-14.98 49.89,-80.47 -8.17,-154.36z"/>
+        <path fill="url(#plat_midGrad)" d="M-11,192 C7.32,-10.82 -77.20,70.96 -109.08,-4.89 C-134.87,51.84 -72.07,131.74 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-11,192 C-11,76.50 -65.35,143.31 -101.39,111.51 C-97.47,164.05 -49.62,192 -11,192z"/>
+        <path fill="url(#plat_midGrad)" d="M-56.93,-80.83 C-66.55,-59.58 -58.92,-19.35 -69.43,0.08 C-76.84,13.80 -96.81,13.31 -108.98,-4.99 C-126.03,76.33 2.02,102.01 -56.93,-80.83z"/>
+      </g>
+
+      <!-- Translucent Gloss Layer -->
+      <g opacity="0.35" class="flame-mid" style="animation-delay: -0.35s;">
+        <path fill="#FFFFFF" d="M-0.026,-98.88 C0.157,-47.05 -108,-67.78 -12,192.42 C44.68,101.84 31.31,-9.47 -0.026,-98.88z M57.63,23.73 C49.08,31.12 24.81,33.76 21.16,7.69 C17.16,-21.13 -31.30,63.64 -12,192.42 C28.84,120.26 84.57,116.94 57.63,23.73z M-80.12,54.82 C-84.81,113.66 -41.15,143.19 -12,192.42 C-9.15,136.64 -42.23,10.05 -47.53,30.36 C-49.09,64.02 -64.24,57.06 -80.12,54.82z"/>
+      </g>
+
+      <!-- Core Hearth Layer -->
+      <g class="flame-core">
+        <path fill="url(#plat_coreGrad)" d="M-5.87,-22.27 C-12.09,25.84 -77.88,36.63 -12,192.42 C74.23,64.59 -12.02,43.79 -5.87,-22.27z"/>
+        <path fill="url(#plat_coreGrad)" d="M42.90,56.23 C28.57,82.21 -28.19,74.48 -12,192.42 C27.07,145.77 36.23,140.23 42.90,56.23z"/>
+        <path fill="url(#plat_coreGrad)" d="M70.01,103.60 C43.15,112.26 -16.5,82.5 -12,192.42 C32.23,165.57 57.68,133.5 70.01,103.60z"/>
+        <path fill="url(#plat_coreGrad)" d="M-61.02,87.46 C-65.47,104.16 -62.65,139.36 -12,192.42 C15.22,90.81 -43.62,102.51 -61.02,87.46z"/>
+        <path fill="url(#plat_coreGrad)" d="M-60.80,142.56 C-53.52,154.91 -54.20,178.63 -12,192.42 C-3.07,138.74 -41.61,137.68 -60.80,142.56z"/>
+      </g>
+
+      <!-- Center Core Hotspot -->
+      <ellipse cx="-11" cy="142" rx="14" ry="24" fill="#FFFFFF" class="flame-core" />
+
+      <!-- Rising Wisps & Sparks -->
+      <path class="rising-wisp-1" fill="url(#plat_midGrad)" d="M-11.6,-140 C-24,-110 -36,-80 -11,-20 C14,-80 2,-110 -11.6,-140 Z"/>
+      <path class="rising-wisp-2" fill="url(#plat_outerGrad)" d="M-45,-70 C-58,-50 -65,-20 -35,20 C-20,-20 -35,-50 -45,-70 Z"/>
+      <path class="rising-wisp-3" fill="url(#plat_outerGrad)" d="M35,-50 C20,-30 15,0 40,30 C52,0 45,-30 35,-50 Z"/>
+      <path class="rising-wisp-4" fill="url(#plat_coreGrad)" d="M-11.6,-90 C-18,-60 -22,-30 -11,0 C0,-30 -5,-60 -11.6,-90 Z"/>
+
+      <g class="spark-whipping">
+        <path fill="#FFFFFF" d="M-81.61,-212.15 C-78.53,-191.03 -118.03,-193.80 -97.59,-151.04 C-97.08,-151.74 -96.45,-152.17 -95.86,-152.01 C-68.61,-174.70 -66.37,-195.21 -81.61,-212.15z"/>
+        <path stroke="#E4E4E7" stroke-width="6" fill="none" opacity="0.8" d="M-81.61,-212.15 C-78.53,-191.03 -118.03,-193.80 -97.59,-151.04 C-97.08,-151.74 -96.45,-152.17 -95.86,-152.01 C-68.61,-174.70 -66.37,-195.21 -81.61,-212.15z"/>
+      </g>
+
+      <circle cx="45" cy="-70" r="10" fill="#FFFFFF" class="spark-rise-right"/>
+      <circle cx="-35" cy="-90" r="9" fill="#FFFFFF" class="spark-rise-left"/>
+    </g>
+  </g>
+
+  <!-- Streak Count & Understated Typography -->
+  <g transform="translate(108, 0)">
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">${currentStreak}</text>
+    <text x="${currentStreak >= 10 ? 64 : 36}" y="58" class="inter streak-label" font-size="14" font-weight="700" letter-spacing="1.2">DAYS STREAK</text>
+    <text x="${currentStreak >= 10 ? 64 : 36}" y="79" class="mono streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">${tier.name.toUpperCase()} TIER • ${currentStreak} CONSECUTIVE DAYS</text>
+  </g>
+</svg>`;
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const now = new Date();
@@ -609,11 +774,20 @@ async function main() {
   const assetsDir = path.join(__dirname, '..', 'assets');
   if (!fs.existsSync(assetsDir)) fs.mkdirSync(assetsDir, { recursive: true });
 
-  console.log('Generating 7-Day Synchronized Living Easter Egg GitStreak SVGs...');
-  const streakSvg = buildCanonicalStreakSvg(stats);
-  const mainPath = path.join(assetsDir, 'git-streak.svg');
-  fs.writeFileSync(mainPath, streakSvg);
-  console.log(`Saved 7-day synchronized streak to ${mainPath}`);
+  const isEasterEggs = args.includes('--easter-eggs') || args.includes('--cycle');
+  if (isEasterEggs) {
+    console.log('Generating 7-Day Synchronized Living Easter Egg GitStreak SVGs...');
+    const streakSvg = buildCanonicalStreakSvg(stats);
+    const mainPath = path.join(assetsDir, 'git-streak.svg');
+    fs.writeFileSync(mainPath, streakSvg);
+    console.log(`Saved 7-day synchronized streak to ${mainPath}`);
+  } else {
+    console.log('Generating Linear / Apple Minimalist Platinum Living GitStreak SVG...');
+    const streakSvg = buildLinearMinimalistStreakSvg(stats);
+    const mainPath = path.join(assetsDir, 'git-streak.svg');
+    fs.writeFileSync(mainPath, streakSvg);
+    console.log(`Saved Linear / Apple Minimalist streak to ${mainPath}`);
+  }
 
   // Also update day-specific SVGs
   for (let d = 0; d < 7; d++) {
