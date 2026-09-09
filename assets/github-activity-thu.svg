@@ -46,7 +46,7 @@
 
     <!-- Stat Value and Subtext -->
     <g transform="translate(0, 32)">
-      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="32" font-weight="700" letter-spacing="-0.5">1,581</text>
+      <text x="0" y="0" class="inter" fill="#F0F6FC" font-size="32" font-weight="700" letter-spacing="-0.5">1,748</text>
       <text x="96" y="-2" class="inter" fill="#7D8590" font-size="14">contributions in the last 12 months</text>
     </g>
   </g>
@@ -510,7 +510,8 @@
     <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-3"/>
     <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
     <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
-    <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#134E4A"  class="rw-4"/>
+    <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
+    <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#134E4A"  class="rw-4"/>
     </g>
 
     <!-- Easter Egg Handcrafted Overlay -->

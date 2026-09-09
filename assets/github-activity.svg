@@ -218,7 +218,7 @@
   <!-- Top Header Bar -->
   <g transform="translate(16, 12)">
     <text x="20" y="32" class="mono" fill="#7D8590" font-size="11" letter-spacing="1">GITHUB ACTIVITY // ⚡ KINETIC RESONATOR</text>
-    <text x="20" y="55" class="inter" fill="#F0F6FC" font-size="20" font-weight="700">1,581</text>
+    <text x="20" y="55" class="inter" fill="#F0F6FC" font-size="20" font-weight="700">1,748</text>
     <text x="80" y="55" class="inter" fill="#7D8590" font-size="13">contributions in the last 12 months</text>
   </g>
 
@@ -674,7 +674,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#FDE047"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#FDE047"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#FDE047"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#78350F"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#FDE047"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#78350F"  class="rw-4"/>
       </g>
       
       <!-- Sun Solar Corona -->
@@ -1089,7 +1090,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#34D399"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#34D399"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#34D399"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#064E3B"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#34D399"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#064E3B"  class="rw-4"/>
       </g>
       
       <!-- Mon Cyberpunk Traces -->
@@ -1501,7 +1503,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#38BDF8"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#38BDF8"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#38BDF8"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#312E81"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#38BDF8"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#312E81"  class="rw-4"/>
       </g>
       
       <!-- Tue Aurora Waves -->
@@ -1912,7 +1915,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#FB7185"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#FB7185"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#FB7185"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#701A75"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#FB7185"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#701A75"  class="rw-4"/>
       </g>
       
       <!-- Wed Outrun Sun -->
@@ -2324,7 +2328,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#134E4A"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#5EEAD4"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#134E4A"  class="rw-4"/>
       </g>
       
       <!-- Thu Concentric Caustic Ripples -->
@@ -2736,7 +2741,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#BEF264"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#BEF264"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#BEF264"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#365314"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#BEF264"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#365314"  class="rw-4"/>
       </g>
       
       <!-- Fri Cellular Colony -->
@@ -3148,7 +3154,8 @@
       <rect x="798.8000000000001" y="201" width="11" height="11" rx="2" fill="#FDDF68"  class="rw-3"/>
       <rect x="813.6" y="114" width="11" height="11" rx="2" fill="#FDDF68"  class="rw-4"/>
       <rect x="813.6" y="128.5" width="11" height="11" rx="2" fill="#FDDF68"  class="rw-4"/>
-      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#631C03"  class="rw-4"/>
+      <rect x="813.6" y="143" width="11" height="11" rx="2" fill="#FDDF68"  class="rw-4"/>
+      <rect x="813.6" y="157.5" width="11" height="11" rx="2" fill="#631C03"  class="rw-4"/>
       </g>
       
       <!-- Sat Jack-o'-Lantern and Ghost Flare (Exact match to screenshot) -->
