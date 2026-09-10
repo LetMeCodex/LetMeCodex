@@ -1221,7 +1221,7 @@
 
   <!-- Left Center: Streak Count and Synchronized Tier & Theme Tag -->
   <g transform="translate(108, 0)">
-    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">12</text>
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">13</text>
     <text x="64" y="58" class="inter streak-txt-color" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
     
     <!-- Synchronized 7-Day Tier & Easter Egg Subtitle -->
