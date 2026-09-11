@@ -1221,17 +1221,17 @@
 
   <!-- Left Center: Streak Count and Synchronized Tier & Theme Tag -->
   <g transform="translate(108, 0)">
-    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">13</text>
+    <text x="0" y="78" class="inter streak-num" font-size="46" font-weight="800" letter-spacing="-1.5">14</text>
     <text x="64" y="58" class="inter streak-txt-color" font-size="15" font-weight="800" letter-spacing="0.8">DAYS STREAK</text>
     
     <!-- Synchronized 7-Day Tier & Easter Egg Subtitle -->
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-0 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • SOLAR SUPERNOVA</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-1 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • CYBERPUNK PHOSPHOR</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-2 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • QUANTUM AURORA</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-3 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • RETRO SYNTHWAVE</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-4 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • ZEN HYDRO-WAVE</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-5 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • CONWAY'S LIVING COLONY</text>
-    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-6 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">HOT TIER • HALLOWEEN SPOOK</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-0 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • SOLAR SUPERNOVA</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-1 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • CYBERPUNK PHOSPHOR</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-2 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • QUANTUM AURORA</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-3 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • RETRO SYNTHWAVE</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-4 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • ZEN HYDRO-WAVE</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-5 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • CONWAY'S LIVING COLONY</text>
+    <text x="64" y="79" class="mono streak-cycle-layer streak-cycle-6 streak-sub-txt" font-size="11" font-weight="600" letter-spacing="1">BLAZE TIER • HALLOWEEN SPOOK</text>
   </g>
 
   
